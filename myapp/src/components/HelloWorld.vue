@@ -1,13 +1,9 @@
 <template>
-  <div class="hello">
-   
-  </div>
+  <div>lalala</div>
 </template>
 
 <script>
-export default {
- 
-}
+
 </script>
 
 
