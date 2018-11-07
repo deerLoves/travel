@@ -1,5 +1,6 @@
 <template>
   <div>lalala</div>
+  <div>deer</div>
 </template>
 
 <script>
