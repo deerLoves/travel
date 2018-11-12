@@ -1,24 +1,27 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h2>测试</h2>
-    <router-view/>
+    <tab-com></tab-com>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import tab from "./components/common/tab";
+import Vuex from 'vuex';
 export default {
-  name: 'App'
+  components: {
+      "tab-com":tab
+  }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+}
+.page{
+  /*公共样式:上面的电池栏、下面的切换栏*/
+  padding-top: .4rem;
+  padding-bottom: .96rem;
 }
 </style>
