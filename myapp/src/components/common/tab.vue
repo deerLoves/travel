@@ -1,9 +1,9 @@
 <template>
-    <div class="tab">
+    <div class="tab" v-show="show">
         <ul>
-            <li v-for="(item,index) in navs" @click="handleClick(index)">
-                <router-link :to="{name:item.name}" class="rl" v-show="true">
-                    <i></i>{{item.title}}
+            <li v-for="(item,index) in navs" @click="handleClick(index)" :class="active == index?'active':''">
+                <router-link :to="{name:item.name}" class="rl">
+                        <i :class="item.icon"></i>{{item.title}} 
                 </router-link>
             </li>
         </ul>
@@ -11,32 +11,39 @@
 </template>
 
 <script>
+import iconfont from '../../../static/iconfont_deer/iconfont.css'
 export default {
     data(){
         return {
             navs : [
                 {
                     name:"home",
+                    icon:"iconfont icon-shouye",
                     title:"首页"
                 },
                 {
                     name:"story",
+                    icon:"iconfont icon-yapen",
                     title:"故事"
                 },
                 {
                     name:"route",
+                    icon:"iconfont icon-zhifeiji",
                     title:"行程"
                 },
                 {
                     name:"my",
+                    icon:"iconfont icon-My",
                     title:"我的"
                 }
-            ]
+            ],
+            show:true,
+            active:0
         }
     },
     methods:{
         handleClick(index){
-            
+            this.active = index;
         }
     }
 }
@@ -60,26 +67,47 @@ export default {
     .tab>ul>li{
          /* border:1px solid #000; */
          padding-top: 0.1rem;
+         font-size: .2rem;
+         text-align: center;
+        
     }
-    .tab>ul>li>.rl>i{
-        width: .48rem;
-        height: .48rem;
-        display: block;
+    .tab>ul>li>.rl{
+        color:#9b9b9b!important;
+         display: flex;
+         flex-direction: column;
     }
-    .tab>ul>li:nth-of-type(1)>.rl>i{
+    .tab>ul>.active>.rl{
+        color: #4d9ee6!important;
+    }
+    .tab>ul>li i{
+        font-size: .48rem;
+    }
+    
+    /* 静态图标
+    .tab>ul>li:nth-of-type(1)>.rl>.original>i{
         background:url("../../../static/icons/home-normal.svg") no-repeat;
     }
-    .tab>ul>li:nth-of-type(2)>.rl>i{
+    .tab>ul>li:nth-of-type(2)>.rl>.original>i{
         background:url("../../../static/icons/story-normal.svg") no-repeat;
     }
-    .tab>ul>li:nth-of-type(3)>.rl>i{
+    .tab>ul>li:nth-of-type(3)>.rl>.original>i{
         background:url("../../../static/icons/travel-normal.svg") no-repeat;
     }
-    .tab>ul>li:nth-of-type(4)>.rl>i{
+    .tab>ul>li:nth-of-type(4)>.rl>.original>i{
         background:url("../../../static/icons/my-normal.svg") no-repeat .025rem;
     }
-    .tab>ul>li{
-        font-size: .2rem;
-        text-align: center
+    /*活跃图标
+    .tab>ul>li:nth-of-type(1)>.rl>.active>i{
+        background:url("../../../static/icons/home-pressed.svg") no-repeat;
     }
+    .tab>ul>li:nth-of-type(2)>.rl>.active>i{
+        background:url("../../../static/icons/stroy-pressed.svg") no-repeat;
+    }
+    .tab>ul>li:nth-of-type(3)>.rl>.active>i{
+        background:url("../../../static/icons/travel-pressed.svg") no-repeat;
+    }
+    .tab>ul>li:nth-of-type(4)>.rl>.active>i{
+        background:url("../../../static/icons/my-pressed.svg") no-repeat .025rem;
+    } */
+    
 </style>
