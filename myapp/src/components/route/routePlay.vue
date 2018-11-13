@@ -28,7 +28,8 @@
       },
       methods:{
         handleSendIndex(index){
-            this.btnindex = index
+            this.btnindex = index;
+            this.$router.push('/visitor')
         },
         handleChangeCom(){
             this.comName = 'routePath-com'
