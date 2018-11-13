@@ -6,6 +6,7 @@ import route from '@/components/route/home'
 import my from '@/components/my/home'
 import myStory from "@/components/my/myStory"
 import visitor from '@/components/route/visitor'
+import visitorDetails from '@/components/route/visitorDetails'
 Vue.use(Router)
 
 export default new Router({
@@ -25,6 +26,7 @@ export default new Router({
       name: 'story',
       component: story
     },
+    //行程路由的模块
     {
       path: '/route',
       name: 'route',
@@ -35,6 +37,12 @@ export default new Router({
       path : '/visitor',
       name : 'visitor',
       component : visitor
+    },
+    //由游客行程页面，跳转到游客行程详情页面的路由
+    {
+      path : '/visitorDetails',
+      name : 'visitorDetails',
+      component : visitorDetails
     },
     {
       path: '/my',

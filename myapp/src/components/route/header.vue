@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <h2>行程</h2>
+        <p>行程</p>
         <a href="#">
             <img src="../../../static/img-chen/route-head_03.png" alt="">
         </a>
@@ -17,7 +17,7 @@ export default {
     .header{
         /* display: flex; */
     }
-    .header>h2{
+    .header>p{
         font-family: PingFangSC-Regular;
         font-size: 48px;
         color: #000;

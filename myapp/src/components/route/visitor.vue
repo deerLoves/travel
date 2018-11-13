@@ -1,9 +1,9 @@
 <template>
   <div class="visitor">
-    <h2>游客行程</h2>
+    <p class="title">游客行程</p>
 
     <!--单个游客行程信息，接收到信息从此循环创建游客列表-->
-    <div class="cont">
+    <div class="cont" @click="handleGo">
       <!--游客行程头像部位-->
       <div class="cont-top">
         <div class="top-l">
@@ -35,7 +35,13 @@
 
 
 <script>
-    export default{}
+    export default{
+        methods:{
+          handleGo(){
+              this.$router.push('/visitorDetails')
+          }
+        }
+    }
 </script>
 
 
@@ -43,7 +49,7 @@
   .visitor{
     padding : 1.4rem .32rem 0;
   }
-  .visitor h2{
+  .visitor .title{
     font-family: PingFangSC-Regular;
     font-size: 48px;
     color: #000;
