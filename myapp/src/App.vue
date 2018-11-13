@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+		
     <tab-com></tab-com>
+		
     <router-view></router-view>
   </div>
 </template>
@@ -8,9 +10,11 @@
 <script>
 import tab from "./components/common/tab";
 import Vuex from 'vuex';
+
 export default {
   components: {
-      "tab-com":tab
+      "tab-com":tab,
+			
   }
 }
 </script>

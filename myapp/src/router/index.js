@@ -4,7 +4,7 @@ import home from '@/components/home/home'
 import story from '@/components/story/home'
 import route from '@/components/route/home'
 import my from '@/components/my/home'
-
+import myStory from "@/components/my/myStory"
 Vue.use(Router)
 
 export default new Router({
@@ -34,5 +34,10 @@ export default new Router({
       name: 'my',
       component: my
     },
+		{
+			path:"/myStory",
+			name:"myStory",
+			component:myStory
+		}
   ]
 })
