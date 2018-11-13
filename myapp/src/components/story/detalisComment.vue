@@ -2,7 +2,7 @@
     <div class="detalisComment">
         <li>
             <div class="commentPerson">
-                <img src="../../../static/zhang/img_zhang/a731f56490d00cfec3dc83899e76003818cd29c735fd5-81Asb9_fw658.jpg" alt="">
+                <img src="../../../static/zhang/img_zhang/1.jpg" alt="">
                 <div>
                     <span>安娜</span>
                     <span>2018-12-12</span>

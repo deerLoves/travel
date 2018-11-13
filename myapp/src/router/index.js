@@ -32,6 +32,7 @@ export default new Router({
       component: story, 
        
     },
+    //故事详情页面路由
     {
       name:"storyDetalis",
       path:"/storyDetalis",

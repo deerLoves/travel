@@ -3,7 +3,7 @@
         <div>
             <div class="dcHeader">
                 <div class="dcHeader-l">
-                    <img src="../../../static/zhang/img_zhang/a731f56490d00cfec3dc83899e76003818cd29c735fd5-81Asb9_fw658.jpg" alt="">
+                    <img src="../../../static/zhang/img_zhang/1.jpg" alt="">
                     <span>安娜</span>
                 </div>
                 <div class="dcHeader-r">
@@ -11,17 +11,17 @@
                 </div>
             </div>
             <div class="dcImg">
-                <img src="../../../static/zhang/img_zhang/a731f56490d00cfec3dc83899e76003818cd29c735fd5-81Asb9_fw658.jpg" alt="">
+                <div v-for="(item,index) in viewpager">
+                <img :src="viewpager[index]">
             </div>
+            
+        </div>
             <div class="dcText">
                 懂得太少，表现太多；才华太少，锋芒太多，很浅薄，一眼就能被看穿. 沉下来，打根基，让别人不会觉得你烦！懂得太少，表现太多；才华太少，锋芒太多，很浅薄，一眼就能被看穿. 沉下来，打根基，让别人不会觉得你烦！
             </div>
             <div class="dcComment">
                 <div class="dcComment-l">
                     <p>访友点评</p>
-                </div>
-                <div class="dcComment-r">
-                    <p>全部点评</p>
                 </div>
             </div>
         </div>
@@ -30,14 +30,26 @@
     </div>
 </template>
 <script>
+import axios from "axios";
+import Swiper from "swiper";
 import detalisComment from "./detalisComment";
 export default {
     components:{
         "detalisComment":detalisComment,
     },
+    created(){
+        axios({
+            method:"get",
+            url:"../../../static/zhang/json_zhang/viewpager.json"
+        }).then((data)=>{
+            this.viewpager= data.data.viewpager
+            // console.log(data)
+        })
+    },
     data(){
         return {
             status:true,
+            viewpager:[]
         }
     },
 
@@ -82,10 +94,15 @@ export default {
     width:100%;
     height:2.4rem;
     margin:0 .4rem .38rem 0;
+    display: flex;
+    overflow: scroll;
 }
-.detalisCenter>div>.dcImg>img{
+.detalisCenter>div>.dcImg>div{
+    margin-right: .4rem;
+}
+.detalisCenter>div>.dcImg>div>img{
     width:3.6rem;
-    height:2.4;
+    height:2.4rem;
     border-radius: .2rem;
 }
 .detalisCenter>div>.dcText{
@@ -108,10 +125,5 @@ export default {
     color: #000000;
 
     
-}
-.detalisCenter>div>.dcComment>.dcComment-r>p{
-    font-size: .28rem;
-    color: #000000;
-
 }
 </style>
