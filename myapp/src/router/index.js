@@ -4,6 +4,7 @@ import home from '@/components/home/home'
 import story from '@/components/story/home'
 import route from '@/components/route/home'
 import my from '@/components/my/home'
+import personInfor from "@/components/my/personInfor"
 
 Vue.use(Router)
 
@@ -34,5 +35,11 @@ export default new Router({
       name: 'my',
       component: my
     },
+    {
+      path:"/personInfor",
+      name:'personInfor',
+      component:personInfor
+
+    }
   ]
 })
