@@ -10,7 +10,8 @@ import tab from "./components/common/tab";
 import Vuex from 'vuex';
 export default {
   components: {
-      "tab-com":tab
+      "tab-com":tab,
+      
   }
 }
 </script>
