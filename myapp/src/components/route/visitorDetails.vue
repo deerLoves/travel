@@ -35,7 +35,7 @@
 
 <style scoped>
   .details{
-    padding-top : 1.4rem;
+    padding: 1.4rem 0 0.98rem 0;
   }
   .details .title{
     font-family: PingFangSC-Regular;
@@ -52,6 +52,7 @@
     width:100%;
     height: 4.1rem;
     border-left: 2px solid #ccc;
+    z-index: -1;
   }
   .message .cont .time-bg{
     position: absolute;

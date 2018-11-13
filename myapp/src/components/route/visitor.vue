@@ -30,6 +30,7 @@
         <p><span>❤</span>1999</p>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -47,7 +48,7 @@
 
 <style scoped>
   .visitor{
-    padding : 1.4rem .32rem 0;
+    padding : 1.4rem .32rem .98rem;
   }
   .visitor .title{
     font-family: PingFangSC-Regular;
@@ -90,6 +91,9 @@
     font-size: 28px;
     font-family: PingFangTC-Light;
     padding-top: 35px;
+  }
+  .cont{
+    margin-bottom: .6rem;
   }
   .cont-cen{
     width: 100%;
