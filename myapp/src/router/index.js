@@ -4,6 +4,8 @@ import home from '@/components/home/home'
 import story from '@/components/story/home'
 import route from '@/components/route/home'
 import my from '@/components/my/home'
+import place from '@/components/home/place'
+import attractions from '@/components/home/attractions'
 
 Vue.use(Router)
 
@@ -34,5 +36,15 @@ export default new Router({
       name: 'my',
       component: my
     },
+    {
+      path: '/place',
+      name: 'place',
+      component: place
+    },
+    {
+      path:"/attractions",
+      name:"attractions",
+      component:attractions
+    }
   ]
 })
