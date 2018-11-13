@@ -19,7 +19,7 @@
 					<img src="../../../static/images_li/t5.png" />
 				</div>
 				<div class="publish_img_con">
-					<img src="../../../static/images_li/t5.png" />
+					<img src="../../../static/images_li/t6.png" />
 				</div>
 			  </div>
 		</div>
