@@ -6,6 +6,9 @@ import router from './router'
 import store from "./store";
 import "./reset.css";
 import "./rem.js";
+import "../static/bai/iconfont_bai/iconfont.css"
+import "../node_modules/swiper/dist/css/swiper.css"
+
 
 Vue.config.productionTip = false
 
