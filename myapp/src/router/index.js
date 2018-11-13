@@ -4,7 +4,7 @@ import home from '@/components/home/home'
 import story from '@/components/story/home'
 import route from '@/components/route/home'
 import my from '@/components/my/home'
-
+import storyDetalis from '@/components/story/storyDetalis'
 Vue.use(Router)
 
 export default new Router({
@@ -22,7 +22,13 @@ export default new Router({
     {
       path: '/story',
       name: 'story',
-      component: story
+      component: story, 
+       
+    },
+    {
+      name:"storyDetalis",
+      path:"/storyDetalis",
+      component:storyDetalis,
     },
     {
       path: '/route',
