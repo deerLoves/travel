@@ -59,7 +59,6 @@
 <script>
 import axios from "axios";
 import Swiper from "swiper";
-import "../../../node_modules/swiper/dist/css/swiper.min.css"
 export default {
     created(){
         axios({
