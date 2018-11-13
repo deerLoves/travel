@@ -10,6 +10,8 @@ import place from '@/components/home/place'
 import attractions from '@/components/home/attractions'
 
 
+import visitor from '@/components/route/visitor'
+import visitorDetails from '@/components/route/visitorDetails'
 Vue.use(Router)
 
 export default new Router({
@@ -35,10 +37,23 @@ export default new Router({
       path:"/storyDetalis",
       component:storyDetalis,
     },
+    //行程路由的模块
     {
       path: '/route',
       name: 'route',
       component: route
+    },
+    //由行程页面跳转到的游客行程页面的路由
+    {
+      path : '/visitor',
+      name : 'visitor',
+      component : visitor
+    },
+    //由游客行程页面，跳转到游客行程详情页面的路由
+    {
+      path : '/visitorDetails',
+      name : 'visitorDetails',
+      component : visitorDetails
     },
     {
       path: '/my',
