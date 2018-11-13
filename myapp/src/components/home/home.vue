@@ -82,14 +82,16 @@ export default {
     updated(){
         this.$nextTick(()=>{
              new Swiper ('.swiper-container', {
-            loop: true, // 循环模式选项
-            autoplay:{
-                disableOnInteraction:false,
-            },
-            // 如果需要分页器
-            pagination: {
-            el: '.swiper-pagination',
-            },
+                slidesPerView : 3,
+                spaceBetween : 20,
+                loop: true, // 循环模式选项
+                autoplay:{
+                    disableOnInteraction:false,
+                },
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination',
+                },
         }) 
         })
     }
