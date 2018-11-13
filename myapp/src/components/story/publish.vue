@@ -1,8 +1,8 @@
 <template>
 	<div class="publish">
 		<div class="publish_top">
-			<p><i class="iconfont icon-xiazai6 "></i></p>
-			<p><a href="##">发布</a></p>
+			<p><i class="iconfont icon-xiazai6 " @click="handelBack()"></i></p>
+			<p><a href="##" @click="handelPublish()">发布</a></p>
 		</div>
 		<div class="publish_c">
 			<p><input type="text" value="一生一定要去一次巴厘岛"></p>
@@ -37,11 +37,18 @@
 			"publish_over-com":publish_over,
 			"mark-com":mark,
 		},
-		data() {
-			return {
-				
-			};
+		methods:{
+			handelBack(){
+				this.$router.push({name:"story"})
+			},
+			handelPublish(){
+					this.observer.$emit("handelPublish",true);
+						
+					
+					
+			},			
 		}
+		
 	}
 </script>
 

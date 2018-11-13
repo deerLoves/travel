@@ -1,7 +1,6 @@
 <template>
 	<div class="myStory">
-
-		<p><i class="iconfont icon-xiazai6 ico"></i> </p>
+		<p><i class="iconfont icon-xiazai6 ico" @click="handelBack()"></i> </p>
 		<p>我的故事</p>
 		<div class="myStory_list_con">
 			<div class="myStory-img">
@@ -11,7 +10,7 @@
 				<p>
 					<span>10月</span>
 					<span>29日</span>
-					<a href="##">删除</a>
+					<a href="##" @click="handeldel()">删除</a>
 				</p>
 				<div class="myStory_list_img">
 					<div class="myStory_list_img_con">
@@ -38,7 +37,7 @@
 				<p>
 					<span>10月</span>
 					<span>29日</span>
-					<a href="##">删除</a>
+					<a href="##" >删除</a>
 				</p>
 				<div class="myStory_list_img">
 					<div class="myStory_list_img_con">
@@ -65,6 +64,20 @@
 			"mark-com": mark,
 			"delete_ing-com": delete_ing,
 			"delete_over-com": delete_over
+		},
+		data(){
+			return {
+				
+			}
+		},
+		methods:{
+			handelBack(){
+				this.$router.push({name:"my"});
+				
+			},
+			handeldel(){
+				this.observer.$emit("handeldelete",true)
+			}
 		}
 	}
 </script>
@@ -88,13 +101,9 @@
 
 	.myStory p:nth-child(2) {
 		font-size: 24px;
-		width: 1.92rem;
-		height: .66rem;
 		padding-left: .32rem;
 	 	margin-top: .7rem;
 		font-family: PingFangSC-Regular;
-		background: #fff;
-		z-index: 2;
 	}
 
 	.myStory-img {

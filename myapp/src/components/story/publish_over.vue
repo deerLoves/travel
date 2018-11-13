@@ -1,5 +1,5 @@
 <template>
-	<div class="publish_over">
+	<div class="publish_over" v-show="show"  @click="handelPublishT()">
 		<p>发布成功</p>
 		<p><a href="##">ok</a></p>
 	</div>
@@ -7,10 +7,22 @@
 
 <script>
 	export default {
+		created(){
+			this.observer.$on("handelPublish",(val)=>{
+				this.show=val
+			})
+		},
 		data() {
 			return {
-				
-			};
+				show:false
+			}
+		},
+		methods:{
+			handelPublishT(){
+				this.show=false;
+				this.observer.$emit("handelPublishT",false)
+				this.$router.push({name:"home"})
+			}
 		}
 	}
 </script>
@@ -28,7 +40,6 @@
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	/* display: none; */
 	border-radius: .2rem;
 	z-index: 1;
 	

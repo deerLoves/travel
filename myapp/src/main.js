@@ -6,7 +6,9 @@ import router from './router'
 import store from "./store";
 import "./reset.css";
 import "./rem.js";
+import center from "@/observer"
 
+Vue.prototype.observer=center
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

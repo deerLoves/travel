@@ -1,13 +1,32 @@
 <template>
-	<div class="delete_ing">
+	<div class="delete_ing" v-show="show">
 		<p>是否删除</p>
-		<p><a href="##" >是</a><a href="##" >否</a></p>
+		<p><a href="##" @click="handeldelT()">是</a><a href="##" @click="handeldelF()">否</a></p>
 	</div>
 </template>
 
 <script>
 	export default {
-		
+		created(){		
+			this.observer.$on("handeldelete",(val)=>{
+				this.show=val
+			})
+		},
+		data(){
+			return {
+				show:false,				
+			}			
+		},
+		methods:{
+			handeldelT(){
+				this.show=false;
+				this.observer.$emit("handeldelT",true)				
+			},
+			handeldelF(){
+				this.show=false;
+				this.observer.$emit("handeldelF",false)
+			}
+		}
 	}
 </script>
 
@@ -24,7 +43,6 @@
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	display: none;
 	border-radius: .2rem;
 	z-index: 1;
 }

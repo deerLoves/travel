@@ -1,5 +1,5 @@
 <template>
-	<div class="delete_over">
+	<div class="delete_over" v-show="show" @click="handeldelB()">
 		<p>删除成功</p>
 		<p><img src="../../../../static/images_li/t3.png"></p>
 	</div>
@@ -7,10 +7,21 @@
 
 <script>
 	export default {
+		created(){
+			this.observer.$on("handeldelT",(val)=>{
+				this.show=val
+			})
+		},
 		data() {
 			return {
-				
-			};
+				show:false
+			}
+		},
+		methods:{
+			handeldelB(){
+				this.show=false;
+				this.observer.$emit("handeldelB",false)
+			}
 		}
 	}
 </script>
@@ -28,7 +39,6 @@
 	right: 0;
 	bottom: 0;
 	margin: auto;
-	display: none;
 	border-radius: .2rem;
 }
 .delete_over p:nth-child(1){
