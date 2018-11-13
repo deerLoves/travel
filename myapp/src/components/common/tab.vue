@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import iconfont from '../../../static/iconfont_deer/iconfont.css'
+import iconfont from '../../../static/deer/iconfont_deer/iconfont.css'
 export default {
     data(){
         return {
