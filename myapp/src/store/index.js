@@ -4,7 +4,7 @@ import axios from "axios";
 Vue.use(Vuex);
 
 const state = {
-
+    address:[]
 }
 
 const getters = {

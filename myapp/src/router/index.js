@@ -5,6 +5,9 @@ import story from '@/components/story/home'
 import route from '@/components/route/home'
 import my from '@/components/my/home'
 import myStory from "@/components/my/myStory"
+import place from '@/components/home/place'
+import attractions from '@/components/home/attractions'
+
 Vue.use(Router)
 
 export default new Router({
@@ -38,6 +41,16 @@ export default new Router({
 			path:"/myStory",
 			name:"myStory",
 			component:myStory
-		}
+		},
+    {
+      path: '/place',
+      name: 'place',
+      component: place
+    },
+    {
+      path:"/attractions",
+      name:"attractions",
+      component:attractions
+    }
   ]
 })
