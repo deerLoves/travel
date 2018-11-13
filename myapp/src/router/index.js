@@ -5,6 +5,10 @@ import story from '@/components/story/home'
 import route from '@/components/route/home'
 import my from '@/components/my/home'
 import personInfor from "@/components/my/personInfor"
+import feedBack from "@/components/my/feedBack"
+import setting from "@/components/my/setting"
+import aboutUs from "@/components/my/aboutUs"
+import changePwd from "@/components/my/changePwd"
 
 Vue.use(Router)
 
@@ -40,6 +44,33 @@ export default new Router({
       name:'personInfor',
       component:personInfor
 
-    }
+    },
+    {
+      path:"/feedBack",
+      name:'feedBack',
+      component:feedBack
+
+    },
+    {
+      path:"/setting",
+      name:'setting',
+      component:setting
+
+    },
+    {
+      path:"/aboutUs",
+      name:'aboutUs',
+      component:aboutUs
+
+    },
+    {
+      path:"/changePwd",
+      name:'changePwd',
+      component:changePwd
+
+    },
+
+
+
   ]
 })
