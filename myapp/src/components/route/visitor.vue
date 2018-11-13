@@ -30,7 +30,7 @@
         <p><span>❤</span>1999</p>
       </div>
     </div>
-    
+
   </div>
 </template>
 
