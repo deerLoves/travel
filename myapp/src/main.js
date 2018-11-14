@@ -6,10 +6,16 @@ import router from './router'
 import store from "./store";
 import "./reset.css";
 import "./rem.js";
+<<<<<<< HEAD
 import "../static/fontguan/iconfont.css"
 import "../static/bai/iconfont_bai/iconfont.css"
 import "../node_modules/swiper/dist/css/swiper.css"
 import "../static/zhang/iconfont_zhang/iconfont.css"
+=======
+import center from "@/observer"
+
+Vue.prototype.observer=center
+>>>>>>> li
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

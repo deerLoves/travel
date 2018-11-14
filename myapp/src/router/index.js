@@ -13,6 +13,7 @@ import attractions from '@/components/home/attractions'
 
 import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
+import publish from "@/components/story/publish"
 Vue.use(Router)
 
 export default new Router({
@@ -80,6 +81,11 @@ export default new Router({
       path: '/spot',
       name: 'spot',
       component: spot
-    }
+    },
+		{
+			path:"/publish",
+			name:"publish",
+			component:publish
+		}
   ]
 })
