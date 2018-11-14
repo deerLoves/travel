@@ -11,6 +11,7 @@ import "../static/bai/iconfont_bai/iconfont.css"
 import "../node_modules/swiper/dist/css/swiper.css"
 import "../static/zhang/iconfont_zhang/iconfont.css"
 import center from "@/observer"
+import "../static/icon-liu/iconfont.css";
 
 Vue.prototype.observer=center
 Vue.config.productionTip = false

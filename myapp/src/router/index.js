@@ -9,6 +9,11 @@ import myStory from "@/components/my/myStory"
 import place from '@/components/home/place'
 import spot from '@/components/home/spot'
 import attractions from '@/components/home/attractions'
+import personInfor from "@/components/my/personInfor"
+import feedBack from "@/components/my/feedBack"
+import setting from "@/components/my/setting"
+import aboutUs from "@/components/my/aboutUs"
+import changePwd from "@/components/my/changePwd"
 
 
 import visitor from '@/components/route/visitor'
@@ -86,6 +91,39 @@ export default new Router({
 			path:"/publish",
 			name:"publish",
 			component:publish
-		}
+		},
+    {
+      path:"/personInfor",
+      name:'personInfor',
+      component:personInfor
+
+    },
+    {
+      path:"/feedBack",
+      name:'feedBack',
+      component:feedBack
+
+    },
+    {
+      path:"/setting",
+      name:'setting',
+      component:setting
+
+    },
+    {
+      path:"/aboutUs",
+      name:'aboutUs',
+      component:aboutUs
+
+    },
+    {
+      path:"/changePwd",
+      name:'changePwd',
+      component:changePwd
+
+    },
+
+
+
   ]
 })
