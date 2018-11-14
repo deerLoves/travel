@@ -13,7 +13,9 @@
             <div class="banner">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="(item,index) in find"><img :src="find[index].photo"></div>
+                        <div class="swiper-slide" v-for="(item,index) in indexarr">
+                            <img :src="item.photo">
+                        </div>
                     </div>
                     <!-- 如果需要分页器 -->
                     <div class="swiper-pagination"></div>
@@ -23,10 +25,10 @@
         <div id="hotspot">
             <h2>热门景点</h2>
             <div class="banner">
-                <dl v-for="(item,index) in hotspot">
-                    <dt><img :src="hotspot[index].photo"></dt>
-                    <dd><p><span>【{{hotspot[index].name}}】</span>{{hotspot[index].ftitle}}</p></dd>
-                    <dd><p>{{hotspot[index].stitle}}</p></dd>
+                <dl v-for="(item,index) in indexarr" v-if="index<=2">
+                    <dt><img :src="item.photo"></dt>
+                    <dd><p><span>【{{item.name}}】</span>{{item.ftitle}}</p></dd>
+                    <dd><p>{{item.stitle}}</p></dd>
                 </dl>
             </div>
 
@@ -35,10 +37,10 @@
         <div id="hottrip">
             <h2>热门行程</h2>
             <div class="banner">
-                <dl v-for="(item,index) in obj">
-                    <dt><img :src="obj[index].photo"></dt>
-                    <dd><p><span>【{{obj[index].name}}】</span>{{obj[index].ftitle}}</p></dd>
-                    <dd><p>{{obj[index].stitle}}</p></dd>
+                <dl v-for="(item,index) in indexarr" v-if="index<=2">
+                    <dt><img :src="item.photo"></dt>
+                    <dd><p><span>【{{item.name}}】</span>{{item.ftitle}}</p></dd>
+                    <dd><p>{{item.stitle}}</p></dd>
                 </dl>
             </div>
         </div>
@@ -46,10 +48,10 @@
             <h2>热门故事</h2>
             <h3>一些游客自己的亲身体验</h3>
             <div class="banner">
-                <dl v-for="(item,index) in hotstory">
-                    <dt><img :src="hotstory[index].photo"></dt>
-                    <dd>{{hotstory[index].ftitle}}</dd>
-                    <dd>{{hotstory[index].stitle}}</dd>
+                <dl v-for="(item,index) in indexarr">
+                    <dt><img :src="item.photo"></dt>
+                    <dd>{{item.ftitle}}</dd>
+                    <dd>{{item.stitle}}</dd>
                 </dl>
             </div>
         </div>
@@ -58,26 +60,43 @@
 
 <script>
 import axios from "axios";
+import Vuex from 'vuex';
 import Swiper from "swiper";
 export default {
     created(){
-        axios({
-            method:"get",
-            url:"../../../static/bai/josn.json"
-        }).then((data)=>{
-            this.obj=data.data.data,
-            this.hotspot=data.data.hotspot,
-            this.hotstory=data.data.hotstory,
-            this.find=data.data.find
-        })
+        this.handleindex();
+        console.log(this.indexarr);
+        
+    //     axios({
+    //         method:"get",
+    //         // url:"../../../static/bai/josn.json"
+    //         url:"/travel/scenic/getsceniclistbypage?address=北京&pageNum=1&pageSize=2"
+    //     }).then((data)=>{
+    //         this.obj=data.data.data,
+    //         this.hotspot=data.data.hotspot,
+    //         this.hotstory=data.data.hotstory,
+    //         this.find=data.data.find,
+    //         console.log(data);
+
+    //     })
+     },
+    computed:{
+      ...Vuex.mapState({
+         indexarr:state=>state.home.IndexObj.data
+      })
     },
-    data(){
-        return{
-            obj:[],
-            hotspot:[],
-            hotstory:[],
-            find:[]
-        }
+    // data(){
+    //     return{
+    //         obj:[],
+    //         hotspot:[],
+    //         hotstory:[],
+    //         find:[]
+    //     }
+    // },
+    methods:{
+        ...Vuex.mapActions({
+            handleindex:'home/handleindex'
+        })
     },
     updated(){
         this.$nextTick(()=>{
@@ -269,7 +288,7 @@ export default {
     overflow: visible;
 }
 .swiper-container .swiper-wrapper .swiper-slide{ width: 5rem;}
-.swiper-container .swiper-wrapper .swiper-slide img{width: 100%; height: 320px; border-radius: 20px;}
+.swiper-container .swiper-wrapper .swiper-slide img{width: 100%; height: 3.2rem; border-radius: 0.4rem;}
 .swiper-container .swiper-wrapper .swiper-slide-prev{height: 3.4rem}
 .swiper-container .swiper-wrapper .swiper-slide-prev img{ height: 3.4rem;}
 .swiper-container .swiper-wrapper .swiper-slide-next{height: 3.4rem}
