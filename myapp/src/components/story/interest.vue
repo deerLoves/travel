@@ -3,7 +3,7 @@
         <div>
             <div class="hsHeader">
                 <div class="hsHeader-l">
-                    <img src="../../../static/zhang/img_zhang/a731f56490d00cfec3dc83899e76003818cd29c735fd5-81Asb9_fw658.jpg" alt="">
+                    <img src="../../../static/zhang/img_zhang/1.jpg" alt="">
                     <span>安娜</span>
                 </div>
                 <div class="hsHeader-r">
@@ -15,7 +15,7 @@
             </div>
             <div class="hsImg">
                 <router-link :to="{name:'storyDetalis'}">
-                    <img src="../../../static/zhang/img_zhang/a731f56490d00cfec3dc83899e76003818cd29c735fd5-81Asb9_fw658.jpg" alt="">
+                    <img src="../../../static/zhang/img_zhang/1.jpg" alt="">
                 </router-link>
             </div>
             <div class="hsComment">

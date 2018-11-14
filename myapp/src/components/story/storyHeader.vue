@@ -1,10 +1,11 @@
 <template>
     <div class="storyHead">
-        <i class="iconfont icon-jiantouzuo"></i>
+        <!-- <i class="iconfont icon-jiantouzuo"></i> -->
         <div>
             <i class="iconfont icon-search"></i>
             <input type="text" placeholder="成都故事">
         </div>
+        <i class="iconfont icon-iconfont7"></i>
     </div>
 </template>
 
@@ -22,13 +23,16 @@ export default {
     align-items: center;
     opacity: 0.3;
 }
-.storyHead>i{
+/* .storyHead>i{
     font-size: .48rem;
+} */
+.storyHead>i:nth-of-type(1){
+    font-size:.6rem;
 }
 .storyHead>div{
     display: flex;
     align-items: center;
-    width:6.32rem;
+    width:6rem;
     height: .68rem;
     background: #BBBBBB;
     border-radius: .2rem;

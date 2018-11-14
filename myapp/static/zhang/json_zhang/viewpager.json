@@ -1,0 +1,9 @@
+{
+    "code":1,
+    "status":"true",
+    "viewpager":[
+        "../../../static/zhang/img_zhang/1.jpg","../../../static/zhang/img_zhang/7.jpg",
+        "../../../static/zhang/img_zhang/10.jpg"
+    ]
+
+}
