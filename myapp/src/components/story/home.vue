@@ -11,6 +11,8 @@
             </div>
         </div>
         <interest></interest>
+        <interest></interest>
+        <interest></interest>
         <!-- <router-view></router-view> -->
     </div>
     

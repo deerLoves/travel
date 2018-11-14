@@ -32,7 +32,7 @@
             </div>
             <!-- 输入框 -->
                     <div class="ICommentBox" v-show="!message">
-                        <input type="text" placeholder="留下宝贵的评价">
+                        <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa">
                         <span>发送</span>
                     </div>
         </div>
@@ -62,16 +62,26 @@ export default {
             }
              
         },
+    },
+    crested(){
 
     }
 }
 </script>
 <style scoped>
+/*
+$('#money').click(function(){
+      setTimeout(function(){  
+          $(this).scrollIntoView(); // 参数可以是true， false, 空参数  
+      }, 300);
+  })
+*/
 .hostStory{
     width:100%;
     font-family: PingFangSC-Regular;
     font-size: .32rem;
     color: #000000;
+    margin-top:.28rem;
 }
 .hostStory>div>.hsHeader{
     display: flex;

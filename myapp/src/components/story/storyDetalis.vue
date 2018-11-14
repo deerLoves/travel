@@ -18,12 +18,15 @@ export default {
         "sdHeader-com":sdHeader,
         "detalisCenter":detalisCenter,
         "detalisfooter":detalisfooter
-    }
+    },
 }
 </script>
 
 <style scoped>
+
 .storyDetalis{
+    width:91.4%;
+    min-height:100%; 
     padding-top: .4rem;
   padding-bottom: .96rem;
     margin:0 0.32rem;
