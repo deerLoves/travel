@@ -7,7 +7,9 @@ import my from '@/components/my/home'
 import myStory from "@/components/my/myStory"
 import place from '@/components/home/place'
 import attractions from '@/components/home/attractions'
-
+import register from '@/components/login/register'
+import login from '@/components/login/login'
+import forgetpassword from '@/components/login/forgetpassword'
 Vue.use(Router)
 
 export default new Router({
@@ -37,20 +39,35 @@ export default new Router({
       name: 'my',
       component: my
     },
-		{
-			path:"/myStory",
-			name:"myStory",
-			component:myStory
-		},
+    {
+      path: "/myStory",
+      name: "myStory",
+      component: myStory
+    },
     {
       path: '/place',
       name: 'place',
       component: place
     },
     {
-      path:"/attractions",
-      name:"attractions",
-      component:attractions
+      path: "/attractions",
+      name: "attractions",
+      component: attractions
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: register
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: login
+    },
+    {
+      path:"/forgetpassword",
+      name:"forgetpassword",
+      component:forgetpassword
     }
   ]
 })
