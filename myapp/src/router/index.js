@@ -16,9 +16,11 @@ import aboutUs from "@/components/my/aboutUs"
 import changePwd from "@/components/my/changePwd"
 
 
-import myPath from "@/components/route/mypath"
+
 import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
+import mypath from "@/components/route/mypath"
+import myPathNow from "@/components/route/mypathnow"
 import publish from "@/components/story/publish"
 Vue.use(Router)
 
@@ -65,9 +67,15 @@ export default new Router({
     },
     //点击 “我的页面” 的  “我的行程”   跳转的路由
     {
-      path : '/myPath',
-      name : 'myPath',
-      component : myPath
+      path:'/mypath',
+      name:'mypath',
+      component:mypath
+    },
+    //点击  “我的行程”页面任意一个行程，跳转到详情行程页面的路由
+    {
+      path : '/myPathNow',
+      name : 'myPathNow',
+      component : myPathNow
     },
     {
       path: '/my',
