@@ -151,6 +151,53 @@
             "stitle":"二级标题",
             "scenicEvas":null
         }
+    ],
+    "searchaddress":[
+        {
+            "id":1,
+            "address":"哈哈哈",
+            "name":"北欧四国",
+            "photo":"../../../static/bai/find/one.png",
+            "simples":"故宫简介",
+            "detail":"故宫详情介绍",
+            "ftitle":"从丹麦到挪威,从挪威到芬兰,从芬兰到瑞典",
+            "stitle":"领略四国，找到生活",
+            "scenicEvas":null
+        },
+        {
+            "id":2,
+            "address":"天津",
+            "name":"天津之眼",
+            "photo":"../../../static/bai/find/two.png",
+            "simples":"故宫简介",
+            "detail":"故宫详情介绍",
+            "ftitle":"一级标题",
+            "stitle":"二级标题",
+            "scenicEvas":null
+        },
+        {
+            "id":3,
+            "address":"北京",
+            "name":"故宫",
+            "photo":"../../../static/bai/find/three.png",
+            "simples":"故宫简介",
+            "detail":"故宫详情介绍",
+            "ftitle":"一级标题",
+            "stitle":"二级标题",
+            "scenicEvas":null
+        },
+        {
+            "id":4,
+            "address":"北京",
+            "name":"故宫",
+            "photo":"../../../static/bai/find/four.png",
+            "simples":"故宫简介",
+            "detail":"故宫详情介绍",
+            "ftitle":"一级标题",
+            "stitle":"二级标题",
+            "scenicEvas":null
+        }
     ]
+    
 }
     

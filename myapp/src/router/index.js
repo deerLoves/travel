@@ -7,6 +7,7 @@ import route from '@/components/route/home'
 import my from '@/components/my/home'
 import myStory from "@/components/my/myStory"
 import place from '@/components/home/place'
+import spot from '@/components/home/spot'
 import attractions from '@/components/home/attractions'
 
 
@@ -74,6 +75,11 @@ export default new Router({
       path:"/attractions",
       name:"attractions",
       component:attractions
+    },
+    {
+      path: '/spot',
+      name: 'spot',
+      component: spot
     }
   ]
 })

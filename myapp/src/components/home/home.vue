@@ -82,8 +82,11 @@ export default {
     updated(){
         this.$nextTick(()=>{
              new Swiper ('.swiper-container', {
-                slidesPerView : 3,
-                spaceBetween : 20,
+                direction: 'horizontal',
+                loop: true,
+                slidesPerView: "auto",
+                centeredSlides:true,
+                spaceBetween: 20,
                 loop: true, // 循环模式选项
                 autoplay:{
                     disableOnInteraction:false,
@@ -150,6 +153,7 @@ export default {
     padding:0.54rem 0 0.78rem;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 #find>.banner>.swiper-container>.swiper-wrapper>.swiper-slide>img{
     border-radius: 0.2rem;
@@ -259,4 +263,16 @@ export default {
     color: #030303;
     letter-spacing: -0.003rem;
 }
+.swiper-container {
+    width: 5rem;
+    height: 3.4rem;
+    overflow: visible;
+}
+.swiper-container .swiper-wrapper .swiper-slide{ width: 5rem;}
+.swiper-container .swiper-wrapper .swiper-slide img{width: 100%; height: 320px; border-radius: 20px;}
+.swiper-container .swiper-wrapper .swiper-slide-prev{height: 3.4rem}
+.swiper-container .swiper-wrapper .swiper-slide-prev img{ height: 3.4rem;}
+.swiper-container .swiper-wrapper .swiper-slide-next{height: 3.4rem}
+.swiper-container .swiper-wrapper .swiper-slide-next img{ height: 3.4rem;}
+.swiper-container .swiper-wrapper .swiper-slide-active{ width: 5rem;}
 </style>
