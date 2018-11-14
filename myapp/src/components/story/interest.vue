@@ -23,11 +23,18 @@
                     <p>浏览次数<i>5次</i></p>
                 </div>
                 <div class="hsComment-r">
-                    <i class="iconfont icon-pinglun"></i>
-                    <i class="iconfont icon-aixin like" v-show="status"></i>
-                    <i class="iconfont icon-aixin1 like" v-show="!status"></i>
+                    <i class="iconfont icon-pinglun" @click="changeComment(message)"></i>
+                    
+                    <i class="iconfont icon-aixin like" v-show="status" @click="changeDislike(status)"></i>
+                    <i class="iconfont icon-aixin1 like" v-show="!status"  @click="changeLike(status)"></i>
                 </div>
+                
             </div>
+            <!-- 输入框 -->
+                    <div class="ICommentBox" v-show="!message">
+                        <input type="text" placeholder="留下宝贵的评价">
+                        <span>发送</span>
+                    </div>
         </div>
     </div>
 </template>
@@ -36,7 +43,26 @@ export default {
     data(){
         return {
             status:true,
+            message:true,
         }
+    },
+    methods:{
+        changeLike(like){
+            this.status = true;
+        },
+        changeDislike(like){
+            this.status = false;
+        },
+        changeComment(data){
+            if(data == true){
+                this.message = false;
+
+            }else{
+                this.message = true
+            }
+             
+        },
+
     }
 }
 </script>
@@ -100,6 +126,7 @@ export default {
     display:flex;
     justify-content: space-between;
     align-items: center;
+    margin-top:.4rem;
 }
 .hostStory>div>.hsComment>.hsComment-l{
     font-family: PingFangSC-Regular;
@@ -126,5 +153,33 @@ export default {
 }
 .hostStory>div>.hsComment>.hsComment-r>.like{
     margin-left: .5rem;
+}
+.hostStory>div>.hsComment>.hsComment-r>i:nth-of-type(3){
+    color: #ff3300;
+}
+.ICommentBox{
+    width:100%;
+    height:.5rem;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #ccc;
+    margin-top:.2rem;
+}
+.ICommentBox>input{
+    border: 0;
+    outline: none;
+    width:80%;
+    height:100%;
+    font-size:.32rem;
+    background:#d1d1d1;
+    color:#000;
+    /* border-radius: 0.1rem; */
+}
+.ICommentBox>span{
+    height:100%;
+    width:20%;
+    background:#d1d1d1;
+    text-align: center;
+    line-height: .4rem;
 }
 </style>

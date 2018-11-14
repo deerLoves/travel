@@ -25,17 +25,17 @@
                 </div>
             </div>
         </div>
-        <detalisComment></detalisComment>
-        <!-- <detalisComment></detalisComment> -->
+        <detalisComment></detalisComment>       
     </div>
 </template>
 <script>
 import axios from "axios";
 import Swiper from "swiper";
 import detalisComment from "./detalisComment";
+
 export default {
     components:{
-        "detalisComment":detalisComment,
+        "detalisComment":detalisComment,       
     },
     created(){
         axios({
@@ -96,10 +96,13 @@ export default {
     margin:0 .4rem .38rem 0;
     display: flex;
     overflow: scroll;
+    
 }
 .detalisCenter>div>.dcImg>div{
     margin-right: .4rem;
+    
 }
+
 .detalisCenter>div>.dcImg>div>img{
     width:3.6rem;
     height:2.4rem;
