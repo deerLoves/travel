@@ -3,7 +3,7 @@
         <ul>
             <li v-for="(item,index) in navs" @click="handleClick(index)" :class="active == index?'active':''">
                 <router-link :to="{name:item.name}" class="rl">
-                        <i :class="item.icon"></i>{{item.title}} 
+                        <i :class="item.icon"></i>{{item.title}}
                 </router-link>
             </li>
         </ul>
@@ -69,7 +69,7 @@ export default {
          padding-top: 0.1rem;
          font-size: .2rem;
          text-align: center;
-        
+
     }
     .tab>ul>li>.rl{
         color:#9b9b9b!important;
@@ -82,7 +82,7 @@ export default {
     .tab>ul>li i{
         font-size: .48rem;
     }
-    
+
     /* 静态图标
     .tab>ul>li:nth-of-type(1)>.rl>.original>i{
         background:url("../../../static/icons/home-normal.svg") no-repeat;
@@ -109,5 +109,5 @@ export default {
     .tab>ul>li:nth-of-type(4)>.rl>.active>i{
         background:url("../../../static/icons/my-pressed.svg") no-repeat .025rem;
     } */
-    
+
 </style>
