@@ -5,7 +5,7 @@
             <i class="iconfont icon-search"></i>
             <input type="text" placeholder="成都故事">
         </div>
-        <i class="iconfont icon-iconfont7"></i>
+      <router-link to="/publish"> <i class="iconfont icon-iconfont7"></i></router-link> 
     </div>
 </template>
 
@@ -37,7 +37,7 @@ export default {
     background: #BBBBBB;
     border-radius: .2rem;
 }
-.storyHead>div>i{
+.storyHead>a>i{
     font-size:48px;
     margin:.2rem .248rem .2rem .24rem;
 }
