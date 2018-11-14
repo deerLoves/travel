@@ -16,6 +16,7 @@ import aboutUs from "@/components/my/aboutUs"
 import changePwd from "@/components/my/changePwd"
 
 
+import myPath from "@/components/route/mypath"
 import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
 import publish from "@/components/story/publish"
@@ -35,8 +36,8 @@ export default new Router({
     {
       path: '/story',
       name: 'story',
-      component: story, 
-       
+      component: story,
+
     },
     //故事详情页面路由
     {
@@ -61,6 +62,12 @@ export default new Router({
       path : '/visitorDetails',
       name : 'visitorDetails',
       component : visitorDetails
+    },
+    //点击 “我的页面” 的  “我的行程”   跳转的路由
+    {
+      path : '/myPath',
+      name : 'myPath',
+      component : myPath
     },
     {
       path: '/my',
