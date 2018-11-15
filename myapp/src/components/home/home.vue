@@ -25,7 +25,7 @@
         <div id="hotspot">
             <h2>热门景点</h2>
             <div class="banner">
-                <dl v-for="(item,index) in indexarr" v-if="index<=2">
+                <dl v-for="(item,index) in indexarr" v-if="index<=2" @click="handlespot(item.id)">
                     <dt><img :src="item.photo"></dt>
                     <dd><p><span>【{{item.name}}】</span>{{item.ftitle}}</p></dd>
                     <dd><p>{{item.stitle}}</p></dd>
@@ -65,7 +65,7 @@ import Swiper from "swiper";
 export default {
     created(){
         this.handleindex();
-        console.log(this.indexarr);
+        // console.log(this.indexarr);
         
     //     axios({
     //         method:"get",
@@ -82,7 +82,7 @@ export default {
      },
     computed:{
       ...Vuex.mapState({
-         indexarr:state=>state.home.IndexObj.data
+         indexarr:state=>state.home.IndexObj.data,
       })
     },
     data(){
@@ -94,14 +94,17 @@ export default {
         }
     },
     methods:{
-        handleSearchSpot(){
-            this.$router.push("/spot")
-        },
         ...Vuex.mapActions({
             handleindex:'home/handleindex'
         }),
         handlecity(address){
           this.$router.push("/place")
+        },
+        handleSearchSpot(){
+            this.$router.push("/spot")
+        },
+        handlespot(id){
+            this.$router.push({path:"/attractions",query:{"id":id}})
         }
     },
     updated(){
@@ -144,19 +147,19 @@ export default {
   border-radius: 0.1rem;
   padding-left: 0.16rem;
   font-family: PingFangSC-Regular;
-  font-size: 28px;
+  font-size: 0.28rem;
   color: #030303;
   letter-spacing: -0.003rem;
   line-height: 0.68rem;
   display: flex;
 }
 #search > .searchspot > i {
-  font-size: 28px;
+  font-size: 0.28rem;
   margin-right: 0.16rem;
 }
 
 #search > .searchaddress {
-  font-size: 28px;
+  font-size: 0.28rem;
   line-height: 0.68rem;
   padding-left: 0.14rem;
   display: flex;
@@ -170,7 +173,7 @@ export default {
 #hottrip > h2,
 #hotstory > h2 {
   font-family: PingFangSC-Regular;
-  font-size: 52px;
+  font-size: 0.52rem;
   color: #030303;
   letter-spacing: -0.003rem;
   line-height: 0.54rem;
@@ -208,7 +211,7 @@ export default {
 #hottrip > .banner > dl > dd:nth-of-type(1) > p {
   width: 3.78rem;
   font-family: PingFangSC-Medium;
-  font-size: 28px;
+  font-size: 0.28rem;
   color: #030303;
   line-height: 0.4rem;
   letter-spacing: -0.0036rem;
@@ -228,7 +231,7 @@ export default {
 #hotspot > .banner > dl > dd:nth-of-type(2) > p,
 #hottrip > .banner > dl > dd:nth-of-type(2) > p {
   font-family: PingFangSC-Regular;
-  font-size: 36px;
+  font-size: 0.36rem;
   color: #d94a4a;
   letter-spacing: -0.0038rem;
   line-height: 0.5rem;
@@ -241,7 +244,7 @@ export default {
   width: 2.8rem;
   height: 0.88rem;
   font-family: PingFangSC-Medium;
-  font-size: 24px;
+  font-size: 0.24rem;
   color: #4d9ee6;
   letter-spacing: -0.003rem;
   border: 0.02rem solid #4d9ee6;
@@ -254,7 +257,7 @@ export default {
 #hotstory > h3 {
   opacity: 0.5;
   font-family: PingFangSC-Regular;
-  font-size: 32px;
+  font-size: 0.32rem;
   color: #030303;
   letter-spacing: -0.003rem;
   line-height: 0.38rem;
@@ -283,7 +286,7 @@ export default {
   width: 2.5rem;
   line-height: 0.4rem;
   font-family: PingFangSC-Medium;
-  font-size: 28px;
+  font-size: 0.28rem;
   color: #d94a4a;
   letter-spacing: -0.0036rem;
   overflow: hidden;
@@ -293,7 +296,7 @@ export default {
 #hotstory > .banner > dl > dd:nth-of-type(2) {
   width: 2.8rem;
   font-family: PingFangSC-Regular;
-  font-size: 24px;
+  font-size: 0.24rem;
   color: #030303;
   letter-spacing: -0.003rem;
 }
