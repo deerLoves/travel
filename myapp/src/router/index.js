@@ -125,13 +125,6 @@ const router =  new Router({
 
     },
     {
-
-
-      path: "/attractions",
-      name: "attractions",
-      component: attractions
-    },
-    {
       path: "/register",
       name: "register",
       component: register
