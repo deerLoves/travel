@@ -1,26 +1,27 @@
 <template>
-  <div class="details">
-    <p class="title">游客行程</p>
+  <!--在我的页面   点击 “我的行程” 跳转到的组件-->
+  <div class="my-path-now">
+    <p class="title">我的行程</p>
     <div class="message">
       <!--每个动态的盒子，数据在此盒子循环-->
       <div class="cont">
         <!--//时间轴图片-->
         <img class="time-bg" src="../../../static/img-chen/border-bg.png" alt="">
-         <div class="time-box">
-            <div class="time1">
-              <span>2018-11-13</span>
-              <span>7:00</span>
-            </div>
-            <div class="time2">
-              <span>阿尔卑斯</span>
-            </div>
-         </div>
-          <div class="img-box">
-            <img src="../../../static/img-chen/yinghua_03.png" alt="">
+        <div class="time-box">
+          <div class="time1">
+            <span>2018-11-13</span>
+            <span>7:00</span>
           </div>
-          <div class="txt-box">
-            <p>从明天起，我要做一个幸福的人，喂马、劈柴、周游世界。我有一所房子，面朝大海，春暖花开</p>
+          <div class="time2">
+            <span>阿尔卑斯</span>
           </div>
+        </div>
+        <div class="img-box">
+          <img src="../../../static/img-chen/yinghua_03.png" alt="">
+        </div>
+        <div class="txt-box">
+          <p>从明天起，我要做一个幸福的人，喂马、劈柴、周游世界。我有一所房子，面朝大海，春暖花开</p>
+        </div>
       </div>
 
     </div>
@@ -29,19 +30,21 @@
 
 
 <script>
-    export default{
-        methods:{
-
-        }
-    }
+  export default{}
 </script>
 
 
 <style scoped>
-  .details{
+  .my-path-now .title{
+    font-family: PingFangSC-Regular;
+    font-size: 48px;
+    color: #000;
+    margin:0 0 .52rem .32rem;
+  }
+  .my-path-now{
     padding: 1.4rem 0 0.98rem 0;
   }
-  .details .title{
+  .my-path .title{
     font-family: PingFangSC-Regular;
     font-size: 48px;
     color: #000;
@@ -89,3 +92,4 @@
     font-family: PingFangTC-Light;
   }
 </style>
+

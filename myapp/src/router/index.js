@@ -20,8 +20,11 @@ import login from '@/components/login/login'
 import forgetpassword from '@/components/login/forgetpassword'
 Vue.use(Router)
 
+
 import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
+import mypath from "@/components/route/mypath"
+import myPathNow from "@/components/route/mypathnow"
 import publish from "@/components/story/publish"
 Vue.use(Router)
 const router =  new Router({
@@ -39,6 +42,10 @@ const router =  new Router({
       path: '/story',
       name: 'story',
       component: story,
+<<<<<<< HEAD
+=======
+
+>>>>>>> chen
     },
     //故事详情页面路由
     {
@@ -63,6 +70,18 @@ const router =  new Router({
       path : '/visitorDetails',
       name : 'visitorDetails',
       component : visitorDetails
+    },
+    //点击 “我的页面” 的  “我的行程”   跳转的路由
+    {
+      path:'/mypath',
+      name:'mypath',
+      component:mypath
+    },
+    //点击  “我的行程”页面任意一个行程，跳转到详情行程页面的路由
+    {
+      path : '/myPathNow',
+      name : 'myPathNow',
+      component : myPathNow
     },
     {
       path: '/my',

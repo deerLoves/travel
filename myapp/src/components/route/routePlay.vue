@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="play-btn">
-      <a href="#" :class="btnindex == 1 ? 'active' : ''"  @click="handleSendIndex(1)">我的行程</a>
-      <a href="#" :class="btnindex == 2 ? 'active' : ''"  @click="handleSendIndex(2);handleGo()">游客行程</a>
+      <a href="#" :class="btnindex == 1 ? 'active' : ''"  @click="handleSendIndex()">我的行程</a>
+      <a href="#" :class="btnindex == 2 ? 'active' : ''"  @click="handleGo()">游客行程</a>
     </div>
 
     <component :is="comName" @handleCom="handleChangeCom"></component>
@@ -27,8 +27,8 @@
         'routePath-com' : routePath
       },
       methods:{
-        handleSendIndex(index){
-            this.btnindex = index;
+        handleSendIndex(){
+          this.comName = 'playBtn-com'
         },
         handleChangeCom(){
             this.comName = 'routePath-com'
