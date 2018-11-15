@@ -35,6 +35,12 @@
 
 
 <style scoped>
+  .my-path-now .title{
+    font-family: PingFangSC-Regular;
+    font-size: 48px;
+    color: #000;
+    margin:0 0 .52rem .32rem;
+  }
   .my-path-now{
     padding: 1.4rem 0 0.98rem 0;
   }

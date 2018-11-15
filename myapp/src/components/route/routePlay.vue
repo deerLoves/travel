@@ -28,8 +28,7 @@
       },
       methods:{
         handleSendIndex(){
-//          this.comName = 'playBtn-com'
-            this.$router.push('/mypath')
+          this.comName = 'playBtn-com'
         },
         handleChangeCom(){
             this.comName = 'routePath-com'
