@@ -85,14 +85,14 @@ export default {
          indexarr:state=>state.home.IndexObj.data
       })
     },
-    // data(){
-    //     return{
-    //         obj:[],
-    //         hotspot:[],
-    //         hotstory:[],
-    //         find:[]
-    //     }
-    // },
+    data(){
+        return{
+            obj:[],
+            hotspot:[],
+            hotstory:[],
+            find:[]
+        }
+    },
     methods:{
         handleSearchSpot(){
             this.$router.push("/spot")
