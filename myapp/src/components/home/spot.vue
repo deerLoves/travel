@@ -10,8 +10,8 @@
             <div class="nearby">
                 <p>近期搜索历史</p>
             </div>
-            <div class="address" v-for="(item,index) in search" v-if="index<=2">
-                <p>{{search[index].address}}-{{search[index].name}}</p>
+            <div class="address" v-for="(item,index) in spotarr" v-if="index<=2">
+                <p>{{item}}</p>
                 <hr>
             </div>
         </div>
@@ -19,21 +19,31 @@
 </template>
 <script>
 import axios from "axios"
+import Vuex from 'vuex';
 export default {
     created(){
-        axios({
-            method:"get",
-            url:"../../../static/bai/josn.json"
-        }).then((data)=>{
-            this.search=data.data.searchaddress
-        })
+        this.handlespot();
+        // axios({
+        //     method:"get",
+        //     url:"../../../static/bai/josn.json"
+        // }).then((data)=>{
+        //     this.search=data.data.searchaddress
+        // })
     },
-    data(){
-        return{
-           search:[],
-        }
+    computed:{
+      ...Vuex.mapState({
+         spotarr:state=>state.home.SpotObj
+      })
     },
+    // data(){
+    //     return{
+    //        search:[],
+    //     }
+    // },
     methods:{
+        ...Vuex.mapActions({
+            handlespot:'home/handlespot'
+        }),
         handleSpotReturn(){
             this.$router.back()
         }
