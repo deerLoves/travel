@@ -20,8 +20,7 @@ import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
 import publish from "@/components/story/publish"
 Vue.use(Router)
-
-export default new Router({
+const router =  new Router({
   routes: [
     {
       path: '/',
@@ -35,8 +34,7 @@ export default new Router({
     {
       path: '/story',
       name: 'story',
-      component: story, 
-       
+      component: story,
     },
     //故事详情页面路由
     {
@@ -127,3 +125,4 @@ export default new Router({
 
   ]
 })
+export default router;
