@@ -1,6 +1,6 @@
 <template>
     <div class="spot">
-        <div id="return">
+        <div id="return" @click="handleSpotReturn">
             <i class="iconfont icon-guanbi"></i>
         </div>
         <div id="search">
@@ -33,6 +33,11 @@ export default {
            search:[],
         }
     },
+    methods:{
+        handleSpotReturn(){
+            this.$router.back()
+        }
+    }
 }
 </script>
 <style scoped>
