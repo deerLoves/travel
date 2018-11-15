@@ -1,7 +1,7 @@
 <template>
     <div class="page home">
         <div id="search">
-            <div class="searchspot">
+            <div class="searchspot" @click="handleSearchSpot">
                 <i class="iconfont icon-magnifier"></i><p>搜“热门地点”试试</p>
             </div>
             <div class="searchaddress">
@@ -94,6 +94,9 @@ export default {
     //     }
     // },
     methods:{
+        handleSearchSpot(){
+            this.$router.push("/spot")
+        },
         ...Vuex.mapActions({
             handleindex:'home/handleindex'
         })
