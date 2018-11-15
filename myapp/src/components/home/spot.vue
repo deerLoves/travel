@@ -1,7 +1,7 @@
 <template>
     <div class="spot">
-        <div id="return" @click="handleSpotReturn">
-            <i class="iconfont icon-guanbi"></i>
+        <div id="return">
+            <i class="iconfont icon-guanbi" @click="handleSpotReturn"></i>
         </div>
         <div id="search">
             <input type="text" placeholder="你想搜索什么？">
