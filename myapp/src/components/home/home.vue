@@ -65,7 +65,7 @@ export default {
       method: "get",
       url: "../../../static/bai/josn.json"
     }).then(data => {
-      (this.obj = data.data.data),
+        (this.obj = data.data.data),
         (this.hotspot = data.data.hotspot),
         (this.hotstory = data.data.hotstory),
         (this.find = data.data.find);
@@ -155,12 +155,12 @@ export default {
   line-height: 0.54rem;
   padding-left: 0.32rem;
 }
-#find>.banner{
-    height: 4.72rem;
-    padding:0.54rem 0 0.78rem;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+#find > .banner {
+  height: 4.72rem;
+  padding: 0.54rem 0 0.78rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 #find > .banner > .swiper-container > .swiper-wrapper > .swiper-slide > img {
   border-radius: 0.2rem;
@@ -277,15 +277,31 @@ export default {
   letter-spacing: -0.003rem;
 }
 .swiper-container {
-    width: 5rem;
-    height: 3.4rem;
-    overflow: visible;
+  width: 5rem;
+  height: 3.4rem;
+  overflow: visible;
 }
-.swiper-container .swiper-wrapper .swiper-slide{ width: 5rem;}
-.swiper-container .swiper-wrapper .swiper-slide img{width: 100%; height: 320px; border-radius: 20px;}
-.swiper-container .swiper-wrapper .swiper-slide-prev{height: 3.4rem}
-.swiper-container .swiper-wrapper .swiper-slide-prev img{ height: 3.4rem;}
-.swiper-container .swiper-wrapper .swiper-slide-next{height: 3.4rem}
-.swiper-container .swiper-wrapper .swiper-slide-next img{ height: 3.4rem;}
-.swiper-container .swiper-wrapper .swiper-slide-active{ width: 5rem;}
+.swiper-container .swiper-wrapper .swiper-slide {
+  width: 5rem;
+}
+.swiper-container .swiper-wrapper .swiper-slide img {
+  width: 100%;
+  height: 320px;
+  border-radius: 20px;
+}
+.swiper-container .swiper-wrapper .swiper-slide-prev {
+  height: 3.4rem;
+}
+.swiper-container .swiper-wrapper .swiper-slide-prev img {
+  height: 3.4rem;
+}
+.swiper-container .swiper-wrapper .swiper-slide-next {
+  height: 3.4rem;
+}
+.swiper-container .swiper-wrapper .swiper-slide-next img {
+  height: 3.4rem;
+}
+.swiper-container .swiper-wrapper .swiper-slide-active {
+  width: 5rem;
+}
 </style>
