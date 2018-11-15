@@ -1,6 +1,7 @@
 export default {
-    handleSearch(state){
-        state.hotcity.push(state.inputVal)
+    handleSearch(state,val){
+        state.hotcity=val;
+        // console.log(state.hotcity,"mutations下面的state地址")
     },
     handleindex(state,params){
         state.IndexObj.code = params.code;

@@ -5,8 +5,8 @@
         </div>
         <div class="search">
             
-            <input type="text" placeholder="请输入你要想搜索的地点" class="inp"  v-model="inputVal">
-            <input type="button" class="find" value="搜索" @click="handleSearch(inputVal)">
+            <input type="text" placeholder="请输入你要想搜索的地点" class="inp"  v-model="inputVal" >
+            <input type="button" class="find" value="搜索" @click="handleSearch(inputVal),handleToHome()">
         </div>
         <div class="recommend"> 
             根据你的定位推荐
@@ -19,7 +19,7 @@
             热门城市
         </div>
         <ul>
-            <!-- <li v-for="(item,index) in hotcity">{{item.address}}</li> -->
+            <li >北京</li>
             <li>挪威</li>
             <li>首尔</li>
             <li>澳大利亚</li>
@@ -44,12 +44,22 @@ export default {
     
   },
   methods: {
+    ...Vuex.mapActions({
+      handleSearch:"home/handleSearch"
+    }),
     handleClose(){
       this.$router.push("/home")
     },
-    ...Vuex.mapActions({
-      handleSearch:"home/handleSearch"
-    })
+    //将地址信息提交给首页
+    handleToHome(){
+      if(this.hotcity === "北京"){
+        this.$router.push({name:"home",query:{address:this.inputVal}})
+  }else{
+    this.inputVal = ""
+  }
+      
+    },
+    
   }
    
 };
@@ -115,7 +125,7 @@ export default {
   margin: 0 0 0.32rem 0.32rem;
 }
 .hot_city {
-  width: 1.44rem;
+  width:100%;
   height: 0.5rem;
   font-size: 0.36rem;
   color: #030303;

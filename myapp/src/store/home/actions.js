@@ -7,9 +7,14 @@ export default {
             url:"travel/scenic/getsceniclistbypage?address=" + val + "&pageNum=0&pageSize=3"
 
         }).then((data)=>{
-            console.log(data)
+            if(data.data.message === "接口正常"){
+               commit("handleSearch",data.data.data[0].address);
+                
+            }else{
+                alert("地点不正确请重新输入")
+              
+            }
         })
-        // commit("handleSearch")
     },
     handleindex({commit}){
         /*
@@ -22,7 +27,7 @@ export default {
         }).then((data)=>{
            
             var dataArray = data.data.data;
-            //console.log(dataArray)
+            // console.log(dataArray)
             for(var index in dataArray){
                 //console.log(dataArray[index]);
                 dataArray[index].photo = 'http://ceshi.qfjava.cn/' + dataArray[index].photo;

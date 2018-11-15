@@ -17,18 +17,8 @@ import feedBack from "@/components/my/feedBack"
 import setting from "@/components/my/setting"
 import aboutUs from "@/components/my/aboutUs"
 import changePwd from "@/components/my/changePwd"
-
-
 import visitor from '@/components/route/visitor'
-import visitorDetails from '@/components/route/visitorDetails'
-import publish from "@/components/story/publish"
-import register from '@/components/login/register'
-import login from '@/components/login/login'
-import forgetpassword from '@/components/login/forgetpassword'
 Vue.use(Router)
-
-
-import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
 import mypath from "@/components/route/mypath"
 import myPathNow from "@/components/route/mypathnow"
@@ -105,21 +95,6 @@ const router =  new Router({
       path: "/attractions",
       name: "attractions",
       component: attractions
-    },
-    {
-      path: "/register",
-      name: "register",
-      component: register
-    },
-    {
-      path: "/login",
-      name: "login",
-      component: login
-    },
-    {
-      path:"/forgetpassword",
-      name:"forgetpassword",
-      component:forgetpassword
     },
     {
       path: '/spot',
