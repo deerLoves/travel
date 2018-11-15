@@ -1,7 +1,7 @@
 <template>
     <div class="viewpager">
-        <div v-for="(item,index) in viewpager">
-            <img :src="viewpager[index]">
+        <div v-for="(item,index) in imgArr">
+            <img :src="item.img">
         </div>
         
     </div>
@@ -10,22 +10,27 @@
 <script>
 import axios from "axios";
 import Swiper from "swiper";
+import Vuex from 'vuex';
 export default {
     created(){
-        axios({
-            method:"get",
-            url:"../../../static/zhang/json_zhang/viewpager.json"
-        }).then((data)=>{
-            this.viewpager= data.data.viewpager
-            // console.log(data)
-        })
+        
+        this.handleGetViewPagers();
     },
     data(){
         return {
             viewpager:[]
         }
     },
-    
+    computed:{
+        ...Vuex.mapState({
+            imgArr:state=>state.story.imgArr
+        })
+    },
+    methods:{
+        ...Vuex.mapActions({
+            handleGetViewPagers:"story/handleGetViewPagers"
+        })
+    }
     
 }
 </script>
