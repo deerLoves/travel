@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-		
-    <tab-com></tab-com>
+		<div v-show="show">
+       <tab-com></tab-com>
+    </div>
 		
     <router-view></router-view>
   </div>
@@ -13,8 +14,12 @@ import Vuex from 'vuex';
 
 export default {
   components: {
-      "tab-com":tab,
-			
+      "tab-com":tab
+  },
+  computed:{
+    ...Vuex.mapState({
+      show:state=>state.show
+    })
   }
 }
 </script>

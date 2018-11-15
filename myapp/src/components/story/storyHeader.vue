@@ -40,7 +40,7 @@ export default {
     background: #BBBBBB;
     border-radius: .2rem;
 }
-.storyHead>div>i{
+.storyHead>a>i{
     font-size:48px;
     margin:.2rem .248rem .2rem .24rem;
 }

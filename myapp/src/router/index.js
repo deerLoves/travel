@@ -15,13 +15,16 @@ import setting from "@/components/my/setting"
 import aboutUs from "@/components/my/aboutUs"
 import changePwd from "@/components/my/changePwd"
 
+import register from '@/components/login/register'
+import login from '@/components/login/login'
+import forgetpassword from '@/components/login/forgetpassword'
+Vue.use(Router)
 
 import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
 import publish from "@/components/story/publish"
 Vue.use(Router)
-
-export default new Router({
+const router =  new Router({
   routes: [
     {
       path: '/',
@@ -35,8 +38,7 @@ export default new Router({
     {
       path: '/story',
       name: 'story',
-      component: story, 
-       
+      component: story,
     },
     //故事详情页面路由
     {
@@ -67,11 +69,11 @@ export default new Router({
       name: 'my',
       component: my
     },
-		{
-			path:"/myStory",
-			name:"myStory",
-			component:myStory
-		},
+    {
+      path: "/myStory",
+      name: "myStory",
+      component: myStory
+    },
     {
       path: '/place',
       name: 'place',
@@ -122,8 +124,28 @@ export default new Router({
       component:changePwd
 
     },
+    {
 
 
-
+      path: "/attractions",
+      name: "attractions",
+      component: attractions
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: register
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: login
+    },
+    {
+      path:"/forgetpassword",
+      name:"forgetpassword",
+      component:forgetpassword
+    }
   ]
 })
+export default router;
