@@ -26,6 +26,14 @@ export default {
         "detalisCenter":detalisCenter,
         "detalisfooter":detalisfooter
     },
+<<<<<<< HEAD
+=======
+    computed:{
+        ...Vuex.mapState({
+            show:state=>state.show
+        })
+    },
+>>>>>>> master
     methods:{
         ...Vuex.mapActions({
             handleEditTabStatus:"handleEditTabStatus"
@@ -40,6 +48,7 @@ export default {
 
 <style scoped>
 
+<<<<<<< HEAD
 /* #storyDetalis{
     position: absolute;
     z-index: 1;
@@ -47,6 +56,8 @@ export default {
     width: 100%;
     background: #fff;
 } */
+=======
+>>>>>>> master
 .storyDetalis{
     width:91.4%;
     min-height:100%; 

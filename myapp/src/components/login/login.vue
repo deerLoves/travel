@@ -8,12 +8,12 @@
             <img src="../../../static/img/d.jpg">
         </div>
         <p class="phone">
-            <input type="text" placeholder="请输入手机号" class="input_one">
+            <input type="text" placeholder="请输入手机号" class="input_one" v-model="username">
         </p>
         <p>
-            <input type="password" placeholder="请输入密码" class="input_two">
+            <input type="password" placeholder="请输入密码" class="input_two" v-model="password">
         </p>
-        <input type="button" class="sub" value="登录">
+        <input type="button" class="sub" value="登录" @click="lg_handleLogin({username,password})">
         <div class="bottom">
             <p class="goregister" @click="goregister()">立即注册></p>
             <p @click="forgetPassword()">忘记密码></p>
@@ -22,11 +22,27 @@
     </div>
 </template>
 <script>
+import Vuex from 'vuex';
 export default {
+    created(){
+        this.handleEditTabStatus();
+    },
     data(){
-        return{}
+        return{
+            username:"",
+            password:""
+        }
+    },
+    computed:{
+        ...Vuex.mapState({
+            show:state=>state.show
+        })
     },
     methods:{
+        ...Vuex.mapActions({
+            handleEditTabStatus:"handleEditTabStatus",
+            lg_handleLogin:"login/lg_handleLogin"
+        }),
         goregister(){
             this.$router.push("/register")
         },
@@ -34,8 +50,12 @@ export default {
             this.$router.push("/forgetpassword")
         },
         handleClose(){
-                this.$router.push("/home")
-            }
+            this.$router.push("/home")
+        }
+    },
+    beforeRouteLeave(to,from,next){
+        this.handleEditTabStatus();
+        next();
     }
 };
 </script>
