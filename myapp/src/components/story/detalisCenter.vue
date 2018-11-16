@@ -25,7 +25,8 @@
                 </div>
             </div>
         </div>
-        <detalisComment></detalisComment>       
+        <detalisComment></detalisComment>    
+        <detalisComment></detalisComment>    
     </div>
 </template>
 <script>

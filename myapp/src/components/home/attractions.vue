@@ -2,7 +2,7 @@
     <div class="attractions">
           <div class="pic">
               <img src="../../../static/img/c.png">
-               <i class="iconfont icon-guanbi btn"></i>
+               <i class="iconfont icon-guanbi btn" @click="handleClose()"></i>
           </div>
           <div class="conent">
               <div class="city">格丹斯克</div>
@@ -42,7 +42,14 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+  methods:{
+     handleClose(){
+      this.$router.push("/place")
+     }
+  }
+  
+}
 </script>
 <style scoped>
 .attractions {

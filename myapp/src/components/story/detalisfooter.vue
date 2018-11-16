@@ -34,10 +34,9 @@ export default {
     width:100%;
     height:.98rem;
     background:pink;
-    position:absolute;
+    position:fixed;
     bottom:0;
     left:0;
-
 }
 .commentBox>.box{
     width:100%;

@@ -39,10 +39,13 @@
                 
             </div>
             <!-- 输入框 -->
-                    <div class="ICommentBox" v-show="storyArray.data[index].message">
-                        <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa">
-                        <span>发送</span>
-                    </div>
+            <div class="writeReview">
+                
+            </div>
+            <div class="ICommentBox" v-show="storyArray.data[index].message">
+                <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa">
+                <span>发送</span>
+            </div>
         </div>
     </div>
 </template>

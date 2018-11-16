@@ -11,7 +11,8 @@ import login from "./login";
 Vue.use(Vuex);
 
 const state = {
-    address:[]
+    address:[],
+    show:true
 }
 
 const getters = {
@@ -19,11 +20,15 @@ const getters = {
 }
 
 const mutations = {
-
+    handleEditTabStatus(state){
+        state.show = !state.show;
+    }
 }
 
 const actions = {
-
+    handleEditTabStatus({commit}){
+        commit("handleEditTabStatus");
+    }
 }
 
 const store = new Vuex.Store({

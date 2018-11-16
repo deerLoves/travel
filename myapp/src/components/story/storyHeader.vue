@@ -26,12 +26,10 @@ export default {
     align-items: center;
     opacity: 0.3;
 }
-/* .storyHead>i{
-    font-size: .48rem;
-} */
-.storyHead>i:nth-of-type(1){
+
+/* .storyHead>i:nth-of-type(1){
     font-size:.6rem;
-}
+} */
 .storyHead>div{
     display: flex;
     align-items: center;
@@ -41,6 +39,14 @@ export default {
     border-radius: .2rem;
 }
 .storyHead>div>i{
+    font-size: .48rem;
+    margin-left: .16rem;
+    margin-top: .1rem;
+}
+.storyHead>div>input{
+    margin-left:.16rem;
+}
+.storyHead>a>i{
     font-size:48px;
     margin:.2rem .248rem .2rem .24rem;
 }

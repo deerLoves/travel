@@ -8,6 +8,7 @@
       <span>输入终点</span>
       <input type="text">
     </p>
+    <button>确定</button>
   </div>
 </template>
 
@@ -35,5 +36,16 @@
     outline: none;
     border: none;
     border-bottom:1px solid #4D9EE6;
+  }
+  div button{
+    width: 3rem;
+    height: .5rem;
+    border: none;
+    background: none;
+    border: 2px solid deepskyblue;
+    margin-top: .4rem;
+    font-size: 24px;
+    border-radius: 20px;
+    color:deepskyblue ;
   }
 </style>

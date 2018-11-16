@@ -13,7 +13,7 @@ export default {
             }
             
             commit("handleGetViewPagers",dataArray);
-            console.log(dataArray)
+            // console.log(dataArray)
         })
     },
     handleGetInterest({commit}){
@@ -25,6 +25,9 @@ export default {
             var dataInterest = data.data.data;
             
             for(var index in dataInterest){
+                var timeAtr = dataInterest[index].time.split('T');
+                //var timeArray = timeAtr[0].split('-');
+                dataInterest[index].time = timeAtr[0];
                 var str = dataInterest[index].img;
                 str = str.substring(1,str.length-1);
                 // console.log(str);
@@ -35,11 +38,11 @@ export default {
                     // console.log(Arr[i])
                 }
                 dataInterest[index].img = Arr;
-                console.log(dataInterest[index].img)
+                // console.log(dataInterest[index].img)
             }
            
             commit("handleGetInterest",data.data);
-            console.log(data.data)
+            // console.log(data.data)
         })
     },
     changeNum({commit},params){
@@ -49,7 +52,7 @@ export default {
             url:"/travel/story/checklike?aid="+params,
             
         }).then((data)=>{
-            console.log(data)
+            // console.log(data)
         })
         // commit("")
     }

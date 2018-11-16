@@ -65,20 +65,8 @@
 			"delete_ing-com": delete_ing,
 			"delete_over-com": delete_over
 		},
-		data(){
-			return {
-				
-			}
-		},
-		methods:{
-			handelBack(){
-				this.$router.push({name:"my"});
-				
-			},
-			handeldel(){
-				this.observer.$emit("handeldelete",true)
-			}
-		}
+		
+		
 	}
 </script>
 

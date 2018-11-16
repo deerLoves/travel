@@ -1,7 +1,7 @@
 <template>
     <div class="palce page">
         <div class="top">
-            <i class="iconfont icon-guanbi btn"></i>
+            <i class="iconfont icon-guanbi btn" @click="handleClose()"></i>
         </div>
         <div class="search">
             <input type="text" placeholder="请输入你要想搜索的地点" class="inp">
@@ -17,7 +17,7 @@
             热门城市
         </div>
         <ul>
-            <li>北京</li>
+            <li @click="handleGocity()">北京</li>
             <li>挪威</li>
             <li>首尔</li>
             <li>澳大利亚</li>
@@ -27,9 +27,11 @@
 <script>
 import axios from "axios";
 export default {
-  // data() {
-  //   return {};
-  // },
+  data() {
+    return {
+      obj:[]
+    };
+  },
   // created() {
   //   axios({
   //     methods: "get",
@@ -43,11 +45,15 @@ export default {
   //       })
   //   });
   // }
-  // methods: {
-  //   handlePlace(address) {
-  //     this.$router.push({ path: "/home", query: {address:address}});
-  //   }
-  // }
+  methods: {
+    handleClose(){
+      this.$router.push("/home")
+    },
+    handleGocity(){
+      this.$router.push("./attractions")
+    }
+  }
+   
 };
 </script>
 <style scoped>
