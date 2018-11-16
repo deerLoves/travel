@@ -23,7 +23,6 @@
         },
       methods:{
         handleSend(){
-            this.observer.$emit("handlePath",{start:this.start,end:this.end});
             this.$emit("handleCom",1)
 
         }

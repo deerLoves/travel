@@ -1,5 +1,5 @@
 <template>
-  <div class="planpath">
+  <div class="planpath" @click="handleGo()">
     <div class="cont" v-for="(item,index) in infos">
       <div class="word1">
         {{item.start}}
@@ -26,13 +26,13 @@
       }
     },
     methods: {
-      handleGeter(obj){
-        console.log(obj);
-        this.infos.push(obj)
+
+      handleGo(){
+          this.$router.push('/mypath')
       }
     },
     created(){
-      this.observer.$on("handlePath",handleGeter);
+      this.observer.$on("handlePath");
     }
   }
 </script>

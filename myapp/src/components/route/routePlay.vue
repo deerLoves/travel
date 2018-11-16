@@ -2,13 +2,10 @@
   <div>
     <div class="play-btn">
       <a href="#" :class="btnindex == 1 ? 'active' : ''"  @click="handleSendIndex()">我的行程</a>
-      <a href="#" :class="btnindex == 2 ? 'active' : ''"  @click="handleGo()">游客行程</a>
+      <a href="#/visitor" :class="btnindex == 2 ? 'active' : ''">游客行程</a>
     </div>
 
     <component :is="comName" @handleCom="handleChangeCom"></component>
-    <!--<routePath-com></routePath-com>-->
-    <!--<playBtn-com></playBtn-com>-->
-    <!--<planpath-com></planpath-com>-->
   </div>
 </template>
 
@@ -31,7 +28,7 @@
       },
       methods:{
         handleSendIndex(){
-          this.comName = 'playBtn-com'
+          this.$router.push('/mypath')
         },
         handleChangeCom(val){
             if(!val){
@@ -39,9 +36,6 @@
             }else{
               this.comName = 'planpath-com'
             }
-        },
-        handleGo(){
-          this.$router.push('/visitor')
         }
       }
     }

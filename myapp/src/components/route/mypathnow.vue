@@ -4,7 +4,7 @@
     <p class="title">我的行程</p>
     <div class="message">
       <!--每个动态的盒子，数据在此盒子循环-->
-      <div class="cont">
+      <div class="cont" v-for="(item,index) in arrs">
         <!--//时间轴图片-->
         <img class="time-bg" src="../../../static/img-chen/border-bg.png" alt="">
         <div class="time-box">
@@ -30,7 +30,13 @@
 
 
 <script>
-  export default{}
+  export default{
+      data(){
+          return{
+              arrs:[1,2,3,4,5]
+          }
+      }
+  }
 </script>
 
 
