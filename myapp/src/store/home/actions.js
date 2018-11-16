@@ -7,13 +7,14 @@ export default {
             url:"travel/scenic/getsceniclistbypage?address=" + val + "&pageNum=0&pageSize=3"
 
         }).then((data)=>{
-            if(data.data.message === "接口正常"){
-               commit("handleSearch",data.data.data[0].address);
-                
+            commit("handleSearch",data.data);
+            /* if(data.data.message === "接口正常"){
+               commit("handleSearch",data.data);
+                //.data[0].address
             }else{
                 alert("地点不正确请重新输入")
               
-            }
+            } */
         })
     },
     handleindex({commit}){

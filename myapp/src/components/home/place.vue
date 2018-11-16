@@ -19,7 +19,7 @@
             热门城市
         </div>
         <ul>
-            <li >北京</li>
+            <li>北京</li>
             <li>挪威</li>
             <li>首尔</li>
             <li>澳大利亚</li>
@@ -38,8 +38,8 @@ export default {
   computed:{
     ...Vuex.mapState({
       status:state => state.home.status,
-      hotcity:state => state.home.hotcity
-
+      hotcity:state => state.home.hotcity,
+      AddressStatus:state=>state.home.AddressStatus
     })
     
   },
@@ -52,11 +52,11 @@ export default {
     },
     //将地址信息提交给首页
     handleToHome(){
-      if(this.hotcity === "北京"){
+      if(this.inputVal === "北京"){
         this.$router.push({name:"home",query:{address:this.inputVal}})
-  }else{
-    this.inputVal = ""
-  }
+      }else{
+        alert("地点不正确，请重新输入")
+      }
       
     },
     
