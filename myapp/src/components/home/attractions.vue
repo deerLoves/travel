@@ -7,7 +7,7 @@
           <div class="conent">
               <div class="city">{{SpotAttarr.address}}{{SpotAttarr.name}}</div>
               <div class="con-c">
-                <p>{{SpotAttarr.detail}}</p>
+                <p>{{SpotAttarr.detail}}</p> 
               </div>
           </div>
           <div class="bottom">
