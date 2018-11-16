@@ -18,7 +18,6 @@ import changePwd from "@/components/my/changePwd"
 import register from '@/components/login/register'
 import login from '@/components/login/login'
 import forgetpassword from '@/components/login/forgetpassword'
-Vue.use(Router)
 
 
 import visitor from '@/components/route/visitor'
@@ -26,6 +25,8 @@ import visitorDetails from '@/components/route/visitorDetails'
 import mypath from "@/components/route/mypath"
 import myPathNow from "@/components/route/mypathnow"
 import publish from "@/components/story/publish"
+
+
 Vue.use(Router)
 const router =  new Router({
   routes: [
@@ -42,10 +43,6 @@ const router =  new Router({
       path: '/story',
       name: 'story',
       component: story,
-<<<<<<< HEAD
-=======
-
->>>>>>> chen
     },
     //故事详情页面路由
     {
@@ -119,12 +116,14 @@ const router =  new Router({
       component:personInfor
 
     },
+    //点击 “我的页面” 的  “信息反馈”   跳转的路由
     {
       path:"/feedBack",
       name:'feedBack',
       component:feedBack
 
     },
+    //点击 “我的页面” 的  “设置”   跳转的路由
     {
       path:"/setting",
       name:'setting',
@@ -150,11 +149,13 @@ const router =  new Router({
       name: "attractions",
       component: attractions
     },
+    // 注册
     {
       path: "/register",
       name: "register",
       component: register
     },
+    // 登录
     {
       path: "/login",
       name: "login",
@@ -167,4 +168,6 @@ const router =  new Router({
     }
   ]
 })
+
+
 export default router;
