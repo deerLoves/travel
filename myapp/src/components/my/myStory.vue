@@ -6,47 +6,21 @@
 			<div class="myStory-img">
 				<img src="../../../static/images_li/t1.png" />
 			</div>
-			<div class="myStory_list">
+			<div class="myStory_list" v-for="(item,index) in myStory_list">
 				<p>
-					<span>10月</span>
-					<span>29日</span>
-					<a href="##" @click="handeldel()">删除</a>
+					<span>{{item.time[1]}}月</span>
+					<span>{{item.time[2]}}日</span>
+					<a href="##" @click="handeldel();handeldata(item.id) ">删除</a>
 				</p>
-				<div class="myStory_list_img">
-					<div class="myStory_list_img_con">
-						<img src="../../../static/images_li/t2b.png" />
+				<div class="myStory_list_img" >
+					<div class="myStory_list_img_con" v-for="(data,i) in item.img">
+						<img :src="data"/>
 					</div>
 				</div>
-				<p class="myStory_list_text">打击都是哈的可能看到长时间彻底删除吗独立思考付款但是没空吃饭大劫案发明人啊快乐鸣锣开道玫琳凯发货人V</p>
+				<p class="myStory_list_text">{{item.content}}</p>
+				
 			</div>
-			<div class="myStory_list">
-				<p>
-					<span>10月</span>
-					<span>29日</span>
-					<a href="##">删除</a>
-				</p>
-				<div class="myStory_list_img">
-					<div class="myStory_list_img_con">
-						<img src="../../../static/images_li/t5.png" />
-					</div>
-
-				</div>
-				<p class="myStory_list_text">打击都是哈的可能看到长时间彻底删除吗独立思考付款但是没空吃饭大劫案发明人啊快乐鸣锣开道玫琳凯发货人V</p>
-			</div>
-			<div class="myStory_list">
-				<p>
-					<span>10月</span>
-					<span>29日</span>
-					<a href="##" >删除</a>
-				</p>
-				<div class="myStory_list_img">
-					<div class="myStory_list_img_con">
-						<img src="../../../static/images_li/t4.png" />
-					</div>
-					
-				</div>
-				<p class="myStory_list_text">打击都是哈的可能看到长时间彻底删除吗独立思考付款但是没空吃饭大劫案发明人啊快乐鸣锣开道玫琳凯发货人V</p>
-			</div>
+			
 		</div>
 		<mark-com></mark-com>
 		<delete_ing-com></delete_ing-com>
@@ -55,16 +29,40 @@
 </template>
 
 <script scoped>
+	import Vuex from "vuex"
 	import iconfont from '../../../static/iconfont_li/iconfont.css';
 	import mark from "@/components/my/mark";
 	import delete_ing from "@/components/my/delete/delete_ing";
 	import delete_over from "@/components/my/delete/delete_over";
 	export default {
+		created(){
+			this.handelgetP();
+		},
+		computed:{
+			...Vuex.mapState({
+				myStory_list:state=>state.my.myStory_list
+			})
+		},
 		components: {
 			"mark-com": mark,
 			"delete_ing-com": delete_ing,
 			"delete_over-com": delete_over
 		},
+		methods:{
+			handelBack(){
+				this.$router.push({name:"my"});				
+			},
+			handeldel(){
+				this.observer.$emit("handeldelete",true)				
+			},
+			
+			...Vuex.mapActions({
+						handelgetP:"my/handelgetP",
+						handeldata:"my/handeldata"
+						
+					})
+				
+			}
 		
 		
 	}
@@ -101,12 +99,12 @@
 	}
 
 	.myStory_list_con {
+		width: ;
 		overflow: auto;
 	}
 
 	.myStory_list {
 		margin: 1rem 0;
-		/* padding-bottom: 1rem; */
 	}
 
 	.myStory_list_img {
@@ -116,13 +114,13 @@
 	}
 
 	.myStory_list_img_con {
-		width: 1.6rem;
-		height: 1.6rem;
-		margin-right: 3.86rem;
+		width: 2rem;
+		height: 2rem;
+		margin-right: .5rem;
 	}
 
 	.myStory_list_img_con img {
-		width: 100;
+		width: 100%;
 		height: 100%;
 	}
 
@@ -141,12 +139,14 @@
 		font-size: 40px;
 		color: #000000;
 		padding-left: .32rem;
+		
+		
 	}
 
 	.myStory_list p span:nth-child(2) {
 		width: .72rem;
 		height: .44rem;
-		font-size: 32px;
+		font-size: 22px;
 		color: #000000;
 	}
    .myStory_list p a{
@@ -162,6 +162,7 @@
    }
 	.myStory_list_text {
 		width: 100%;
+		/* height: 1rem; */
 		padding: .4rem .9rem 0 .74rem;
 		font-size: 32px;
 	}
