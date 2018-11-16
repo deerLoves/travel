@@ -23,8 +23,20 @@
     </div>
 </template>
 <script>
+import Vuex from 'vuex';
 export default {
+    created(){
+        this.handleEditTabStatus();
+    },
+    computed:{
+        ...Vuex.mapState({
+            show:state=>state.show
+        })
+    },
     methods:{
+        ...Vuex.mapActions({
+            handleEditTabStatus:"handleEditTabStatus"
+        }),
         goregister(){
             this.$router.push("/register")
         },
@@ -32,8 +44,12 @@ export default {
             this.$router.push("/forgetpassword")
         },
         handleClose(){
-                this.$router.push("/home")
-            }
+          this.$router.push("/login")
+        }
+    },
+    beforeRouteLeave(to,from,next){
+        this.handleEditTabStatus();
+        next();
     }
 };
 </script>
