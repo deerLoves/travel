@@ -1,4 +1,8 @@
 export default {
+    handleSearch(state,data){
+        state.AddressStatus = data.message;
+        // console.log(state.AddressStatus)
+    },
     handleindex(state,params){
         state.IndexObj.code = params.code;
         state.IndexObj.data = params.data;

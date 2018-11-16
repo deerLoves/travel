@@ -5,7 +5,7 @@
                 <i class="iconfont icon-magnifier"></i><p>搜“热门地点”试试</p>
             </div>
             <div class="searchaddress">
-                <p @click="handlecity(obj.address)">北京</p><i class="iconfont icon-ico_arrows_unfold"></i>
+                <p @click="handlecity(obj.address)">{{$route.query.address}}</p><i class="iconfont icon-ico_arrows_unfold"></i>
             </div>
         </div>
         <div id="find">
@@ -65,7 +65,8 @@ import Swiper from "swiper";
 export default {
     created(){
         this.handleindex();
-        console.log(this.indexarr);
+        // console.log(this.indexarr);
+        // console.log(this.$route.query.address,"首页接受到的地址信息")
         
     //     axios({
     //         method:"get",

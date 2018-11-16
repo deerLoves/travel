@@ -9,19 +9,16 @@ import myStory from "@/components/my/myStory"
 import place from '@/components/home/place'
 import spot from '@/components/home/spot'
 import attractions from '@/components/home/attractions'
+import register from '@/components/login/register'
+import login from '@/components/login/login'
+import forgetpassword from '@/components/login/forgetpassword'
 import personInfor from "@/components/my/personInfor"
 import feedBack from "@/components/my/feedBack"
 import setting from "@/components/my/setting"
 import aboutUs from "@/components/my/aboutUs"
 import changePwd from "@/components/my/changePwd"
-
-import register from '@/components/login/register'
-import login from '@/components/login/login'
-import forgetpassword from '@/components/login/forgetpassword'
-Vue.use(Router)
-
-
 import visitor from '@/components/route/visitor'
+Vue.use(Router)
 import visitorDetails from '@/components/route/visitorDetails'
 import mypath from "@/components/route/mypath"
 import myPathNow from "@/components/route/mypathnow"
@@ -95,9 +92,9 @@ const router =  new Router({
       component: place
     },
     {
-      path:"/attractions",
-      name:"attractions",
-      component:attractions
+      path: "/attractions",
+      name: "attractions",
+      component: attractions
     },
     {
       path: '/spot',
@@ -138,13 +135,6 @@ const router =  new Router({
       name:'changePwd',
       component:changePwd
 
-    },
-    {
-
-
-      path: "/attractions",
-      name: "attractions",
-      component: attractions
     },
     {
       path: "/register",
