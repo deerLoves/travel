@@ -1,83 +1,126 @@
 <template>
     <div class="hostStory">
-        <div>
+        <div v-for="(item,index) in storyArray.data">
+            
+            <!-- {{storyArray}} -->
             <div class="hsHeader">
+                <!-- {{item.user.headimg}} -->
                 <div class="hsHeader-l">
-                    <img src="../../../static/zhang/img_zhang/1.jpg" alt="">
-                    <span>安娜</span>
+                    <img :src="'http://ceshi.qfjava.cn/'+item.user.headimg" alt="">
+                    <span>
+                        {{item.user.nickname}}
+                    </span>
                 </div>
                 <div class="hsHeader-r">
-                    2018-11-11
+                    {{item.time}}
                 </div>
             </div>
             <div class="hsText">
-                懂得太少，表现太多；才华太少，锋芒太多，很浅薄，一眼就能被看穿. 沉下来，打根基，让别人不会觉得你烦！
+                <!-- 懂得太少，表现太多；才华太少，锋芒太多，很浅薄，一眼就能被看穿. 沉下来，打根基，让别人不会觉得你烦！ -->
+               {{item.content}}
             </div>
             <div class="hsImg">
                 <router-link :to="{name:'storyDetalis'}">
-                    <img src="../../../static/zhang/img_zhang/1.jpg" alt="">
+                    <img :src="item.img[0]" alt="">
                 </router-link>
             </div>
             <div class="hsComment">
                 <div class="hsComment-l">
-                    <p>浏览次数<i>5次</i></p>
+                    <p>浏览次数<i>{{item.count}}次</i></p>
                 </div>
                 <div class="hsComment-r">
-                    <i class="iconfont icon-pinglun" @click="changeComment(message)"></i>
+                    <i class="iconfont icon-pinglun" @click="changeComment(index)"></i>
                     
-                    <i class="iconfont icon-aixin like" v-show="status" @click="changeDislike(status)"></i>
-                    <i class="iconfont icon-aixin1 like" v-show="!status"  @click="changeLike(status)"></i>
+                    <i class="iconfont icon-aixin like" v-show="!storyArray.data[index].flag" @click="changeDislike(index),changeNum(storyArray.data[index].id)"></i>
+                    <i class="iconfont icon-aixin1 like" v-show="storyArray.data[index].flag"  @click="changeLike(index),changeNum(storyArray.data[index].id)"></i>
+                    <!-- {{storyArray.data.id}} -->
+                    
                 </div>
                 
             </div>
             <!-- 输入框 -->
-                    <div class="ICommentBox" v-show="!message">
-                        <input type="text" placeholder="留下宝贵的评价">
+                    <div class="ICommentBox" v-show="storyArray.data[index].message">
+                        <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa">
                         <span>发送</span>
                     </div>
         </div>
     </div>
 </template>
 <script>
+import Vuex from "Vuex";
+import axios from "axios";
 export default {
     data(){
         return {
             status:true,
-            message:true,
+            // message:true,
         }
     },
+    created(){
+        this.handleGetInterest();
+    },
+    computed:{
+        ...Vuex.mapState({
+            storyArray:state=>state.story.storyArray,
+        })
+    },
     methods:{
-        changeLike(like){
-            this.status = true;
+        ...Vuex.mapActions({
+            handleGetInterest:"story/handleGetInterest",
+            changeNum:"story/changeNum"
+        }),
+        changeLike(i){
+            // this.status = true;
+            this.storyArray.data[i].flag = 0
         },
-        changeDislike(like){
-            this.status = false;
+        changeDislike(i){
+            this.storyArray.data[i].flag = 1;
         },
-        changeComment(data){
-            if(data == true){
-                this.message = false;
+        changeComment(i){
+            
+            // if(data == true){
+            //     this.message = false;
 
+            // }else{
+            //     this.message = true
+            // }
+            if(this.storyArray.data[i].message == false){
+                this.storyArray.data[i].message = true;
             }else{
-                this.message = true
+                this.storyArray.data[i].message = false;
             }
              
+             
         },
+    },
+    crested(){
 
     }
 }
 </script>
 <style scoped>
+/*
+$('#money').click(function(){
+      setTimeout(function(){  
+          $(this).scrollIntoView(); // 参数可以是true， false, 空参数  
+      }, 300);
+  })
+*/
 .hostStory{
     width:100%;
     font-family: PingFangSC-Regular;
     font-size: .32rem;
     color: #000000;
+    margin-top:.28rem;
+}
+.hostStory>div{
+    margin-bottom: .4rem;
 }
 .hostStory>div>.hsHeader{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: .2rem;
+    
 }
 .hostStory>div>.hsHeader>.hsHeader-l{
     display: flex;

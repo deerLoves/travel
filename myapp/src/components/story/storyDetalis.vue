@@ -45,14 +45,9 @@ export default {
 
 <style scoped>
 
-/* #storyDetalis{
-    position: absolute;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    background: #fff;
-} */
 .storyDetalis{
+    width:91.4%;
+    min-height:100%; 
     padding-top: .4rem;
     padding-bottom: .96rem;
     margin:0 0.32rem;

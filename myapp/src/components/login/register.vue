@@ -6,79 +6,81 @@
         <div class="title">注册</div>
         <div class="ipt">
             <p>
-                 <input type="text" placeholder="请输入手机号" class="inpu_one" @input="handleEmil()" v-model="phone">
-                 <span v-show="show_one">请输入11位手机号</span> 
-                 <!-- <span>&nbsp;</span> -->
-                 
+                 <input type="text" placeholder="请输入手机号" class="inpu_one" @input="re_handleVerityUserName(username)" @blur="re_handleBlurUserName(username)" v-model="username">
+                 <span v-show="re_show_userName">{{re_userName_hint}}</span> 
             </p>
             <p class="bor">
-                <input type="text" placeholder="输入验证码" class="input_two" @click="handlePhnoe()" v-model="msg">
-                <span class="msg">获取验证码</span>
+                <input type="text" placeholder="输入验证码" class="input_two" @input="re_handleVerityCode(msg)" v-model="msg">
+                <span class="msg" @click="re_handleGetVerityCode(username)">获取验证码</span>
+                <span class="verityCodeSpan" v-show="re_show_verityCode">{{re_verityCode_hint}}</span>
            </p>
            <p>
-                <input type="text" placeholder="输入密码" class="input_three" @input="handlePwd()" v-model="password">
-                 <span v-show="show_three">6~12位 英文 数字 下划线</span>
+                <input type="password" placeholder="输入密码" class="input_three" @input="re_handleVerityPwd(password)" v-model="password">
+                 <span v-show="re_show_password1">{{re_password1_hint}}</span>
           </p>
           <p>
-             <input type="text" placeholder="确认密码" class="input_four" @input="handlecPwd()" v-model="Cpwd">
-             <span v-show="show_four">两次密码不正确</span>
+             <input type="password" placeholder="确认密码" class="input_four" @input="re_handleVerityEcPwd({password,Cpwd})" v-model="Cpwd">
+             <span v-show="re_show_password2">{{re_password2_hint}}</span>
          </p>
-            <input type="button" value="注册" class="sub" @click="handleSub()">
+            <input type="button" value="注册" class="sub" @click="re_handleRegister({username,msg,password})">
         </div>
     </div>
 </template>
 <script  scoped>
+import Vuex from 'vuex';
 export default {
+    created(){
+        this.handleEditTabStatus();
+    },
     data(){
         return{
-            show_one:false,
-            show_three:false,
-            show_four:false,
-            phone:"",
+            username:"",
             msg:"",
             password:"",
             Cpwd:"",
         }
     },
+    computed:{
+        ...Vuex.mapState({
+            show:state=>state.show,
+            re_show_userName:state=>state.login.re_show_userName,
+            re_userName_hint:state=>state.login.re_userName_hint,
+            re_verityCode_hint:state=>state.login.re_verityCode_hint,
+            re_show_verityCode:state=>state.login.re_show_verityCode,
+            re_password1_hint:state=>state.login.re_password1_hint,
+            re_show_password1:state=>state.login.re_show_password1,
+            re_password2_hint:state=>state.login.re_password2_hint,
+            re_show_password2:state=>state.login.re_show_password2,
+        })
+    },
     methods:{
+        ...Vuex.mapActions({
+            handleEditTabStatus:"handleEditTabStatus",
 
-            handleEmil(){
-            this.show_one = true;
-            var re = /^[1]{1}[0-9]{10}$/;
-                if(re.test(this.phone)){
-                this.show_one = false;
-                return true;
-                // console.log(this.phone)
-                 }
-            },
-            handlePhnoe(){
+            re_handleBlurUserName:"login/re_handleBlurUserName",
 
-            },
-            handlePwd(){
-            this.show_three = true;
-            var re = /^[\w]{6,12}$/;
-                if(re.test(this.password)){
-                this.show_three = false;
-                 return true;
-                // console.log(this.password)
-                 }
-            },
-            handlecPwd(){
-            this.show_four = true;
-                if(this.password == this.Cpwd){
-                this.show_four = false;
-                 return true;
-                 }
-            },
-            handleSub(){
-                if(this.phone || this.password || this.password == true){
-                    alert("注册成功");
-                    this.$router.push("/login")
-                }
-            },
-            handleClose(){
-                this.$router.push("/home")
-            }
+            re_handleVerityUserName:"login/re_handleVerityUserName",
+            re_handleVerityCode:"login/re_handleVerityCode",
+            re_handleVerityPwd:"login/re_handleVerityPwd",
+            re_handleVerityEcPwd:"login/re_handleVerityEcPwd",
+
+            re_handleRegister:"login/re_handleRegister",
+            re_handleGetVerityCode:"login/re_handleGetVerityCode",
+            
+        }),
+        handleSub(){
+            // if(this.phone || this.password || this.password == true){
+            //     alert("注册成功");
+            //     this.$router.push("/login")
+            // }
+        },
+        handleClose(){
+            this.$router.push("/login")
+        }
+    },
+    beforeRouteLeave(to,from,next){
+        this.handleEditTabStatus();
+        next();
     }
 };
 </script>
@@ -164,5 +166,9 @@ span{
     height:0.48rem;
     position: absolute;
     /* left: */
+}
+.verityCodeSpan{
+    position:absolute;
+    top: .5rem;
 }
 </style>
