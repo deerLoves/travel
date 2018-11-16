@@ -33,14 +33,13 @@
                     
                     <i class="iconfont icon-aixin like" v-show="!storyArray.data[index].flag" @click="changeDislike(index),changeNum(storyArray.data[index].id)"></i>
                     <i class="iconfont icon-aixin1 like" v-show="storyArray.data[index].flag"  @click="changeLike(index),changeNum(storyArray.data[index].id)"></i>
-                    <!-- {{storyArray.data.id}} -->
                     
                 </div>
                 
             </div>
             <!-- 输入框 -->
             <div class="writeReview">
-                
+                <!-- {{message}} -->
             </div>
             <div class="ICommentBox" v-show="storyArray.data[index].message">
                 <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa">
@@ -50,13 +49,14 @@
     </div>
 </template>
 <script>
-import Vuex from "Vuex";
+import Vuex from "vuex";
 import axios from "axios";
 export default {
     data(){
         return {
             status:true,
-            // message:true,
+            // message:"",
+
         }
     },
     created(){
@@ -70,35 +70,27 @@ export default {
     methods:{
         ...Vuex.mapActions({
             handleGetInterest:"story/handleGetInterest",
-            changeNum:"story/changeNum"
+            changeNum:"story/changeNum",
+            // intoDetalis:"story/intoDetalis",
+            // sendMessage:"story/sendMessage",
         }),
         changeLike(i){
             // this.status = true;
-            this.storyArray.data[i].flag = 0
+            this.storyArray.data[i].flag = 0;
+            alert(1)
         },
         changeDislike(i){
             this.storyArray.data[i].flag = 1;
+            alert(1)
         },
         changeComment(i){
-            
-            // if(data == true){
-            //     this.message = false;
-
-            // }else{
-            //     this.message = true
-            // }
             if(this.storyArray.data[i].message == false){
                 this.storyArray.data[i].message = true;
             }else{
                 this.storyArray.data[i].message = false;
             }
-             
-             
         },
     },
-    crested(){
-
-    }
 }
 </script>
 <style scoped>

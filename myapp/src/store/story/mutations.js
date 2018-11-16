@@ -10,5 +10,10 @@ export default {
         })
         state.storyArray = params;
         //console.log(state.storyArray)
+    },
+    intoDetalis(state,params){
+        state.commtentGather = params;
+        console.log(params)
+        console.log(state.commtentGather)
     }
 }

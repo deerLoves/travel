@@ -55,5 +55,19 @@ export default {
             // console.log(data)
         })
         // commit("")
-    }
+    },
+    // intoDetalis({commit},params){
+    //     axios({
+    //         method:"get",
+    //         url:"/travel/story/detail?aid="+params,
+    //     }).then((data)=>{
+    //         // console.log(data);
+    //         var commtentGather = data.data.data.commtent;
+    //         console.log(commtentGather)
+    //     })
+    //     commit("intoDetalis",params)
+    // },
+    // sendMessage({commit},params,messageText){
+    //     console.log(params,messageText)
+    // }
 }
