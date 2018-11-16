@@ -1,7 +1,7 @@
 <template>
 <div class=" page home">
        <router-link :to="{name:'setting'}"  v-show="true">
-        <h3 class="back">&lt;</h3>
+        <h3 class="back iconfont">&#xe60e;</h3>
         </router-link>
         <p>修改密码</p>
         <label class="newPsw" for="">新密码<input  type="password" placeholder="请填写8-12位新建密码"></label>

@@ -42,10 +42,6 @@ const router =  new Router({
       path: '/story',
       name: 'story',
       component: story,
-<<<<<<< HEAD
-=======
-
->>>>>>> chen
     },
     //故事详情页面路由
     {
