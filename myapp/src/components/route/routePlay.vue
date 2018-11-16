@@ -8,6 +8,7 @@
     <component :is="comName" @handleCom="handleChangeCom"></component>
     <!--<routePath-com></routePath-com>-->
     <!--<playBtn-com></playBtn-com>-->
+    <!--<planpath-com></planpath-com>-->
   </div>
 </template>
 
@@ -15,6 +16,7 @@
 <script>
     import playBtn from './routeAddBtn.vue'
     import routePath from './routePath.vue'
+    import planpath from './planpath.vue'
     export default{
         data(){
             return{
@@ -24,14 +26,19 @@
         },
       components:{
         'playBtn-com' :   playBtn,
-        'routePath-com' : routePath
+        'routePath-com' : routePath,
+        'planpath-com' : planpath
       },
       methods:{
         handleSendIndex(){
           this.comName = 'playBtn-com'
         },
-        handleChangeCom(){
-            this.comName = 'routePath-com'
+        handleChangeCom(val){
+            if(!val){
+              this.comName = 'routePath-com'
+            }else{
+              this.comName = 'planpath-com'
+            }
         },
         handleGo(){
           this.$router.push('/visitor')

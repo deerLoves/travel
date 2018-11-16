@@ -2,19 +2,33 @@
   <div>
     <p>
       <span>输入起点</span>
-      <input type="text">
+      <input type="text" v-model="start">
     </p>
     <p>
       <span>输入终点</span>
-      <input type="text">
+      <input type="text" v-model="end">
     </p>
-    <button>确定</button>
+    <button @click="handleSend()">确定</button>
   </div>
 </template>
 
 
 <script>
-    export default{}
+    export default{
+        data(){
+            return{
+                start:'',
+                end:''
+            }
+        },
+      methods:{
+        handleSend(){
+            this.observer.$emit("handlePath",{start:this.start,end:this.end});
+            this.$emit("handleCom",1)
+
+        }
+      }
+    }
 </script>
 
 
