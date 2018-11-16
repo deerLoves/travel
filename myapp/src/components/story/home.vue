@@ -21,6 +21,9 @@ import storyHeader from "./storyHeader";
 import viewpager from "./viewpager";
 import interest from "./interest";
 export default {
+    // created(){
+
+    // }
     data(){
         return {
             message:true,
