@@ -8,7 +8,7 @@
             <input type="text" placeholder="请输入手机号" class="input_one">
         </p>
          <p class="bor">
-                <input type="text" placeholder="输入验证码" class="input_two" @click="handlePhnoe()">
+                <input type="text" placeholder="输入验证码" class="input_two">
                 <span class="msg">获取验证码</span>
            </p>
         <p>
@@ -23,8 +23,20 @@
     </div>
 </template>
 <script>
+import Vuex from 'vuex';
 export default {
+    created(){
+        this.handleEditTabStatus();
+    },
+    computed:{
+        ...Vuex.mapState({
+            show:state=>state.show
+        })
+    },
     methods:{
+        ...Vuex.mapActions({
+            handleEditTabStatus:"handleEditTabStatus"
+        }),
         goregister(){
             this.$router.push("/register")
         },
@@ -32,8 +44,12 @@ export default {
             this.$router.push("/forgetpassword")
         },
         handleClose(){
-                this.$router.push("/home")
-            }
+          this.$router.push("/login")
+        }
+    },
+    beforeRouteLeave(to,from,next){
+        this.handleEditTabStatus();
+        next();
     }
 };
 </script>

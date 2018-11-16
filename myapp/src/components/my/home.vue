@@ -30,12 +30,12 @@ export default {
                    
 
                 },
+                // {
+                //     name:"myFrends",
+                //     title:"我的好友"
+                // },
                 {
-                    name:"myFrends",
-                    title:"我的好友"
-                },
-                {
-                    name:"myRoute",
+                    name:"mypath",
                     title:"我的行程"
                 },
                 {
@@ -135,27 +135,27 @@ font-weight: 600;
 .infor>li:nth-of-type(1){
      background:url(../../../static/icons/data.svg) no-repeat 0.05rem;
 }
-.infor>li:nth-of-type(2){
+/* .infor>li:nth-of-type(2){
      background:url(../../../static/icons/my-friends.svg) no-repeat 0.05rem;
-}
+} */
 
-.infor>li:nth-of-type(3){
+.infor>li:nth-of-type(2){
      background:url(../../../static/icons/my-travel.svg) no-repeat 0.05rem;
 }
-.infor>li:nth-of-type(4){
+.infor>li:nth-of-type(3){
      background:url(../../../static/icons/my-storys.svg) no-repeat 0.05rem;
 }
-.infor>li:nth-of-type(5){
+.infor>li:nth-of-type(4){
      background:url(../../../static/icons/news.svg) no-repeat 0.05rem;
 }
-.infor>li:nth-of-type(6){
+.infor>li:nth-of-type(5){
      background:url(../../../static/icons/feedback.svg) no-repeat 0.05rem;
 }
-.infor>li:nth-of-type(7){
+.infor>li:nth-of-type(6){
      background:url(../../../static/icons/setting.svg) no-repeat 0.05rem;
 
 }
-.infor>li:nth-child(7) a>i{
+.infor>li:nth-child(6) a>i{
     margin-left:5.1rem;
 
 

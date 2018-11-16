@@ -15,8 +15,9 @@
          
 
         </ul>
-             <button class="send">保存</button>
-
+        <router-link :to='{name:"login"}'>
+            <button class="send">退出登录</button>
+        </router-link>
  </div>
     
 </template>

@@ -4,7 +4,9 @@
             <i class="iconfont icon-guanbi btn" @click="handleClose()"></i>
         </div>
         <div class="search">
-            <input type="text" placeholder="请输入你要想搜索的地点" class="inp">
+            
+            <input type="text" placeholder="请输入你要想搜索的地点" class="inp"  v-model="inputVal" >
+            <input type="button" class="find" value="搜索" @click="handleSearch(inputVal),handleToHome()">
         </div>
         <div class="recommend"> 
             根据你的定位推荐
@@ -17,7 +19,7 @@
             热门城市
         </div>
         <ul>
-            <li @click="handleGocity()">北京</li>
+            <li>北京</li>
             <li>挪威</li>
             <li>首尔</li>
             <li>澳大利亚</li>
@@ -26,32 +28,38 @@
 </template>
 <script>
 import axios from "axios";
+import Vuex from "vuex"
 export default {
   data() {
     return {
-      obj:[]
+      inputVal:"",
     };
   },
-  // created() {
-  //   axios({
-  //     methods: "get",
-  //     url: "/scenic/getscenicbyname",
-  //     data: {
-  //            id: 1,
-  //           address: "北京",
-  //     }.
-  //       then((data)=>{
-  //           console.log(data)
-  //       })
-  //   });
-  // }
+  computed:{
+    ...Vuex.mapState({
+      status:state => state.home.status,
+      hotcity:state => state.home.hotcity,
+      AddressStatus:state=>state.home.AddressStatus
+    })
+    
+  },
   methods: {
+    ...Vuex.mapActions({
+      handleSearch:"home/handleSearch"
+    }),
     handleClose(){
       this.$router.push("/home")
     },
-    handleGocity(){
-      this.$router.push("./attractions")
-    }
+    //将地址信息提交给首页
+    handleToHome(){
+      if(this.inputVal === "北京"){
+        this.$router.push({name:"home",query:{address:this.inputVal}})
+      }else{
+        alert("地点不正确，请重新输入")
+      }
+      
+    },
+    
   }
    
 };
@@ -64,7 +72,6 @@ export default {
   position: relative;
 }
 .top > .btn {
-  /* background:url(../../../static/icons/quxiao.svg) no-repeat; */
   font-size: 0.44rem;
   position: absolute;
   left: 0.32rem;
@@ -72,19 +79,31 @@ export default {
   color: #9b9b9b;
 }
 .inp {
-  width: 6.86rem;
+  width: 5.86rem;
   height: 1rem;
   padding-left: 0.2rem;
   background: #ffffff;
   border: 2px solid #f1efef;
   border-radius: 10px;
   opacity: 0.4;
-  font-size: 0.48rem;
+  font-size: 0.36rem;
   color: #030303;
-  letter-spacing: -0.17px;
   margin-left: 0.32rem;
   outline: none;
   margin-bottom: 0.62rem;
+  border-right:none;
+}
+.find{
+  width:1rem;
+  height:0.98rem;
+  background:none;
+  outline: none;
+  border:none;
+  font-size: 0.36rem;
+  border:2px solid #f1efef;
+  opacity: 0.4;
+  margin-left:-0.13rem;
+  border-left:none;
 }
 .recommend {
   font-size: 0.36rem;
@@ -106,7 +125,7 @@ export default {
   margin: 0 0 0.32rem 0.32rem;
 }
 .hot_city {
-  width: 1.44rem;
+  width:100%;
   height: 0.5rem;
   font-size: 0.36rem;
   color: #030303;
