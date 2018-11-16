@@ -4,7 +4,8 @@
         <h3 class="back">&lt;</h3>
         </router-link>
         <p>信息反馈</p>
-        <div class="textinp"></div>
+        <textarea class="textinp" placeholder="写下您对我们的意见或建议"></textarea>
+        <!-- <div class="textinp"></div> -->
         <button class="send">发送</button>
 
 
@@ -45,11 +46,23 @@ p{
 
 }
 .textinp{
+    font-size:.34rem;
+   
+    outline: none;
+    font-family: PingFangSC-Regular;
     width:6.70rem;
     height:4.26rem;
      margin-left:.4rem;
+     padding:.32rem;
      border: 1px solid #BBBBBB ;
      margin-bottom:.62rem;
+    
+
+
+}
+textarea::-webkit-input-placeholder{
+     color:#7E7E7E ;
+
 
 }
 .send{

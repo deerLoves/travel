@@ -9,19 +9,23 @@ import myStory from "@/components/my/myStory"
 import place from '@/components/home/place'
 import spot from '@/components/home/spot'
 import attractions from '@/components/home/attractions'
+import register from '@/components/login/register'
+import login from '@/components/login/login'
+import forgetpassword from '@/components/login/forgetpassword'
 import personInfor from "@/components/my/personInfor"
 import feedBack from "@/components/my/feedBack"
 import setting from "@/components/my/setting"
 import aboutUs from "@/components/my/aboutUs"
 import changePwd from "@/components/my/changePwd"
-
-
 import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
+import mypath from "@/components/route/mypath"
+import myPathNow from "@/components/route/mypathnow"
 import publish from "@/components/story/publish"
-Vue.use(Router)
 
-export default new Router({
+
+Vue.use(Router)
+const router =  new Router({
   routes: [
     {
       path: '/',
@@ -35,8 +39,7 @@ export default new Router({
     {
       path: '/story',
       name: 'story',
-      component: story, 
-       
+      component: story,
     },
     //故事详情页面路由
     {
@@ -62,25 +65,37 @@ export default new Router({
       name : 'visitorDetails',
       component : visitorDetails
     },
+    //点击 “我的页面” 的  “我的行程”   跳转的路由
+    {
+      path:'/mypath',
+      name:'mypath',
+      component:mypath
+    },
+    //点击  “我的行程”页面任意一个行程，跳转到详情行程页面的路由
+    {
+      path : '/myPathNow',
+      name : 'myPathNow',
+      component : myPathNow
+    },
     {
       path: '/my',
       name: 'my',
       component: my
     },
-		{
-			path:"/myStory",
-			name:"myStory",
-			component:myStory
-		},
+    {
+      path: "/myStory",
+      name: "myStory",
+      component: myStory
+    },
     {
       path: '/place',
       name: 'place',
       component: place
     },
     {
-      path:"/attractions",
-      name:"attractions",
-      component:attractions
+      path: "/attractions",
+      name: "attractions",
+      component: attractions
     },
     {
       path: '/spot',
@@ -98,12 +113,14 @@ export default new Router({
       component:personInfor
 
     },
+    //点击 “我的页面” 的  “信息反馈”   跳转的路由
     {
       path:"/feedBack",
       name:'feedBack',
       component:feedBack
 
     },
+    //点击 “我的页面” 的  “设置”   跳转的路由
     {
       path:"/setting",
       name:'setting',
@@ -122,8 +139,24 @@ export default new Router({
       component:changePwd
 
     },
-
-
-
+    {
+      path: "/register",
+      name: "register",
+      component: register
+    },
+    // 登录
+    {
+      path: "/login",
+      name: "login",
+      component: login
+    },
+    {
+      path:"/forgetpassword",
+      name:"forgetpassword",
+      component:forgetpassword
+    }
   ]
 })
+
+
+export default router;
