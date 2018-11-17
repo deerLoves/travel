@@ -91,7 +91,8 @@ export default {
             obj:[],
             hotspot:[],
             hotstory:[],
-            find:[]
+            find:[],
+
         }
     },
     methods:{
