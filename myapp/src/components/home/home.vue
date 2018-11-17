@@ -4,8 +4,8 @@
             <div class="searchspot" @click="handleSearchSpot">
                 <i class="iconfont icon-magnifier"></i><p>搜“热门地点”试试</p>
             </div>
-            <div class="searchaddress">
-                <p @click="handlecity(obj.address)">{{$route.query.address}}</p><i class="iconfont icon-ico_arrows_unfold"></i>
+            <div class="searchaddress" @click="handlecity(obj.address)">
+                <p>{{$route.query.address}}</p><i class="iconfont icon-ico_arrows_unfold"></i>
             </div>
         </div>
         <div id="find">
@@ -91,7 +91,8 @@ export default {
             obj:[],
             hotspot:[],
             hotstory:[],
-            find:[]
+            find:[],
+
         }
     },
     methods:{

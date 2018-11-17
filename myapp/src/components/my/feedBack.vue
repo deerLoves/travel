@@ -1,7 +1,7 @@
 <template>
  <div class=" page home">
         <router-link :to="{name:'my'}" class="" v-show="true">
-        <h3 class="back">&lt;</h3>
+        <h3 class="back iconfont">&#xe60e;</h3>
         </router-link>
         <p>信息反馈</p>
         <textarea class="textinp" placeholder="写下您对我们的意见或建议"></textarea>

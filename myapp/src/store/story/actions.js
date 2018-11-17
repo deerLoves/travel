@@ -1,19 +1,87 @@
 import axios from "axios"
 export default {
-// 	handelPublish({commit}){
-// 		axios({
-// 			method:"post",
-// 			url:"/travel/story/publish/",
-// 			headers:{
-//         'Content-type': 'application/x-www-form-urlencoded'
-//   },
-// 			data:{
-// 				title:"人间不值得",
-// 				content:"我渺小的如一粒尘埃，但我坚信能活出与众不同的精彩",
-// 				files:[]
-// 			}
-// 		}).then((data)=>{
-// 			console.log(data)
-// 		})
-// 	}
+    handleGetViewPagers({commit}){
+         axios({
+            method:"get",
+            url:"/travel/story/essence"
+        }).then((data)=>{
+            // console.log(data.data.data);
+            var dataArray = data.data.data;
+            for(var index in dataArray){
+                dataArray[index].img = 'http://ceshi.qfjava.cn/' +  dataArray[index].img;
+                // console.log(imgArr)
+            }
+            
+            commit("handleGetViewPagers",dataArray);
+            // console.log(dataArray)
+        })
+    },
+    handleGetInterest({commit}){
+        axios({
+            method:"get",
+            url:"/travel/story/funjourney"
+        }).then((data)=>{
+            
+            var dataInterest = data.data.data;
+            
+            for(var index in dataInterest){
+                var timeAtr = dataInterest[index].time.split('T');
+                //var timeArray = timeAtr[0].split('-');
+                dataInterest[index].time = timeAtr[0];
+                var str = dataInterest[index].img;
+                str = str.substring(1,str.length-1);
+                // console.log(str);
+                var Arr = str.split(",")
+                for(var i in Arr){
+                    Arr[i] = Arr[i].substring(1,Arr[i].length-1);
+                    Arr[i] = 'http://ceshi.qfjava.cn/' + Arr[i]
+                    // console.log(Arr[i])
+                }
+                dataInterest[index].img = Arr;
+                // console.log(dataInterest[index].img)
+            }
+           
+            commit("handleGetInterest",data.data);
+            // console.log(data.data)
+        })
+    },
+    changeNum({commit},params){
+        
+        axios({
+            method:"get",
+            url:"/travel/story/checklike?aid="+params,
+            
+        }).then((data)=>{
+            // console.log(data)
+        })
+        // commit("")
+    },
+    // intoDetalis({commit},params){
+    //     axios({
+    //         method:"get",
+    //         url:"/travel/story/detail?aid="+params,
+    //     }).then((data)=>{
+    //         // console.log(data);
+    //         var commtentGather = data.data.data.commtent;
+    //         console.log(commtentGather)
+    //     })
+    //     commit("intoDetalis",params)
+    // },
+    // sendMessage({commit},params,messageText){
+    //     console.log(params,messageText)
+    // }
+	handelPublish({commit}){
+		axios({
+			method:"post",
+			url:"/travel/story/publish/",
+			data:{
+				title:"人间不值得",
+				content:"我渺小的如一粒尘埃，但我坚信能活出与众不同的精彩",
+				
+			}
+		}).then((data)=>{
+			console.log(data)
+		})
+	}
+
 }

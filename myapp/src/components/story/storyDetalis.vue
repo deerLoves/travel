@@ -6,8 +6,8 @@
             </router-link>
             <h2>故事详情</h2>
             <detalisCenter></detalisCenter>
-            <detalisCenter></detalisCenter>
-            <!-- <detalisfooter></detalisfooter> -->
+            <!-- <detalisCenter></detalisCenter> -->
+            <detalisfooter></detalisfooter>
         </div>
     </div>
 </template>

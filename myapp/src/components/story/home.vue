@@ -6,8 +6,8 @@
         <div class="interest">
             <h2>趣味旅程</h2>
             <div>
-                <span v-show="message">查看最新 》</span>
-                <span v-show="!message">热门故事 》</span>
+                <span v-show="message">查看最新 <i class="iconfont icon-jiantou"></i></span>
+                <span v-show="!message">热门故事 <i class="iconfont icon-jiantou"></i></span>
             </div>
         </div>
         <interest></interest>
@@ -69,6 +69,9 @@ export default {
  }
  .storyHome>.interest>div>span{
      line-height: .4rem;
+     font-size:.28rem;
+ }
+ .storyHome>.interest>div>span>i{
      font-size:.28rem;
  }
 </style>

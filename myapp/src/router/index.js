@@ -158,5 +158,24 @@ const router =  new Router({
   ]
 })
 
+//全局守卫 验证用户的登陆状态
+router.beforeEach((to,from,next)=>{
+  //通过ajax获取过来的登陆状态
+  let flag = true;
 
+  //获取所有需要验证登陆状态的路由
+  let routers = ["login",'register','forgetpassword'];
+ 
+  //to.name 需要跳转到某个路由的名称  如果这个路由存在的情况下
+  if(!flag){
+     
+      if(routers.indexOf(to.name)<0){
+        router.push('/login')
+      }else{
+        next();
+      }
+  }else{
+    next();
+  }
+})
 export default router;

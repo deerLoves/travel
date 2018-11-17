@@ -2,12 +2,10 @@
   <div>
     <div class="play-btn">
       <a href="#" :class="btnindex == 1 ? 'active' : ''"  @click="handleSendIndex()">我的行程</a>
-      <a href="#" :class="btnindex == 2 ? 'active' : ''"  @click="handleGo()">游客行程</a>
+      <a href="#/visitor" :class="btnindex == 2 ? 'active' : ''">游客行程</a>
     </div>
 
     <component :is="comName" @handleCom="handleChangeCom"></component>
-    <!--<routePath-com></routePath-com>-->
-    <!--<playBtn-com></playBtn-com>-->
   </div>
 </template>
 
@@ -15,6 +13,7 @@
 <script>
     import playBtn from './routeAddBtn.vue'
     import routePath from './routePath.vue'
+    import planpath from './planpath.vue'
     export default{
         data(){
             return{
@@ -24,17 +23,19 @@
         },
       components:{
         'playBtn-com' :   playBtn,
-        'routePath-com' : routePath
+        'routePath-com' : routePath,
+        'planpath-com' : planpath
       },
       methods:{
         handleSendIndex(){
-          this.comName = 'playBtn-com'
+          this.$router.push('/mypath')
         },
-        handleChangeCom(){
-            this.comName = 'routePath-com'
-        },
-        handleGo(){
-          this.$router.push('/visitor')
+        handleChangeCom(val){
+            if(!val){
+              this.comName = 'routePath-com'
+            }else{
+              this.comName = 'planpath-com'
+            }
         }
       }
     }
