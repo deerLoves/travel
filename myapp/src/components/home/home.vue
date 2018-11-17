@@ -116,7 +116,7 @@ export default {
                 loop: true,
                 slidesPerView: "auto",
                 centeredSlides:true,
-                spaceBetween: 24,
+                spaceBetween: 48,
                 loop: true, // 循环模式选项
                 autoplay:{
                     disableOnInteraction:false,
