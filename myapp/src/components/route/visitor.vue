@@ -3,7 +3,7 @@
     <p class="title">游客行程</p>
 
     <!--单个游客行程信息，接收到信息从此循环创建游客列表-->
-    <div class="cont" @click="handleGo">
+    <div class="cont" @click="handleGo" v-for="(item,index) in infos">
       <!--游客行程头像部位-->
       <div class="cont-top">
         <div class="top-l">
@@ -12,11 +12,11 @@
           </div>
           <div class="top-l-txt">
             <p>路在四方</p>
-            <p><span class="span-time">2018-11-13</span><span>7:00</span></p>
+            <p><span class="span-time">{{item.year}}</span><span>{{item.time}}</span></p>
           </div>
         </div>
         <div class="top-r">
-          <span>纽约</span>
+          <span>{{item.location}}</span>
         </div>
       </div>
       <!--游客行程信息部位-->
@@ -36,12 +36,25 @@
 
 
 <script>
+  import Vuex from 'vuex'
     export default{
+      created(){
+          this.handleVisitor("哈哈");
+        console.log(this.infos);
+      },
         methods:{
+          ...Vuex.mapActions({
+            handleVisitor : "route/handleVisitor"
+          }),
           handleGo(){
               this.$router.push('/visitorDetails')
           }
-        }
+        },
+      computed:{
+        ...Vuex.mapState({
+          infos : state=>state.route.infos
+        })
+      }
     }
 </script>
 
