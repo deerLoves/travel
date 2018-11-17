@@ -24,9 +24,10 @@ export default {
         // console.log(1,state.SpotAttObj.data)
     },
     //搜索热点城市
-    handlegospot(state,obj){
+    handlegospot1(state,name){
         // console.log(obj);
-        state.SpotName = obj.name;
-        state.SpotId = obj.id;
-    }
+        state.SpotName.unshift(name);
+        console.log(state.SpotName)
+        // state.SpotId = obj.id;
+    },
 }

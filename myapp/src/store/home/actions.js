@@ -62,32 +62,27 @@ export default {
         }).then((data)=>{
             var dataArray = data.data.data;
             dataArray.photo = 'http://ceshi.qfjava.cn/' + dataArray.photo;
-            console.log(dataArray)
+            // console.log(dataArray)
             commit("handlespotAtt",data.data);
             // console.log(data.data)
         })
     },
 
-    //搜索景点
-    handlegospot({commit,state},val){
-        axios({
+    //搜索景点历史记录
+    handlegospot1({commit,state},name){
+        /* axios({
             method:'get',
-            url:"/travel//scenic/getscenicbyname?name=" + val
+            url:"/travel/scenic/getscenicbyname?name=" + val
         }).then((data)=>{
             // console.log(data)
             // console.log(data.data.data.name)
-            console.log(data.data.data,222)
-            // commit("handlegospot",data.data.data)
-            /* commit("handlegospot",{
-                data:data.data.data,
-                val:val
-            }) */
             if(val === data.data.data.name){
                 state.SpotStatus = true;
                 commit("handlegospot",data.data.data)
                 router.push({path:'/attractions',query:{"id":data.data.data.id}})
-                //this.$router.push({name:"attractions",query:{"id":this.id}})
             }
-        })
-    }
+
+        }) */
+        commit("handlegospot1",name);
+    },
 }

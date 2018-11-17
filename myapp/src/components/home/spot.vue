@@ -5,14 +5,15 @@
         </div>
         <div id="search">
             <input type="text" placeholder="请输入你要想搜索的景点" class="inp" v-model="spot">
-            <input type="button" class="find" value="搜索" @click="handlegospot(spot),handlegotoSpot()">
+            <input type="button" class="find" value="搜索" @click.stop="handlegospot(spot)">
         </div>
         <div id="histroy">
             <div class="nearby">
                 <p>近期搜索历史</p>
             </div>
-            <div class="address" v-for="(item,index) in spotarr" v-if="index<=2">
-                <p>{{item}}</p>
+            <div class="address">
+                <!-- v-for="(item,index) in spotarr" v-if="index<=2 -->
+                <p v-for="(item,index) in SpotName" v-if="index<=2">{{item}}</p>
                 <hr>
             </div>
         </div>
@@ -24,12 +25,6 @@ import Vuex from 'vuex';
 export default {
     created(){
         this.handlespot();
-        // axios({
-        //     method:"get",
-        //     url:"../../../static/bai/josn.json"
-        // }).then((data)=>{
-        //     this.search=data.data.searchaddress
-        // })
     },
     computed:{
       ...Vuex.mapState({
@@ -41,28 +36,36 @@ export default {
     data(){
         return{
            spot:"",
-           id:""
+           id:"",
         }
     },
     methods:{
         ...Vuex.mapActions({
             handlespot:'home/handlespot',
-            handlegospot:'home/handlegospot'
-        }),
+            handlegospot1:'home/handlegospot1',
+        }), 
         handleSpotReturn(){
             this.$router.back()
         },
-        handlegotoSpot(){
-            console.log(this.SpotStatus)
-            if(this.SpotStatus){
-                //this.$router.push({name:"attractions",query:{"id":this.id}})
-            }
+        handlegospot(){
+            axios({
+                method:'get',
+                url:"/travel/scenic/getscenicbyname?name=" + this.spot
+            }).then((data)=>{
+                console.log(data.data.data,'搜索页面');
+                if(data.data.data){
+                    // 将历史记录添加到vuex中
+                    this.handlegospot1(data.data.data.name);
+                    // 跳转页面
+                    this.$router.push({path:'/attractions',query:{"id":data.data.data.id}});
+                    // this.searchArr.unshift(data.data.data.name)
+                }else{
+                    alert(data.data.message)
+                }
+            })
         }
         
     },
-    // updated(){
-    //     // console.log(this.SpotStatus)
-    // }
 }
 </script>
 <style scoped>
@@ -128,6 +131,7 @@ export default {
   position:absolute;
   border-radius:0 0.2rem 0.2rem 0;
   background:#fff;
+  outline: none;
   
 }
 </style>
