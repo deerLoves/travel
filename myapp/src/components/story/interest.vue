@@ -1,10 +1,7 @@
 <template>
     <div class="hostStory">
         <div v-for="(item,index) in storyArray.data">
-            
-            <!-- {{storyArray}} -->
             <div class="hsHeader">
-                <!-- {{item.user.headimg}} -->
                 <div class="hsHeader-l">
                     <img :src="'http://ceshi.qfjava.cn/'+item.user.headimg" alt="">
                     <span>
@@ -16,7 +13,6 @@
                 </div>
             </div>
             <div class="hsText">
-                <!-- 懂得太少，表现太多；才华太少，锋芒太多，很浅薄，一眼就能被看穿. 沉下来，打根基，让别人不会觉得你烦！ -->
                {{item.content}}
             </div>
             <div class="hsImg">
@@ -30,20 +26,17 @@
                 </div>
                 <div class="hsComment-r">
                     <i class="iconfont icon-pinglun" @click="changeComment(index)"></i>
-                    
                     <i class="iconfont icon-aixin like" v-show="!storyArray.data[index].flag" @click="changeDislike(index),changeNum(storyArray.data[index].id)"></i>
-                    <i class="iconfont icon-aixin1 like" v-show="storyArray.data[index].flag"  @click="changeLike(index),changeNum(storyArray.data[index].id)"></i>
-                    
+                    <i class="iconfont icon-aixin1 like" v-show="storyArray.data[index].flag"  @click="changeLike(index),changeNum(storyArray.data[index].id)"></i> 
                 </div>
-                
             </div>
             <!-- 输入框 -->
             <div class="writeReview">
                 <!-- {{message}} -->
             </div>
             <div class="ICommentBox" v-show="storyArray.data[index].message">
-                <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa">
-                <span>发送</span>
+                <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa" v-model="messageText">
+                <span @click="sendMessage(storyArray.data[index].id,messageText)">发送</span>
             </div>
         </div>
     </div>
@@ -55,7 +48,7 @@ export default {
     data(){
         return {
             status:true,
-            // message:"",
+            messageText:"",
 
         }
     },
@@ -72,16 +65,14 @@ export default {
             handleGetInterest:"story/handleGetInterest",
             changeNum:"story/changeNum",
             // intoDetalis:"story/intoDetalis",
-            // sendMessage:"story/sendMessage",
+            sendMessage:"story/sendMessage",
         }),
         changeLike(i){
             // this.status = true;
             this.storyArray.data[i].flag = 0;
-            alert(1)
         },
         changeDislike(i){
             this.storyArray.data[i].flag = 1;
-            alert(1)
         },
         changeComment(i){
             if(this.storyArray.data[i].message == false){
