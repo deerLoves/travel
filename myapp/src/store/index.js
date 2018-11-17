@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 
+
 import common from "./common";
 import home from "./home";
 import story from "./story";
@@ -20,14 +21,25 @@ const getters = {
 }
 
 const mutations = {
-    handleEditTabStatus(state){
-        state.show = !state.show;
+    handleEditTabStatus(state,params){
+        if(!params){
+            state.show = !state.show;
+        }else{
+            console.log(params,7);
+            if(params == 1){
+                state.show = true;
+            }else{
+                state.show = false;
+            }
+        }
+        
     }
 }
 
 const actions = {
-    handleEditTabStatus({commit}){
-        commit("handleEditTabStatus");
+    handleEditTabStatus({commit},params){
+        
+        commit("handleEditTabStatus",params);
     }
 }
 

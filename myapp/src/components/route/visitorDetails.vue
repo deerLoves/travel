@@ -1,9 +1,10 @@
 <template>
   <div class="details">
+    <button class="back" @click="handleBack">返回</button>
     <p class="title">游客行程</p>
     <div class="message">
       <!--每个动态的盒子，数据在此盒子循环-->
-      <div class="cont">
+      <div class="cont" v-for="(item,index) in arrs">
         <!--//时间轴图片-->
         <img class="time-bg" src="../../../static/img-chen/border-bg.png" alt="">
          <div class="time-box">
@@ -31,8 +32,15 @@
 <script>
     export default{
         methods:{
-
-        }
+          handleBack(){
+              this.$router.back();
+          }
+        },
+      data(){
+            return{
+                arrs:[1,2,3,4,5]
+            }
+      }
     }
 </script>
 
@@ -87,5 +95,15 @@
     font-size: 28px;
     color: #666;
     font-family: PingFangTC-Light;
+  }
+  .back{
+    width: 1rem;
+    height: .5rem;
+    border: none;
+    background: none;
+    border: 2px solid deepskyblue;
+    border-radius: 10px;
+    font-size: .24rem;
+    margin-bottom: .5rem;
   }
 </style>

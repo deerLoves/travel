@@ -10,21 +10,26 @@
 		created(){		
 			this.observer.$on("handeldelete",(val)=>{
 				this.show=val
-			})
+			});			
 		},
 		data(){
 			return {
-				show:false,				
+				show:false,	
+				
 			}			
 		},
 		methods:{
 			handeldelT(){
 				this.show=false;
-				this.observer.$emit("handeldelT",true)				
+				this.observer.$emit("handeldelT",true);
+						
 			},
 			handeldelF(){
 				this.show=false;
 				this.observer.$emit("handeldelF",false)
+			},
+			handeldata(){
+				this.observer.$emit("handeldelF",false)		
 			}
 		}
 	}

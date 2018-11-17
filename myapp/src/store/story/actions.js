@@ -70,4 +70,17 @@ export default {
     // sendMessage({commit},params,messageText){
     //     console.log(params,messageText)
     // }
+	handelPublish({commit}){
+		axios({
+			method:"post",
+			url:"/travel/story/publish/",
+			data:{
+				title:"人间不值得",
+				content:"我渺小的如一粒尘埃，但我坚信能活出与众不同的精彩",
+				
+			}
+		}).then((data)=>{
+			console.log(data)
+		})
+	}
 }

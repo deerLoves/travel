@@ -7,7 +7,7 @@
           <div class="conent">
               <div class="city">{{SpotAttarr.address}}{{SpotAttarr.name}}</div>
               <div class="con-c">
-                {{SpotAttarr.detail}}
+                <p>{{SpotAttarr.detail}}</p> 
               </div>
           </div>
           <div class="bottom">
@@ -15,12 +15,12 @@
               <div class="tour">
                   <img src="../../../static/img/a.png">
                   <div class="msg">
-                     <p>{{SpotAttarr.scenicEvas[0].createtime}}</p>
-                     <p>{{SpotAttarr.scenicEvas[0].nickname}}</p>
+                     <p>{{SpotAttarr.scenicEvas?SpotAttarr.scenicEvas[0].createtime.substr(0,10):""}}</p>
+                     <p>{{SpotAttarr.scenicEvas?SpotAttarr.scenicEvas[0].nickname:""}}</p>
                  </div>
               </div>
               <div class="discuss">
-                {{SpotAttarr.scenicEvas[0].eva}}
+                {{SpotAttarr.scenicEvas?SpotAttarr.scenicEvas[0].eva:""}}
               </div>
           </div>
     </div>
@@ -59,45 +59,45 @@ export default {
 } */
 .pic>img{
      width: 100%;
-     height: 7.8rem;
+     height: 8.6rem;
+     position: relative;
 }
 .btn {
   font-size: 0.44rem;
-  position: fixed;
+  position: absolute;
   left: 0.32rem;
-  top: 0.4rem;
+  top: 0.8rem;
   color: #ffffff;
 }
 .conent {
   width: 100%;
-  height: 9.36rem;
   display: flex;
   flex-direction: column;
   border-radius: 0.2rem;
-  border-bottom: 1px solid #979797;
+  border-bottom: 1px solid #2b1010;
+  position: relative;
+  top:-0.8rem;
 }
 .conent > .city{
   font-family: PingFangSC-Regular;
   font-size: 0.72rem;
   color: #010101;
   letter-spacing: 0;
-  margin:0.64rem 0 0  0.32rem;
-  font-weight: normal;
+  padding:0.64rem 0 0  0.32rem;
   width: 100%;
-  height: 1rem;
+  height: 1.64rem;
   background: #ffffff;
   line-height: 1rem;
+  border-radius: 0.2rem 0.2rem 0 0;
 }
 .conent > .con-c {
   width:100%;
-  height: 5.76rem;
-  padding: 0 0.32rem;
+  padding: 0.34rem 0.32rem 1.62rem;
   font-family: PingFangSC-Regular;
   font-size:0.36rem;
   color: #010101;
   letter-spacing: 0;
   line-height: 0.48rem;
-  margin-top:0.34rem;
   /* border-bottom: 1px solid #979797; */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -108,13 +108,15 @@ export default {
   width: 100%;
   height: 6.6rem;
   background: #fff;
-  margin-left: 0.32rem;
+  padding-left: 0.32rem;
 }
 .bottom > h4 {
   font-size: 0.48rem;
   color: #000000;
   line-height: 0.48rem;
   padding: 0.48rem 0;
+  margin-right: 0.32rem;
+  border-top: 0.02rem solid rgba(145, 145, 145,0.1) ;
 }
 .bottom > .tour {
   width: 100%;

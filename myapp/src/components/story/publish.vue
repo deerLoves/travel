@@ -5,10 +5,8 @@
 			<p><a href="##" @click="handelPublish()">发布</a></p>
 		</div>
 		<div class="publish_c">
-			<p><input type="text" value="一生一定要去一次巴厘岛"></p>
-			<textarea>巴厘岛有浪漫至上的婚礼现场，有无垠靓丽的海天
-一线，有热情活力的各色人群，巴厘岛的玩法千千万，
-但是你知道真正的巴厘岛“浪”法吗？！</textarea>
+			<p><input type="text"  v-model="title"></p>
+			<p><input type="text"  v-model="content"></p>
 		</div>
 		<div class="publish_img_list">
 			<div class="publish_img">
@@ -29,24 +27,40 @@
 </template>
 
 <script>
+	import Vuex from "vuex"
 	import iconfont from '../../../static/iconfont_li/iconfont.css';
 	import publish_over from "@/components/story/publish_over";
 	import mark from "@/components/my/mark";
 	export default {
+		created(){
+			this.handelPublish();
+		},
 		components:{
 			"publish_over-com":publish_over,
 			"mark-com":mark,
+		},
+		computed:{
+			...Vuex.mapState({
+				content:state=>state.story.content,
+				img:state=>state.story.img
+			})
 		},
 		methods:{
 			handelBack(){
 				this.$router.push({name:"story"})
 			},
 			handelPublish(){
-					this.observer.$emit("handelPublish",true);
-						
-					
-					
-			},			
+				this.observer.$emit("handelPublish",true);			
+			},	
+		...Vuex.mapActions({
+			handelPublish:"story/handelPublish"
+		})
+		},
+		data(){
+			return {
+				title:"一生一定要去一次巴厘岛",
+				content:'巴厘岛有浪漫至上的婚礼现场，有无垠靓丽的海天一线，有热情活力的各色人群，巴厘岛的玩法千千万，但是你知道真正的巴厘岛"浪"法吗？！'
+    	}
 		}
 		
 	}
@@ -102,14 +116,20 @@
 		border: none; 
 		outline: none;
 	}
-	.publish_c textarea{
+	.publish_c p:nth-child(2){
+		width: 100%; 		 
+		height: 2.21rem; 
+	}
+	.publish_c p:nth-child(2) input{
 		font-size: 28px;
 		color:  #000000;
-	    width: 100%; 		 
-	    height: 2.21rem; 
+	  width: 100%; 		 
+	  height: 100%; 
 		outline: none;
 		border: none; 
 		margin-top: .41rem;
+		display: block;
+		
 	}
 	.publish_img{
 		width: 100%;
