@@ -105,7 +105,7 @@ const router =  new Router({
 		{
 			path:"/publish",
 			name:"publish",
-			component:publish
+			component:publish,
 		},
     {
       path:"/personInfor",

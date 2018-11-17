@@ -5,7 +5,7 @@
             <i class="iconfont icon-search"></i>
             <input type="text" placeholder="成都故事">
         </div>
-<<<<<<< HEAD
+
 
       <router-link to="/publish"> <i class="iconfont icon-iconfont7"></i></router-link> 
 

@@ -1,5 +1,5 @@
 export default {
-// 	content:"",
-// 	files:[],
-// 	title:""
+	content:"",
+	files:[],
+	title:""
 }
