@@ -4,9 +4,8 @@
             <i class="iconfont icon-guanbi btn" @click="handleClose()"></i>
         </div>
         <div class="search">
-            
             <input type="text" placeholder="请输入你要想搜索的地点" class="inp"  v-model="inputVal" >
-            <input type="button" class="find" value="搜索" @click="handleSearch(inputVal),handleToHome()">
+            <input type="text" class="find" value="搜索" @click="handleSearch(inputVal),handleToHome()">
         </div>
         <div class="recommend"> 
             根据你的定位推荐
@@ -38,7 +37,6 @@ export default {
   computed:{
     ...Vuex.mapState({
       status:state => state.home.status,
-      hotcity:state => state.home.hotcity,
       AddressStatus:state=>state.home.AddressStatus
     })
     
@@ -78,16 +76,18 @@ export default {
   top: 0.4rem;
   color: #9b9b9b;
 }
+.search{
+  position: relative;
+}
 .inp {
   width: 5.86rem;
   height: 1rem;
   padding-left: 0.2rem;
   background: #ffffff;
-  border: 2px solid #f1efef;
-  border-radius: 10px;
+  border: 0.02rem solid #f1efef;
+  border-radius: 0.1rem 0 0  0.1rem;
   opacity: 0.4;
   font-size: 0.36rem;
-  color: #030303;
   margin-left: 0.32rem;
   outline: none;
   margin-bottom: 0.62rem;
@@ -95,15 +95,15 @@ export default {
 }
 .find{
   width:1rem;
-  height:0.98rem;
-  background:none;
-  outline: none;
-  border:none;
+  height:1rem;
   font-size: 0.36rem;
-  border:2px solid #f1efef;
+  border:0.02rem solid #f1efef;
   opacity: 0.4;
-  margin-left:-0.13rem;
+ color: #030303;
+  margin-left:-0.02rem;
   border-left:none;
+  position:absolute;
+  border-radius:0 0.2rem 0.2rem 0;
 }
 .recommend {
   font-size: 0.36rem;
@@ -135,7 +135,6 @@ export default {
   font-family: PingFangSC-Regular;
 }
 li {
-  /* width: 1.2rem; */
   height: 0.6rem;
   background: #ffffff;
   box-shadow: 0 1px 2px 0 #9b9b9b;
@@ -152,5 +151,8 @@ li {
  text-align: center;
  line-height: 0.6rem;
  padding:0 0.28rem;
+}
+.palce{
+  overflow: hidden;
 }
 </style>
