@@ -1,4 +1,5 @@
 export default {
+    //首页搜索定位地点
     handleSearch(state,data){
         state.AddressStatus = data.message;
         // console.log(state.AddressStatus)
@@ -20,7 +21,12 @@ export default {
         state.SpotAttObj.code = params.code;
         state.SpotAttObj.data = params.data;
         state.SpotAttObj.message = params.message;
-        console.log(1,state.SpotAttObj.data)
+        // console.log(1,state.SpotAttObj.data)
     },
-    
+    //搜索热点城市
+    handlegospot(state,obj){
+        // console.log(obj);
+        state.SpotName = obj.name;
+        state.SpotId = obj.id;
+    }
 }

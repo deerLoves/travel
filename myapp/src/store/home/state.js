@@ -2,8 +2,10 @@ export default {
     //定位
    status:"",
    //存放用户搜索的地点
-   hotcity:"",
    AddressStatus:"",
+   SpotName:"",
+   SpotId:"",
+   SpotStatus:false,
     IndexObj:{
         code:0,
         data:[],
@@ -12,7 +14,8 @@ export default {
     SpotObj:{
         code:0,
         data:[],
-        message:""
+        message:"",
+       
     },
     SpotAttObj:{
         code:0,

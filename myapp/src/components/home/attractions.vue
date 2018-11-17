@@ -74,7 +74,7 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 0.2rem;
-  border-bottom: 1px solid #979797;
+  border-bottom: 1px solid #2b1010;
 }
 .conent > .city{
   font-family: PingFangSC-Regular;
