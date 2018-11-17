@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Vuex from "Vuex";
+import Vuex from "vuex";
 import axios from "axios";
 export default {
     data(){
