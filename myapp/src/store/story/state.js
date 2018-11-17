@@ -1,5 +1,8 @@
 export default {
    imgArr:[],
    storyArray:{},
-   commtentGather:[]
+   commtentGather:[],
+// 	content:"",
+// 	files:[],
+// 	title:""
 }

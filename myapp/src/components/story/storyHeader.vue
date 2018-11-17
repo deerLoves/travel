@@ -5,10 +5,11 @@
             <i class="iconfont icon-search"></i>
             <input type="text" placeholder="成都故事">
         </div>
-        <router-link :to="{name:'publish'}">
-            <i class="iconfont icon-iconfont7"></i>
+<<<<<<< HEAD
 
-        </router-link>
+      <router-link to="/publish"> <i class="iconfont icon-iconfont7"></i></router-link> 
+
+
     </div>
 </template>
 
