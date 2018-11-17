@@ -25,7 +25,7 @@
 import Vuex from 'vuex';
 export default {
     created(){
-        this.handleEditTabStatus();
+        this.handleEditTabStatus(0);
     },
     data(){
         return{
@@ -50,11 +50,11 @@ export default {
             this.$router.push("/forgetpassword")
         },
         handleClose(){
-            this.$router.push("/home")
+            this.$router.push("/login")
         }
     },
     beforeRouteLeave(to,from,next){
-        this.handleEditTabStatus();
+        this.handleEditTabStatus(1);
         next();
     }
 };
