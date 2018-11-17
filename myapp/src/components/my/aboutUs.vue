@@ -1,7 +1,7 @@
 <template>
  <div class=" page home">
         <router-link :to="{name:'setting'}"  v-show="true">
-        <h3 class="back">&lt;</h3>
+        <h3 class="back iconfont">&#xe60e;</h3>
         </router-link>
         <p>关于我们</p>
         <div class="textarea">

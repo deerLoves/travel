@@ -1,7 +1,7 @@
 <template>
 <div class=" page home">
         <router-link :to="{name:'my'}"  v-show="true">
-        <h3 class="back">&lt;</h3>
+        <h3 class="back iconfont">&#xe60e;</h3>
         </router-link>
         <p>设置</p>
  
