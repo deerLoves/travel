@@ -21,5 +21,10 @@ export default {
     //验证第二次密码信息错误span显示
     re_show_password2:false,
     
+    //登录
+
+    //用户信息
+    personInfo:{}
+    
 
 }
