@@ -13,8 +13,8 @@ export default {
     },
     intoDetalis(state,params){
         state.commtentGather = params;
-        console.log(params)
-        console.log(state.commtentGather)
+        // console.log(params)
+        // console.log(state.commtentGather)
     },
 // 	handelPublish(state,params){
 // 		state.content=params.content;

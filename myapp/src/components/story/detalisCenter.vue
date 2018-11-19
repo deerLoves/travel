@@ -33,18 +33,17 @@
 import axios from "axios";
 import Swiper from "swiper";
 import detalisComment from "./detalisComment";
-
+import Vuex from "vuex";
 export default {
     components:{
         "detalisComment":detalisComment,       
     },
     created(){
-        axios({
-            method:"get",
-            url:"../../../static/zhang/json_zhang/viewpager.json"
-        }).then((data)=>{
-            this.viewpager= data.data.viewpager
-            // console.log(data)
+        
+    },
+    computed:{
+        ...Vuex.mapState({
+            storyArray:state=>state.story.storyArray,
         })
     },
     data(){

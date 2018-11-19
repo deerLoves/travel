@@ -17,7 +17,7 @@
             </div>
             <div class="hsImg">
                 <router-link :to="{name:'storyDetalis'}">
-                    <img :src="item.img[0]" alt="">
+                    <img :src="item.img[0]" alt="" @click="intoDetalis(storyArray.data[index].id)">
                 </router-link>
             </div>
             <div class="hsComment">
@@ -31,12 +31,13 @@
                 </div>
             </div>
             <!-- 输入框 -->
-            <div class="writeReview">
+            <div class="writeReview" >
                 <!-- {{message}} -->
+                {{messageText}}
             </div>
             <div class="ICommentBox" v-show="storyArray.data[index].message">
-                <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa" v-model="messageText">
-                <span @click="sendMessage(storyArray.data[index].id,messageText)">发送</span>
+                <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa">
+                <span @click="sendMessage(index,storyArray.data[index].id,messageText)">发送</span>
             </div>
         </div>
     </div>
@@ -54,6 +55,7 @@ export default {
     },
     created(){
         this.handleGetInterest();
+        
     },
     computed:{
         ...Vuex.mapState({
@@ -64,7 +66,7 @@ export default {
         ...Vuex.mapActions({
             handleGetInterest:"story/handleGetInterest",
             changeNum:"story/changeNum",
-            // intoDetalis:"story/intoDetalis",
+            intoDetalis:"story/intoDetalis",
             sendMessage:"story/sendMessage",
         }),
         changeLike(i){
@@ -81,6 +83,11 @@ export default {
                 this.storyArray.data[i].message = false;
             }
         },
+        sendMessage(i){
+            var oDivs = document.getElementsByClassName("writeReview");
+            oDivs[i].innerHTML = this.$refs.aaa[i].value;
+            // console.log(this.messageText);
+        }
     },
 }
 </script>

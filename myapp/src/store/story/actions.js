@@ -56,20 +56,41 @@ export default {
         })
         // commit("")
     },
-    // intoDetalis({commit},params){
-    //     axios({
-    //         method:"get",
-    //         url:"/travel/story/detail?aid="+params,
-    //     }).then((data)=>{
-    //         // console.log(data);
-    //         var commtentGather = data.data.data.commtent;
-    //         console.log(commtentGather)
-    //     })
-    //     commit("intoDetalis",params)
-    // },
-    // sendMessage({commit},params,messageText){
-    //     console.log(params,messageText)
-    // }
+    intoDetalis({commit},params){
+        axios({
+            method:"get",
+            url:"/travel/story/detail?aid="+params,
+        }).then((data)=>{
+            console.log(data);
+            var detailPage = data.data.data;
+            // for(var index in detailPage){
+            //     var str = detailPage[index].article.img;
+            //     str = str.substring(1,str.length-1);
+            //     // console.log(str);
+            //     var Arr = str.split(",")
+            //     for(var i in Arr){
+            //         Arr[i] = Arr[i].substring(1,Arr[i].length-1);
+            //         Arr[i] = 'http://ceshi.qfjava.cn/' + Arr[i]
+            //         // console.log(Arr[i])
+            //     }
+            //     detailPage[index].article.img = Arr;
+            //     // console.log(dataInterest[index].img)
+            // }
+            console.log(detailPage)
+        })
+        commit("intoDetalis",params)
+    },
+    sendMessage({commit},params,messageText){
+        axios({
+            method:"get",
+            url:"/travel/story/comment",
+            data:{
+                aid:params,
+                comment:messageText
+            }
+        })
+        console.log(params,messageText)
+    },
 	handelPublish({commit}){
 		axios({
 			method:"post",
