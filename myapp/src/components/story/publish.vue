@@ -6,29 +6,18 @@
 		</div>
 		<div class="publish_c">
 			<p><input type="text"  v-model="title_page"></p>
-			<p><input type="text"  v-model="content_page"></p>
+			<p><!-- <input type="text"  v-model="content_page"> -->
+			<textarea type="text"  v-model="content_page"></textarea>
+			</p>
 		</div>
 		<div class="publish_img_list">
 			<div class="publish_img">
-				<!-- <div class="publish_img_con">
-					<img src="../../../static/images_li/t4.png" />
-				</div>
-				<div class="publish_img_con">
-					<img src="../../../static/images_li/t5.png" />
-				</div>
-				<div class="publish_img_con">
-					<img src="../../../static/images_li/t6.png" />
-				</div> -->
 				<div id="img-wrapper" @click="deleteImg($event)"></div>
 				<div class="wrapper">
 					<form id="addTextForm" @change="setImg($event)">
 					</form>
 					<button id="uploadImgBtn" type="button" @click="change_input()">上传照片</button>
 				</div>
-				
-				<!-- <P class="btn-wrapper">
-					<mt-button type="primary" @click="submit()">提交</mt-button>
-				</P> -->
 			</div>
 		</div>
 		<publish_over-com></publish_over-com>
@@ -45,10 +34,7 @@ import mark from "@/components/my/mark";
 import jquery from "../../jquery-1.11.3.js";
 import jqueryForm from "../../jquery.form.js";
 
-/**
- * 从 file 域获取 本地图片 url
- */
-
+/* 从 file 域获取 本地图片 url*/
 function getFileUrl(obj) {
   let url;
   url = window.URL.createObjectURL(obj.files.item(0));
@@ -68,23 +54,14 @@ export default {
       imgNum: 3
     };
   },
-  computed: {
-    ...Vuex.mapState({
-      content: state => state.story.content,
-      img: state => state.story.img
-    })
-  },
+
   methods: {
     handelBack() {
       this.$router.push({ name: "story" });
     },
     handelPublish() {
       this.observer.$emit("handelPublish", true);
-    },
-    ...Vuex.mapActions({
-      handelPublish: "story/handelPublish"
-    }),
-
+    },  
     //图片上传
     //根据点击上传按钮触发input
     change_input() {
@@ -222,7 +199,7 @@ export default {
   width: 100%;
   height: 2.21rem;
 }
-.publish_c p:nth-child(2) input {
+.publish_c p:nth-child(2) textarea {
   font-size: 28px;
   color: #000000;
   width: 100%;
@@ -249,10 +226,6 @@ export default {
   width: 100%;
   height: 100%;
 }
-/* .publish_img_con a{
-		display: block;
-		background: ;
-	} */
 /*图片上传*/
 .wrapper{
 	display: flex;
