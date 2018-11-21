@@ -8,24 +8,24 @@
       <span>输入终点</span>
       <input type="text" v-model="end">
     </p>
-    <button @click="handleSend()">确定</button>
+    <button @click="handleAddNewRoute({start,end})">确定</button>
   </div>
 </template>
 
 
 <script>
+    import Vuex from 'vuex';
     export default{
-        data(){
-            return{
-                start:'',
-                end:''
-            }
-        },
+      data(){
+          return{
+              start:'',
+              end:''
+          }
+      },
       methods:{
-        handleSend(){
-            this.$emit("handleCom",1)
-
-        }
+        ...Vuex.mapActions({
+          handleAddNewRoute:"route/handleAddNewRoute"
+        })
       }
     }
 </script>
@@ -35,6 +35,9 @@
   div{
     margin-top: 60px;
     text-align: center;
+  }
+  div p{
+    margin-bottom: .2rem;
   }
   div p span{
     font-size: 36px;
@@ -51,14 +54,15 @@
     border-bottom:1px solid #4D9EE6;
   }
   div button{
-    width: 3rem;
-    height: .5rem;
+    width: 4rem;
+    height: .8rem;
     border: none;
     background: none;
     border: 2px solid deepskyblue;
     margin-top: .4rem;
-    font-size: 24px;
-    border-radius: 20px;
+    font-size: .32rem;
+    border-radius: .8rem;
     color:deepskyblue ;
+    outline: none; 
   }
 </style>

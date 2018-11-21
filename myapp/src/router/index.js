@@ -1,27 +1,43 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+
+//首页
 import home from '@/components/home/home'
-import story from '@/components/story/home'
-import storyDetalis from '@/components/story/storyDetalis'
-import route from '@/components/route/home'
-import my from '@/components/my/home'
-import myStory from "@/components/my/myStory"
 import place from '@/components/home/place'
 import spot from '@/components/home/spot'
 import attractions from '@/components/home/attractions'
+
+//登录注册
 import register from '@/components/login/register'
 import login from '@/components/login/login'
 import forgetpassword from '@/components/login/forgetpassword'
+
+//故事
+import story from '@/components/story/home'
+import storyDetalis from '@/components/story/storyDetalis'
+import publish from "@/components/story/publish"
+
+//我的
+import my from '@/components/my/home'
+import myStory from "@/components/my/myStory"
 import personInfor from "@/components/my/personInfor"
 import feedBack from "@/components/my/feedBack"
 import setting from "@/components/my/setting"
 import aboutUs from "@/components/my/aboutUs"
 import changePwd from "@/components/my/changePwd"
+
+//行程
+import route from '@/components/route/home'
+import myRouteDetails from '@/components/route/myRouteDetails'
 import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
 import mypath from "@/components/route/mypath"
 import myPathNow from "@/components/route/mypathnow"
-import publish from "@/components/story/publish"
+//行程子路由
+import routeAddBtns from "@/components/route/routePlay/routeAddBtns"
+import routePaths from "@/components/route/routePlay/routePaths"
+import planPaths from "@/components/route/routePlay/planPaths"
 
 
 Vue.use(Router)
@@ -51,7 +67,24 @@ const router =  new Router({
     {
       path: '/route',
       name: 'route',
-      component: route
+      component: route,
+      children:[
+        {
+          path:'/routeAdd',
+          name:'routeAdd',
+          component:routeAddBtns
+        },
+        {
+          path:'/routePlay',
+          name:'routePlay',
+          component:routePaths
+        },
+        {
+          path:'/planPath',
+          name:'planPath',
+          component:planPaths
+        },
+      ]
     },
     //由行程页面跳转到的游客行程页面的路由
     {
@@ -64,6 +97,12 @@ const router =  new Router({
       path : '/visitorDetails',
       name : 'visitorDetails',
       component : visitorDetails
+    },
+    //我的行程-详情
+    {
+      path : '/myRouteDetails',
+      name : 'myRouteDetails',
+      component : myRouteDetails
     },
     //点击 “我的页面” 的  “我的行程”   跳转的路由
     {

@@ -124,7 +124,7 @@ export default {
                 commit("lg_handleLogin",data.data);
                 router.push({name:'home'})
             }else{
-                console.log("登录失败！");
+                console.log("登录失败！",data);
             }
         })
     }
