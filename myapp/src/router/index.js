@@ -34,6 +34,7 @@ import visitor from '@/components/route/visitor'
 import visitorDetails from '@/components/route/visitorDetails'
 import mypath from "@/components/route/mypath"
 import myPathNow from "@/components/route/mypathnow"
+import myRoutePublish from "@/components/route/myRoutePublish"
 //行程子路由
 import routeAddBtns from "@/components/route/routePlay/routeAddBtns"
 import routePaths from "@/components/route/routePlay/routePaths"
@@ -104,6 +105,12 @@ const router =  new Router({
       name : 'myRouteDetails',
       component : myRouteDetails
     },
+    //我的行程-发布
+    {
+      path : '/myRoutePublish',
+      name : 'myRoutePublish',
+      component : myRoutePublish
+    },
     //点击 “我的页面” 的  “我的行程”   跳转的路由
     {
       path:'/mypath',
@@ -150,7 +157,6 @@ const router =  new Router({
       path:"/personInfor",
       name:'personInfor',
       component:personInfor
-
     },
     //点击 “我的页面” 的  “信息反馈”   跳转的路由
     {

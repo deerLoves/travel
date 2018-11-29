@@ -1,11 +1,11 @@
 <template>
     <div class="page home">
         <h3>我的</h3>
-        <div class="via"><a href=""><img src="" alt=""></a></div>
-         <p class="userNam">用户名</p>
+        <div class="via"><a href=""><img :src="personInfo.headimg" alt=""></a></div>
+         <p class="userNam">{{personInfo.nickname}}</p>
          
          <ul class="infor">
-            <li v-for="(item,index) in navs" >
+            <li v-for="(item,index) in navs">
                 <router-link :to="{name:item.name}" class="" v-show="true">
                     <a href="">{{item.title}}<i class="iconfont">&#xe639;</i></a>
                 </router-link>
@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import "../../../static/icon-liu/iconfont.css"
+import "../../../static/icon-liu/iconfont.css";
+import Vuex from 'vuex';
 export default {
     data(){
         return {
@@ -58,8 +59,13 @@ export default {
             ]
         }
 
-        }
+    },
+    computed:{
+        ...Vuex.mapState({
+            personInfo:state=>state.login.personInfo
+        })
     }
+}
     
 
 
@@ -89,6 +95,11 @@ h3{
     background:pink;
     margin-left:36.7%;
     margin-bottom:.3.5rem;
+}
+.via img{
+    width:2rem;
+    height:2rem;
+    border-radius: 1rem;
 }
 .userNam{
    

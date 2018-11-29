@@ -2,9 +2,6 @@ import state from './state'
 import axios from 'axios'
 import router from './../../router' 
 export default {
-    re_handleRegister({commit}){
-
-    },
     re_handleBlurUserName({commit},params){
         var re = /^[1]{1}[0-9]{10}$/;
         if(re.test(params)){
@@ -92,24 +89,6 @@ export default {
     lg_handleLogin({commit},params){
         var username = params.username;
         var password = params.password;
-        // axios({
-        //     method:"post",
-        //     // url:"/travel/user/login?username=" + username +"&password=" + password,
-        //     url:"/travel/user/login",
-        //     headers:{
-        //         'Content-type': 'application/x-www-form-urlencoded'
-        //     },
-        //     data:{
-        //         username:username,
-        //         password:password
-        //     }
-        // }).then((data)=>{
-        //     if(data.data.code == 1){
-        //         router.push({name:'home'})
-        //     }else{
-        //         console.log("登录失败！");
-        //     }
-        // })
         axios.get('/travel/user/login',{
             params:{
                 username:username,

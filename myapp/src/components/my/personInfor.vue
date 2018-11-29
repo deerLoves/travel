@@ -1,28 +1,29 @@
 <template>
    <div class="page home">
-        <router-link :to="{name:'my'}" class="" v-show="true">
+        <router-link :to="{name:'my'}" class="rl_header" v-show="true">
             <h3 class="back">&lt;</h3>
+            <span>编辑</span>
         </router-link>
         <p>个人资料</p>
         <ul class="list">
             <li>
-                <a href="#" @click="handleImg()">头像</a>
+                <span @click="handleImg()">头像</span>
                 <img :src="personInfo.headimg" alt="">
             </li>
             <li>
-                <a href="#" @click="handleNick()">昵称</a>
+                <span @click="handleNick()">昵称</span>
                 <span>{{personInfo.nickname}}</span>
             </li>
             <li>
-                <a href="#" @click="handleSex()">性别</a>
+                <span @click="handleSex()">性别</span>
                 <span>{{personInfo.six == 0?'男':'女'}}</span>
             </li>
             <li>
-                <a href="#" @click="handleNick()">生日</a>
+                <span @click="handleNick()">生日</span>
                 <span>{{personInfo.birthday}}</span>
             </li>
             <li>
-                <a href="#" @click="handleSex()">所在地</a>
+                <span @click="handleSex()">所在地</span>
                 <span>{{personInfo.address}}</span>
             </li>
             <!-- <li v-for="(item,index) in navs" >
@@ -31,12 +32,6 @@
         </ul>
         
         <mark-com></mark-com>
-        <headPortrait-com></headPortrait-com>
-        <sex-com></sex-com>
-        <nickName-com></nickName-com>
-
-
-    
     </div>
 </template>
 <script>
@@ -44,10 +39,6 @@ import "../../../static/icon-liu/iconfont.css";
 import mark from "@/components/my/inforMark/mark";
 import age from "@/components/my/inforMark/age.vue";
 import birthday from "@/components/my/inforMark/birthday.vue";
-import headPortrait from "@/components/my/inforMark/headPortrait";
-import location from "@/components/my/inforMark/location";
-import nickName from "@/components/my/inforMark/nickName";
-import sex from "@/components/my/inforMark/sex";
 import Vuex from 'vuex';
 export default {
     data(){
@@ -62,24 +53,17 @@ export default {
     },
     methods:{
         handleImg(){
-			this.observer.$emit("handleImg",true)
-       
+            this.observer.$emit("handleImgMark",true)
+        },
+        handleNick(){
+            this.observer.$emit("handleNickMark",true)
         },
         handleSex(){
-            this.observer.$emit("handleSex",true)
+            this.observer.$emit("handleSexMark",true)
         },
-    
-        handleNick(){
-            this.observer.$emit("handleNick",true)
-        }
     },
-    
-    
     components:{
 			"mark-com": mark,
-			"headPortrait-com": headPortrait,
-            "nickName-com": nickName,
-            "sex-com":sex,
             // "location-com":location,
             // "age-com":age,
             // "birthday-com":birthday
@@ -99,11 +83,29 @@ export default {
   z-index: 1;
   background: #fff;
 }
+.rl_header{
+    display:flex;
+    justify-content: space-between;
+}
+
 .back {
   line-height: 0.88rem;
   font-size: 0.4rem;
   margin-left: 0.32rem;
   margin-bottom: 0.24rem;
+}
+.rl_header>span:nth-of-type(1){
+    line-height: 0.68rem;
+    margin-right: 0.32rem;
+    font-family: PingFangSC-Regular;
+    font-size: .32rem;
+    border:1px solid #4d9ee6;
+    padding:0 .2rem;
+    height: .68rem;
+    border-radius: .2rem;
+    background: #4d9ee6;
+    color: #fff;
+    margin-top: .2rem;
 }
 p {
   margin-left: 0.32rem;
@@ -127,7 +129,7 @@ p {
     display: flex;
     justify-content: space-between;
 }
-.list a {
+.list li>span:nth-of-type(1) {
   color: #030303;
   width: 30%;
   display: block;
@@ -140,7 +142,7 @@ p {
   background: pink;
   border-radius: 0.4rem;
 }
-.list li span{
+.list li>span:nth-of-type(2){
     margin-right: 0.2rem;
     height: 0.8rem;
     line-height: 0.8rem;
@@ -155,4 +157,5 @@ p {
   color: #4d9ee6;
   background: white;
 }
+/*弹窗*/
 </style>

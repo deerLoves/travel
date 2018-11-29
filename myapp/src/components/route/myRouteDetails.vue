@@ -1,6 +1,13 @@
 <template>
     <div class="mydetails">
-      <h3 class="back" @click="handleBack()">&lt;</h3>
+      <h3 class="back">
+        <span @click="handleBack()">&lt;</span>
+        <em>
+          <span @click="hanleEndRoute()">结束行程</span>
+          <span @click="hanlePublish(myRouteInfoDetails.id)">发布</span>
+          
+        </em>
+      </h3>
     <p class="title">
       <span>我的行程</span>
       <span>
@@ -47,9 +54,15 @@ export default {
     })
   },
   methods:{
+      ...Vuex.mapActions({
+        hanleEndRoute:'route/hanleEndRoute'
+      }),
       handleBack(){
           this.$router.back();
-      }
+      },
+      hanlePublish(id){
+          this.$router.push({name:'myRoutePublish',params:{id:id}})
+      },
   }
 };
 </script>
@@ -59,10 +72,38 @@ export default {
   padding: 0.4rem 0 0.98rem 0;
 }
 .mydetails .back {
-  padding-left: 0.32rem;
+  padding:0 0.32rem;
   line-height: 0.88rem;
   font-size: 0.4rem;
   margin-bottom: 0.24rem;
+  display: flex;
+  justify-content: space-between;
+}
+.mydetails .back>em{
+  height: .78rem;
+  display: block;
+  font-style: normal;
+  display: flex;
+}
+.mydetails .back>em>span{
+  border: 1px solid #4e94d0;
+  height: .68rem;
+  width: 1.2rem;
+  text-align: center;
+  border-radius: .2rem;
+  font-family: PingFangSC-Regular;
+  font-weight: normal;
+  color: #4e94d0;
+  font-size: .32rem;
+  margin-top: .1rem;
+  line-height: .68rem;
+  
+}
+.mydetails .back>em>span:nth-of-type(1){
+  width: 1.8rem;
+  margin-right: .2rem;
+  border-color: rgb(217, 81, 79);
+  color: rgb(217, 81, 79);
 }
 .mydetails .title {
   font-family: PingFangSC-Regular;
@@ -134,14 +175,4 @@ export default {
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
-/* .back{
-    width: 1rem;
-    height: .5rem;
-    border: none;
-    background: none;
-    border: 2px solid deepskyblue;
-    border-radius: 10px;
-    font-size: .24rem;
-    margin-bottom: .5rem;
-  } */
 </style>

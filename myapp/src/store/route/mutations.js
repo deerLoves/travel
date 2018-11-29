@@ -12,7 +12,7 @@ export default {
     var newObj= new Object();
     newObj.start = params.start;
     newObj.end = params.end;
-    newObj.flag = 1;//正在进行
+    newObj.flag = 0;//正在进行
     newObj.createTime = new Date().getFullYear() + '-' + (new Date().getMonth()+1);
     state.myRouteHeader.unshift(newObj);
   },

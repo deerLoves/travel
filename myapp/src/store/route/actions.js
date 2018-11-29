@@ -55,8 +55,14 @@ export default {
           })
           item.photo = photo;
         })
-        item.showMsg = item.details[0].msg;
-        item.showPhoto = item.details[0].photo[0];
+        if(item.details[0]){
+          item.showMsg = item.details[0].msg;
+          item.showPhoto = item.details[0].photo[0];
+        }else{
+          item.showMsg = '';
+          item.showPhoto = '';
+        }
+        
         //查找用户id
         // axios({
         //   method:'get',
@@ -79,6 +85,7 @@ export default {
       }
     }
   },
+  //创建新行程
   handleAddNewRoute({ commit }, params) {
     console.log(params.start)
     axios({
@@ -90,6 +97,7 @@ export default {
       router.push({ name: 'planPath' });
     })
   },
+  //获取当前用户的所有行程
   judgeChildrenRoute({ commit }) {
     if (!state.loginFlag) {
       return;
@@ -135,6 +143,7 @@ export default {
 
     }
   },
+  //获取当前用户行程的详细信息
   handleGoPersonRouteDetails({ commit }, params) {
 
     state.myRouteAllInfo.map((item) => {
@@ -172,5 +181,24 @@ export default {
     }
     console.log(state.myRouteInfoDetails);
     router.push({ name: 'myRouteDetails' });
-  }
+  },
+  //结束行程
+  hanleEndRoute(){
+    axios({
+      method: 'post',
+      url: 'travel/trip/endtrip'
+    }).then((data) => {
+        console.log(data);
+    })
+  },
+  //新增评论
+  handleSendCommit({commit},params){
+    // console.log(params);
+    axios({
+      method: 'post',
+      url: 'travel/trip/commenttrip?tripid= ' + params.index + "&comment=" + params.val
+    }).then((data) => {
+      console.log(data);
+    }) 
+  },
 }

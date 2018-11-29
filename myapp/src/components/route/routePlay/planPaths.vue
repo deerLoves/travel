@@ -8,7 +8,7 @@
       <div class="word2">
         <img src="../../../../static/img-chen/pathbg.png" alt="">
         <p>{{item.createTime}}</p>
-        <p>正在进行</p>
+        <p>{{item.flag == 1?'已结束':'正在进行'}}</p>
       </div>
       <div class="word3">
         {{item.end}}
