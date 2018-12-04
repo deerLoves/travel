@@ -104,4 +104,5 @@ export default {
 			console.log(data)
 		})
 	}
+
 }

@@ -3,7 +3,8 @@ export default {
    status:"",
    //存放用户搜索的地点
    AddressStatus:"",
-   SpotName:"",
+//    近期搜索的数组
+   SpotName:[],
    SpotId:"",
    SpotStatus:false,
     IndexObj:{

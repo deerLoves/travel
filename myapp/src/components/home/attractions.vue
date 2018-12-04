@@ -73,8 +73,6 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-radius: 0.2rem;
-  border-bottom: 1px solid #2b1010;
   position: relative;
   top:-0.8rem;
 }
