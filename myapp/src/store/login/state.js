@@ -24,7 +24,13 @@ export default {
     //登录
 
     //用户信息
-    personInfo:{}
+    personInfo:{
+        headimg:'',
+        nickname:'',
+        six:0,
+        birthday:'',
+        address:''
+    }
     
 
 }

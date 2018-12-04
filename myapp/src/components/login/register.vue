@@ -11,7 +11,8 @@
             </p>
             <p class="bor">
                 <input type="text" placeholder="输入验证码" class="input_two" @input="re_handleVerityCode(msg)" v-model="msg">
-                <span class="msg" @click="re_handleGetVerityCode(username)">获取验证码</span>
+                <!-- <span class="msg" @click="re_handleGetVerityCode(username)" ref="getVerityCode">获取验证码</span> -->
+                <span class="msg" @click="re_handleGetVerityCode(username),re_handleGetVeirityCodeChange()" ref="getVerityCode">{{content}}</span>
                 <span class="verityCodeSpan" v-show="re_show_verityCode">{{re_verityCode_hint}}</span>
            </p>
            <p>
@@ -38,6 +39,8 @@ export default {
             msg:"",
             password:"",
             Cpwd:"",
+            content:'发送验证码',
+            totalTime:60
         }
     },
     computed:{
@@ -68,11 +71,16 @@ export default {
             re_handleGetVerityCode:"login/re_handleGetVerityCode",
             
         }),
-        handleSub(){
-            // if(this.phone || this.password || this.password == true){
-            //     alert("注册成功");
-            //     this.$router.push("/login")
-            // }
+        re_handleGetVeirityCodeChange(){
+            let clock = window.setInterval(() => {
+              if(this.totalTime <= 0){
+                  this.content = '发送验证码';
+                  window.clearInterval(clock);
+              }else{
+                  this.totalTime--;
+                  this.content = this.totalTime + 's后重新发送'
+              }
+            },1000)
         },
         handleClose(){
             this.$router.push("/login")
@@ -138,7 +146,7 @@ export default {
   font-family: PingFangSC-Regular;
   font-size: 0.24rem;
   color: #4d9ee6;
-  letter-spacing: 0.12rem;
+  letter-spacing: 0.05rem;
   text-align: center;
   line-height: 0.72rem;
 }

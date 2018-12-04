@@ -1,6 +1,8 @@
 <template>
   <div>
-    <a href="#" @click="handleChange"><img src="../../../static/img-chen/fff_03.png" alt=""></a>
+    <router-link :to="{name:'routePlay'}" class="rl">
+        <img src="../../../../static/img-chen/fff_03.png" alt="">
+    </router-link>
     <p>快来添加您的行程吧</p>
   </div>
 </template>
@@ -9,16 +11,14 @@
 <script>
     export default{
         methods:{
-          handleChange(){
-              this.$emit("handleCom")
-          }
+            
         }
     }
 </script>
 
 
 <style scoped>
-  div a{
+  div .rl{
     display: block;
     width: .96rem;
     height: .96rem;

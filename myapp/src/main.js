@@ -15,10 +15,15 @@ import "../static/icon-liu/iconfont.css";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
+
 Vue.prototype.observer=center
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
+Vue.use(MintUI);
 
 /* eslint-disable no-new */
 new Vue({

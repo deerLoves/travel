@@ -1,25 +1,22 @@
 <template>
     <div class="page home">
         <h3>我的</h3>
-        <div class="via"><a href=""><img src="" alt=""></a></div>
-         <p class="userNam">用户名</p>
+        <div class="via"><a href=""><img :src="personInfo.headimg" alt=""></a></div>
+        <p class="userNam">{{personInfo.nickname}}</p>
          
          <ul class="infor">
-            <li v-for="(item,index) in navs" >
+            <li v-for="(item,index) in navs">
                 <router-link :to="{name:item.name}" class="" v-show="true">
                     <a href="">{{item.title}}<i class="iconfont">&#xe639;</i></a>
                 </router-link>
             </li>
         </ul>
-
-
-    
-
     </div>
 </template>
 
 <script>
-import "../../../static/icon-liu/iconfont.css"
+import "../../../static/icon-liu/iconfont.css";
+import Vuex from 'vuex';
 export default {
     data(){
         return {
@@ -27,25 +24,10 @@ export default {
                 {
                     name:"personInfor",
                     title:"个人资料",
-                   
-
-                },
-                // {
-                //     name:"myFrends",
-                //     title:"我的好友"
-                // },
-                {
-                    name:"mypath",
-                    title:"我的行程"
                 },
                 {
                     name:"myStory",
                     title:"我的故事"
-                },
-                
-                 {
-                    name:"message",
-                    title:"消息通知"
                 },
                  {
                     name:"feedBack",
@@ -57,12 +39,13 @@ export default {
                 },
             ]
         }
-
-        }
+    },
+    computed:{
+        ...Vuex.mapState({
+            personInfo:state=>state.login.personInfo
+        })
     }
-    
-
-
+}
 </script>
 
 <style scoped>
@@ -90,14 +73,17 @@ h3{
     margin-left:36.7%;
     margin-bottom:.3.5rem;
 }
+.via img{
+    width:2rem;
+    height:2rem;
+    border-radius: 1rem;
+}
 .userNam{
-   
     width:100%;
     text-align:center;
     margin-bottom:1.26rem;
     font-size:.36rem;
     font-family: PingFangSC-Regular;
-
 }
 .infor{
     flex:1;
@@ -135,31 +121,16 @@ font-weight: 600;
 .infor>li:nth-of-type(1){
      background:url(../../../static/icons/data.svg) no-repeat 0.05rem;
 }
-/* .infor>li:nth-of-type(2){
-     background:url(../../../static/icons/my-friends.svg) no-repeat 0.05rem;
-} */
-
 .infor>li:nth-of-type(2){
-     background:url(../../../static/icons/my-travel.svg) no-repeat 0.05rem;
-}
-.infor>li:nth-of-type(3){
      background:url(../../../static/icons/my-storys.svg) no-repeat 0.05rem;
 }
-.infor>li:nth-of-type(4){
+.infor>li:nth-of-type(3){
      background:url(../../../static/icons/news.svg) no-repeat 0.05rem;
 }
-.infor>li:nth-of-type(5){
-     background:url(../../../static/icons/feedback.svg) no-repeat 0.05rem;
+.infor>li:nth-of-type(4){
+      background:url(../../../static/icons/setting.svg) no-repeat 0.05rem;
 }
-.infor>li:nth-of-type(6){
-     background:url(../../../static/icons/setting.svg) no-repeat 0.05rem;
-
-}
-.infor>li:nth-child(6) a>i{
+.infor>li:nth-child(4) a>i{
     margin-left:5.1rem;
-
-
 }
-
-
 </style>
