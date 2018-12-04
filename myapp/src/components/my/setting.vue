@@ -3,7 +3,7 @@
         <router-link :to="{name:'my'}"  v-show="true">
         <h3 class="back iconfont">&#xe60e;</h3>
         </router-link>
-        <p>设置</p>
+        <p class="p_setting">设置</p>
  
          <ul class="list">
            
@@ -24,8 +24,12 @@
     
 
 <script>
+import Vuex from "vuex";
 import "../../../static/icon-liu/iconfont.css"
 export default {
+    created() {
+        this.handleEditTabStatus();
+    },
     data(){
          return{
             navs:[
@@ -64,8 +68,16 @@ export default {
                
             ]
         }
+    },
+    methods:{
+        ...Vuex.mapActions({
+            handleEditTabStatus: "handleEditTabStatus",
+        }),
+    },
+    beforeRouteLeave(to, from, next) {
+        this.handleEditTabStatus();
+        next();
     }
-    
 }
 </script>
 <style scope>
@@ -73,19 +85,19 @@ export default {
   padding-top: .4rem;
   padding-bottom: .96rem;
 }
-.home{
+/* .home{
     height:100%;
     position: fixed;
     z-index: 1;
     background: #fff;
-}
+} */
 .back{
     line-height: .88rem;
     font-size:0.4rem;
     margin-left:.32rem;
     margin-bottom:.64rem;
 }
-p{
+p.p_setting{
     margin-left:.32rem;
     margin-bottom:.48rem;
     font-size:.48rem;

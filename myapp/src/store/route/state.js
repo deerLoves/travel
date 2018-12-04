@@ -1,4 +1,5 @@
 export default {
+   //游客全部信息
    infos : [],
    infosOne:[],
    infosOneDetiles:[],

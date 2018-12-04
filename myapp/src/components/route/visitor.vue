@@ -30,19 +30,20 @@
       <div class="cont-bot">
         <p @click="handleGo(item.id)">{{item.showMsg}}</p>
         <p>
-          <span class="iconfont icon-pinglun" @click="handleShowOrHindCommit()">{{item.comments.length}}</span>
+          <span class="iconfont icon-pinglun" @click="handleShowOrHindCommit(index)">{{item.comments.length}}</span>
           <span class="iconfont icon-aixin1">{{item.like}}</span>
         </p>
        
       </div>
        <transition name="slide">
-          <div class="comment-box" v-show="show">
+         <!--   -->
+          <div class="comment-box" :class="show_num === index?'active':''">
             <p v-for="(item2,index) in item.comments">
               <span>{{item2.user.nickname}} : </span><span>{{item2.comment}}</span>
             </p>
             <div class="addCommit">
               <input type="text" placeholder="请写下你的评论..." v-model="commitConnect">
-              <button @click="handleSendCommit({index:item.id,val:commitConnect})">发送</button>
+              <button @click="handleSendCommit({index:item.id,val:commitConnect,nickname:personInfo.nickname}),clearInputSend()">发送</button>
             </div>
           </div>
         </transition>
@@ -65,6 +66,7 @@ export default {
   data(){
     return {
       show : false,
+      show_num:-1,
       commitConnect:''
     }
   },
@@ -77,14 +79,22 @@ export default {
     handleGo(tripid) {
       this.$router.push({ name: "visitorDetails", params: { id: tripid } });
     },
-    handleShowOrHindCommit(){
-      this.show = !this.show;
+    handleShowOrHindCommit(index){
+      //this.show = !this.show;
+      if(this.show_num == index){
+        this.show_num = -1;
+      }else{
+        this.show_num = index;
+      }
     },
-    
+    clearInputSend(){
+      this.commitConnect = '';
+    }
   },
   computed: {
     ...Vuex.mapState({
-      infos: state => state.route.infos
+      infos: state => state.route.infos,
+      personInfo:state=>state.login.personInfo
     })
   },
   beforeRouteLeave(to, from, next) {
@@ -208,7 +218,7 @@ export default {
   margin-right: 20px;
 }
 .comment-box{
-  
+  display: none;
 }
 .comment-box p{
   line-height: 0.38rem;
@@ -253,4 +263,7 @@ export default {
 .slide-enter-active,.slide-leave-active{
     transition: all .3s;
 } 
+.active{
+  display: block;
+}
 </style>

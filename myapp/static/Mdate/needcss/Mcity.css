@@ -1,0 +1,179 @@
+/* html, body{padding: 0; margin: 0; border: 0; vertical-align: baseline; font-size: 15px; color: #333; }
+
+
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Microsoft Yahei", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    word-break: break-all;
+}
+*:focus { outline: none; }
+.fl{float: left;}
+.fr{float: right;} */
+
+
+/*选择日期*/
+.getAreaBg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transition: opacity 0.4s;
+    opacity: 0;
+}
+.getAreaBox{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    background-color: #fff;
+    box-shadow: -5px 0 5px rgba(0,0,0,0.3);
+    z-index: 101;
+    transition: bottom 0.4s;
+    bottom: -2.7rem!important;
+}
+.slideIn{
+    display: block !important;
+}
+.slideIn .getAreaBox{
+    animation: slideIn 0.4s;
+    -webkit-animation: slideIn 0.4s;
+    bottom: 0;
+}
+.slideOut .getAreaBox{
+    animation: slideOut 0.4s;
+    -webkit-animation: slideOut 0.4s;
+    bottom: -400px;
+}
+
+.slideIn .getAreaBg{
+    opacity: 1;
+}
+.slideOut .getAreaBg{
+    opacity: 0;
+}
+
+.getAreaBox .choiceAreaTitle{
+    height: 0.933rem;
+    background-color: #f2f2f2;
+}
+.getAreaBox .choiceAreaTitle button{
+    outline: none;
+    width: 3.75rem;
+    height: 100%;
+    padding: 0 1.333rem;
+    color: #00c599;
+    font-size: .32rem;
+    background: none;
+    border: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.2)
+}
+.getAreaBox .areaContent{
+    width: 100%;
+    margin: 1.0rem 0 4.0rem;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+}
+
+.getAreaBox .areaContent:before{
+    content: "";
+    width: 100%;
+    height: 40px;
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1), rgba(255,255,255,0));
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+.getAreaBox .areaContent:after{
+    content: "";
+    width: 100%;
+    height: 40px;
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,1), rgba(255,255,255,0));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+.getAreaBox .areaContent .checkeArea{
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 40px;
+}
+.getAreaBox .areaContent .checkeArea:before,
+.getAreaBox .areaContent .checkeArea:after{
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scaleY(0.5);
+    -webkit-transform: scaleY(0.5);
+}
+.getAreaBox .areaContent .checkeArea:after{
+    top: auto;
+    bottom: 0;
+}
+
+#provincewrapper,
+#citywrapper,
+#areawrapper{
+    width: 33.3%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+#provincewrapper{
+    left: 0;
+}
+#citywrapper{
+    left: 33.3%;
+}
+#areawrapper{
+    right: 0;
+}
+
+#areawrapper ul{
+    margin-right: 40%;
+}
+#provincewrapper ul li,
+#citywrapper ul li,
+#areawrapper ul li{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 0.32rem;
+    text-align: center;
+    list-style: none;
+}
+
+/* @keyframes slideIn{
+    0%{bottom: -270px;}
+    100%{bottom: 0;}
+}
+@-webkit-keyframes slideIn{
+    0%{bottom: -270px;}
+    100%{bottom: 0;}
+}
+
+@keyframes slideOut{
+    0%{bottom: 0;}
+    100%{bottom: -270px;}
+}
+@-webkit-keyframes slideOut{
+    0%{bottom: 0;}
+    100%{bottom: -270px;}
+} */

@@ -114,11 +114,7 @@ export default {
         newObj.id = item.id;
         newObj.start = item.start;
         newObj.end = item.end;
-        if (!item.finishtime) {
-          newObj.flag = 1;
-        } else {
-          newObj.flag = 0;
-        }
+        newObj.flag = item.flag;
         var dateArray = item.createtime.split('T')[0].split('-');
         var createTime = dateArray[0] + '-' + dateArray[1];
         newObj.createTime = createTime;
@@ -193,12 +189,14 @@ export default {
   },
   //新增评论
   handleSendCommit({commit},params){
-    // console.log(params);
     axios({
       method: 'post',
       url: 'travel/trip/commenttrip?tripid= ' + params.index + "&comment=" + params.val
     }).then((data) => {
-      console.log(data);
+      console.log();
+      if(data.data.code == 1){
+        commit("handleSendCommit", params);
+      }
     }) 
   },
 }
