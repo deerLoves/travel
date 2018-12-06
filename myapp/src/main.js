@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from "./store";
 import "./reset.css";
+import "./common.css"
 import "./rem.js";
 import "../static/fontguan/iconfont.css"
 import "../static/bai/iconfont_bai/iconfont.css"

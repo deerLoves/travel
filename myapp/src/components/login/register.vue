@@ -29,6 +29,8 @@
 </template>
 <script  scoped>
 import Vuex from 'vuex';
+import axios from 'axios';
+import { MessageBox } from "mint-ui";
 export default {
     created(){
         this.handleEditTabStatus();
@@ -67,7 +69,7 @@ export default {
             re_handleVerityPwd:"login/re_handleVerityPwd",
             re_handleVerityEcPwd:"login/re_handleVerityEcPwd",
 
-            re_handleRegister:"login/re_handleRegister",
+            re_handleRegister_verity:"login/re_handleRegister",
             re_handleGetVerityCode:"login/re_handleGetVerityCode",
             
         }),
@@ -81,6 +83,31 @@ export default {
                   this.content = this.totalTime + 's后重新发送'
               }
             },1000)
+        },
+        re_handleRegister(params){
+            var that = this;
+            var flag_re = this.re_handleRegister_verity(params);
+            flag_re.then((data)=>{
+                if(data){
+                    MessageBox({
+                        title: '温馨提示',
+                        message: '注册成功！',
+                        showCancelButton: false
+                    }).then((res)=>{
+                        that.$router.push({name:'login'});
+                    });
+                }else{
+                     MessageBox({
+                        title: '温馨提示',
+                        message: '注册失败！',
+                        showCancelButton: false
+                    }).then((res)=>{
+                        
+                    });
+                }
+            })
+        
+            
         },
         handleClose(){
             this.$router.push("/login")

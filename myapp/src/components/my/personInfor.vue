@@ -47,6 +47,8 @@ import age from "@/components/my/inforMark/age.vue";
 import birthday from "@/components/my/inforMark/birthday.vue";
 import Vuex from 'vuex';
 
+import { MessageBox } from "mint-ui";
+
 import jquery from "../../jquery-1.11.3.js";
 import jqueryForm from "../../jquery.form.js";
 export default {
@@ -103,6 +105,7 @@ export default {
         })
     },
     methods:{
+       
         handleImg(){
             this.observer.$emit("handleImgMark",true)
         },
@@ -126,17 +129,18 @@ export default {
             this.editShow = true;
         },
         editPersonInfo(id){
-            // console.log(id);
-            console.log();
+            var that = this;
+            console.log(id);
             this.birthday = $('#dateSelectorOne').val();
             this.address = $('#dateSelectorTwo').val();
-            console.log(this.nickname);
+            // console.log(this.nickname);
             var formdata = new FormData();
             formdata.append("file",this.file_change_data);
             formdata.append('nickname',this.nickname);
             formdata.append('sex',this.six);
-            formdata.append('phone','15536512326');
+            //formdata.append('phone',this.personInfo.phone);
             formdata.append('address',this.address);
+            console.log(formdata);
             $.ajax({
                 type:"post",
                 url:"/travel/my/info2",
@@ -148,14 +152,27 @@ export default {
                 success:function(data){
                     console.log(data);
                     if(data.code==1){
-                        console.log('提交成功');
-                        //$("#addTextForm input").val('');
-                        //$('div#img-wrapper img').attr('src','');
+                        let flag = MessageBox({
+                            title: '温馨提示',
+                            message: '修改成功！',
+                            showCancelButton: true
+                        }).then((res)=>{
+                            if(res == 'confirm'){
+                                that.editShow = false;
+                            }
+                        });
                     }else{
-                        alert('提交失败');
+                        let flag = MessageBox({
+                            title: '温馨提示',
+                            message: '修改失败！',
+                            showCancelButton: true
+                        }).then((res)=>{
+                            console.log(res)
+                        });
                     }
                 }
             })
+            
         }
     },
     components:{

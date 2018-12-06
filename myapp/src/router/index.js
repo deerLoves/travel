@@ -35,6 +35,7 @@ import visitorDetails from '@/components/route/visitorDetails'
 import mypath from "@/components/route/mypath"
 import myPathNow from "@/components/route/mypathnow"
 import myRoutePublish from "@/components/route/myRoutePublish"
+import test_scroll from '@/components/route/test_scroll'
 //行程子路由
 import routeAddBtns from "@/components/route/routePlay/routeAddBtns"
 import routePaths from "@/components/route/routePlay/routePaths"
@@ -199,6 +200,11 @@ const router =  new Router({
       path:"/forgetpassword",
       name:"forgetpassword",
       component:forgetpassword
+    },
+    {
+      path:"/test_scroll",
+      name:"test_scroll",
+      component:test_scroll
     }
   ]
 })

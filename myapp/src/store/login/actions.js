@@ -80,10 +80,12 @@ export default {
                 method:"post",
                 url:url
             }).then((data)=>{
-                console.log(data);
+                console.log(data.data.code)
             })
+            return 1;
        }else{
             console.log('no');
+            return 0;
        }
     },
     lg_handleLogin({commit},params){
@@ -106,6 +108,11 @@ export default {
                 console.log("登录失败！",data);
             }
         })
+    },
+    lg_handleEditPersonInf({commit},data){
+        console.log(data.data.data);
+        data.data.data.headimg = 'http://ceshi.qfjava.cn/' + data.data.data.headimg;
+        commit("lg_handleLogin",data.data);
     }
     
 }

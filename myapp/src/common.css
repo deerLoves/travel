@@ -1,0 +1,31 @@
+@charset "utf-8";
+.mint-msgbox{
+    height: 2.8rem;
+    border-radius: .2rem!important;
+}
+.mint-msgbox .mint-msgbox-header{
+    height: .36rem;
+}
+.mint-msgbox .mint-msgbox-header .mint-msgbox-title{
+    font-size: .38rem;
+    height: .8rem;
+    line-height: .5rem;
+}
+.mint-msgbox .mint-msgbox-content{
+    padding: 0.1rem 0 .15rem;
+    /* top:.3rem; */
+}
+.mint-msgbox .mint-msgbox-content .mint-msgbox-message{
+    height: 1.2rem;
+    font-size: .32rem;
+    line-height: 1.2rem;
+    font-family: PingFangSC-Regular;
+}
+.mint-msgbox .mint-msgbox-btns{
+    height: .8rem;
+    line-height: .8rem;
+}
+.mint-msgbox .mint-msgbox-btns .mint-msgbox-btn{
+    font-size: .32rem;
+    
+}

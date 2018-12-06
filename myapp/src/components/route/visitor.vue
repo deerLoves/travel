@@ -1,56 +1,58 @@
 <template>
-  <div class="visitor">
+  <div class="visitor" >
     <router-link :to="{name:'route'}" class="" v-show="true">
             <h3 class="back">&lt;</h3>
     </router-link>
     <p class="title">游客行程</p>
     <!--单个游客行程信息，接收到信息从此循环创建游客列表-->
-    <div class="cont"  v-for="(item,index) in infos">
-      <!--游客行程头像部位-->
-      <div class="cont-top">
-        <div class="top-l">
-          <div class="img-wrap">
-            <img src="../../../static/img-chen/touxiang.png" alt="">
-          </div>
-          <div class="top-l-txt">
-            <p>路在四方</p>
-            <p><span class="span-time">{{item.lastupdateYear}}</span><span>{{item.lastupdateHouer}}</span></p>
-          </div>
-        </div>
-        <div class="top-r">
-          <span>{{item.start}}</span>
-          <span class="iconfont">&#xe6ae;</span>
-          <span>{{item.end}}</span>
-        </div>
-      </div>
-      <!--游客行程信息部位-->
-      <div class="cont-cen" @click="handleGo(item.id)" v-show="item.showPhoto?true:false">
-        <img :src="item.showPhoto" alt="">
-      </div>
-      <div class="cont-bot">
-        <p @click="handleGo(item.id)">{{item.showMsg}}</p>
-        <p>
-          <span class="iconfont icon-pinglun" @click="handleShowOrHindCommit(index)">{{item.comments.length}}</span>
-          <span class="iconfont icon-aixin1">{{item.like}}</span>
-        </p>
-       
-      </div>
-       <transition name="slide">
-         <!--   -->
-          <div class="comment-box" :class="show_num === index?'active':''">
-            <p v-for="(item2,index) in item.comments">
-              <span>{{item2.user.nickname}} : </span><span>{{item2.comment}}</span>
-            </p>
-            <div class="addCommit">
-              <input type="text" placeholder="请写下你的评论..." v-model="commitConnect">
-              <button @click="handleSendCommit({index:item.id,val:commitConnect,nickname:personInfo.nickname}),clearInputSend()">发送</button>
+    <div class="wrapper" ref="wrapper_visitor">
+      <div class="content">
+        <div class="cont"  v-for="(item,index) in infos">
+          <!--游客行程头像部位-->
+          <div class="cont-top">
+            <div class="top-l">
+              <div class="img-wrap">
+                <img src="../../../static/img-chen/touxiang.png" alt="">
+              </div>
+              <div class="top-l-txt">
+                <p>路在四方</p>
+                <p><span class="span-time">{{item.lastupdateYear}}</span><span>{{item.lastupdateHouer}}</span></p>
+              </div>
+            </div>
+            <div class="top-r">
+              <span>{{item.start}}</span>
+              <span class="iconfont">&#xe6ae;</span>
+              <span>{{item.end}}</span>
             </div>
           </div>
-        </transition>
-      
+          <!--游客行程信息部位-->
+          <div class="cont-cen" @click="handleGo(item.id)" v-show="item.showPhoto?true:false">
+            <img :src="item.showPhoto" alt="">
+          </div>
+          <div class="cont-bot">
+            <p @click="handleGo(item.id)">{{item.showMsg}}</p>
+            <p>
+              <span class="iconfont icon-pinglun" @click="handleShowOrHindCommit(index)">{{item.comments.length}}</span>
+              <span class="iconfont icon-aixin1">{{item.like}}</span>
+            </p>
+          
+          </div>
+          <transition name="slide">
+            <!--   -->
+              <div class="comment-box" :class="show_num === index?'active':''">
+                <p v-for="(item2,index) in item.comments">
+                  <span>{{item2.user.nickname}} : </span><span>{{item2.comment}}</span>
+                </p>
+                <div class="addCommit">
+                  <input type="text" placeholder="请写下你的评论..." v-model="commitConnect">
+                  <button @click="handleSendCommit({index:item.id,val:commitConnect,nickname:personInfo.nickname}),clearInputSend()">发送</button>
+                </div>
+              </div>
+            </transition>
+          
+        </div>
+      </div>
     </div>
-  </div>
-
   </div>
 </template>
 
@@ -58,16 +60,36 @@
 <script>
 import Vuex from "vuex";
 import iconfont from "../../../static/deer/iconfont_deer/iconfont.css";
+import BScroll from "better-scroll";
 export default {
   created() {
     this.handleEditTabStatus();
-    this.handleVisitor("哈哈");
+    this.handleVisitor({pageNum:this.pageNum,pageSize:4});
+  },
+  mounted(){
+    this.scroll = new BScroll(this.$refs.wrapper_visitor,{
+      click:true,
+      pullUpLoad:true
+    })
+    //当用户上拉时触发的事件
+    this.scroll.on("pullingUp",()=>{
+        //this.handleNow_getNowMovie(++this.pageNum)
+        //console.log(23);
+        this.handleVisitor({pageNum:++this.pageNum,pageSize:4});
+    })
+  },
+  updated(){
+    //重新计算高度
+    this.scroll.refresh();
+    //当数据加载完毕以后通知better-scroll
+    this.scroll.finishPullUp();
   },
   data(){
     return {
       show : false,
       show_num:-1,
-      commitConnect:''
+      commitConnect:'',
+      pageNum:1
     }
   },
   methods: {
@@ -108,17 +130,36 @@ export default {
 <style scoped>
 .visitor {
   padding: 0.4rem 0.32rem 0.98rem;
+ 
 }
 .visitor .back {
   line-height: 0.88rem;
   font-size: 0.4rem;
   margin-bottom: 0.24rem;
+  position: fixed;
+  top: 0.4rem;
+  background: #fff;
 }
 .visitor .title {
   font-family: PingFangSC-Regular;
-  font-size: 48px;
+  font-size: .48rem;
+  line-height: .48rem;
   color: #000;
   margin-bottom: 0.52rem;
+  position: fixed;
+  top: 1.28rem;
+  background: #fff;
+}
+.visitor .wrapper{
+  position: fixed;
+  top: 2.06rem;
+  padding-top:1.56rem; 
+  overflow: hidden;
+  padding-bottom: .9rem;
+  height: 12rem;
+}
+.visitor .wrapper .content{
+  padding-bottom: 1.2rem;
 }
 .cont-top {
   display: flex;
@@ -162,6 +203,8 @@ export default {
   color: #4e94d0;
 }
 .cont {
+  width: 100%;
+  padding-right: .32rem;
   margin-bottom: 0.6rem;
 }
 .cont-cen {

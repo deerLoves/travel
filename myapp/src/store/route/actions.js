@@ -6,17 +6,11 @@ import router from './../../router'
 
 */
 export default {
-  handleVisitor(context) {
+  handleVisitor({commit},params) {
+    console.log(params)
     axios({
-      method: 'post',
-      url: 'travel/trip/getalltrip',
-      data: {
-        pageNum: 1,
-        pageSize: 2
-      },
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded'
-      },
+      method:'post',
+      url: 'travel/trip/getalltrip?pageNum='+ params.pageNum + "&pageSize=" + params.pageSize,
     }).then((data) => {
       //获取每个数据中的data
       var data = data.data.data.data;
@@ -72,7 +66,7 @@ export default {
         // })
       })
       console.log(data);
-      context.commit("handleVisitor", data);
+      commit("handleVisitor", data);
     })
   },
   handlevisitorDetailsShow({ commit }, params) {

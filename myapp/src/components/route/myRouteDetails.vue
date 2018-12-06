@@ -3,8 +3,8 @@
       <h3 class="back">
         <span @click="handleBack()">&lt;</span>
         <em>
-          <span @click="hanleEndRoute()">结束行程</span>
-          <span @click="hanlePublish(myRouteInfoDetails.id)">发布</span>
+          <span @click="hanleEndRoute()" v-show="myRouteInfoDetails.flag==1?false:true">结束行程</span>
+          <span @click="hanlePublish(myRouteInfoDetails.id)" v-show="myRouteInfoDetails.flag==1?false:true">发布</span>
           
         </em>
       </h3>
