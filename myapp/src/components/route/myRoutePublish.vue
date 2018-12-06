@@ -27,6 +27,8 @@
 import Vuex from "vuex";
 import iconfont from "../../../static/iconfont_li/iconfont.css";
 
+import { MessageBox } from "mint-ui";
+
 import jquery from "../../jquery-1.11.3.js";
 import jqueryForm from "../../jquery.form.js";
 /* 从 file 域获取 本地图片 url*/
@@ -90,34 +92,61 @@ export default {
         },
         //提交信息到后台
         handelPublish(){
+            var that = this;
             var file_0 = $("#file_0");
             var file_1 = $("#file_1");
             var file_2 = $("#file_2");
-            var formdata = new FormData();
-            formdata.append("location",this.location_page);
-            formdata.append("msg",this.content_page);
-            formdata.append("file",file_0[0].files[0]);
-            formdata.append("file",file_1[0].files[0]);
-            formdata.append("file",file_2[0].files[0]);
-            $.ajax({
-                type:"post",
-                url:"/travel/trip/sendtripdetail",
-                data:formdata,
-                dataType:"json",
-                cache: false,//不适用缓存中的结果
-                processData: false,//传输的数据，不被jquery封装
-                contentType: false,//数据编码格式不使用jquery的方式
-                success:function(data){
-                    if(data.code==1){
-                        console.log('提交成功');
-                        $("#addTextForm input").val('');
-                        $('div#img-wrapper img').attr('src','');
-
-                    }else{
-                        alert('提交失败');
+            if(!file_0[0].files[0] && !file_1[0].files[0] && !file_2[0].files[0]){
+                MessageBox({
+                title: '温馨提示',
+                message: '请上传图片！',
+                showCancelButton: false
+                }).then((res)=>{
+                    if(res == 'confirm'){
+                       // this.editShow = false;
                     }
-                }
-            })
+                });
+            }else{
+                var formdata = new FormData();
+                formdata.append("location",this.location_page);
+                formdata.append("msg",this.content_page);
+                formdata.append("file",file_0[0].files[0]);
+                formdata.append("file",file_1[0].files[0]);
+                formdata.append("file",file_2[0].files[0]);
+                $.ajax({
+                    type:"post",
+                    url:"/travel/trip/sendtripdetail",
+                    data:formdata,
+                    dataType:"json",
+                    cache: false,//不适用缓存中的结果
+                    processData: false,//传输的数据，不被jquery封装
+                    contentType: false,//数据编码格式不使用jquery的方式
+                    success:function(data){
+                        if(data.code==1){
+                            that.location_page = '';
+                            that.content_page = '';
+                            $('div#img-wrapper img').attr('src','');
+                            MessageBox({
+                                title: '温馨提示',
+                                message: '提交成功！',
+                                showCancelButton: false
+                            }).then((res)=>{
+                                that.$router.push({name:'myRouteDetails'});
+                            });
+                        }else{
+                            MessageBox({
+                                title: '温馨提示',
+                                message: '提交失败！',
+                                showCancelButton: false
+                            }).then((res)=>{
+                                $("#addTextForm input").val('');
+                                $('div#img-wrapper img').attr('src','');
+                            });
+                        }
+                    }
+                })
+            }
+            
         }
     },
     //页面加载后执行

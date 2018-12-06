@@ -1,7 +1,7 @@
 export default {
   handleVisitor(state,params){
-    state.infos = params;
-    //console.log(state.infos)
+    state.infos = [...state.infos,...params];
+    console.log(state.infos)
   },
   handlevisitorDetailsShow(state,params){
     state.infosOne = params;

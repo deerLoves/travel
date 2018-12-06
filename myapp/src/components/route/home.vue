@@ -12,6 +12,13 @@ import Vuex from 'vuex'
 import axios from 'axios'
 export default {
     created(){
+        // var that = this;
+        //  axios({
+        //     method:"get",
+        //     url:"/travel/my/info1",
+        // }).then((data)=>{
+        //     that.lg_handleEditPersonInf(data);
+        // })
         this.handleGetMyrouter(this.userInfo);
     },
     computed:{
@@ -25,7 +32,8 @@ export default {
     },
     methods:{
         ...Vuex.mapActions({
-            handleGetMyrouter:"route/handleGetMyrouter"
+            handleGetMyrouter:"route/handleGetMyrouter",
+            // lg_handleEditPersonInf:"login/lg_handleEditPersonInf",
         })
     }
 }
