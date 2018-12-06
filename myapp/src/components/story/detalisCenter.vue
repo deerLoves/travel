@@ -1,23 +1,23 @@
 <template>
     <div class="detalisCenter">
+        <!-- {{commtentGather.data.article.user}} -->
         <div>
             <div class="dcHeader">
                 <div class="dcHeader-l">
-                    <img src="../../../static/zhang/img_zhang/1.jpg" alt="">
-                    <span>安娜</span>
+                    <img :src="commtentGather.data.article.user.headimg" alt="">
+                    <span>{{commtentGather.data.article.user.nickname}}</span>
                 </div>
                 <div class="dcHeader-r">
-                    2018-11-11
+                    {{commtentGather.data.article.time}}
                 </div>
             </div>
             <div class="dcImg">
-                <div v-for="(item,index) in viewpager">
-                <img :src="viewpager[index]">
+                <div v-for="(item,index) in commtentGather.data.article.img">
+                    <img :src="commtentGather.data.article.img[index]">
+                </div>
             </div>
-            
-        </div>
             <div class="dcText">
-                懂得太少，表现太多；才华太少，锋芒太多，很浅薄，一眼就能被看穿. 沉下来，打根基，让别人不会觉得你烦！懂得太少，表现太多；才华太少，锋芒太多，很浅薄，一眼就能被看穿. 沉下来，打根基，让别人不会觉得你烦！
+                {{commtentGather.data.article.content}}
             </div>
             <div class="dcComment">
                 <div class="dcComment-l">
@@ -43,7 +43,7 @@ export default {
     },
     computed:{
         ...Vuex.mapState({
-            storyArray:state=>state.story.storyArray,
+            commtentGather:state=>state.story.commtentGather,
         })
     },
     data(){

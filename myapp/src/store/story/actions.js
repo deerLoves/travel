@@ -61,24 +61,25 @@ export default {
             method:"get",
             url:"/travel/story/detail?aid="+params,
         }).then((data)=>{
-            console.log(data);
+            console.log(data)
             var detailPage = data.data.data;
-            // for(var index in detailPage){
-            //     var str = detailPage[index].article.img;
-            //     str = str.substring(1,str.length-1);
-            //     // console.log(str);
-            //     var Arr = str.split(",")
-            //     for(var i in Arr){
-            //         Arr[i] = Arr[i].substring(1,Arr[i].length-1);
-            //         Arr[i] = 'http://ceshi.qfjava.cn/' + Arr[i]
-            //         // console.log(Arr[i])
-            //     }
-            //     detailPage[index].article.img = Arr;
-            //     // console.log(dataInterest[index].img)
-            // }
             console.log(detailPage)
+            var timeAtr = detailPage.article.time.split('T');
+                //var timeArray = timeAtr[0].split('-');
+                detailPage.article.time = timeAtr[0];
+            var str=detailPage.article.img;
+            str = str.substring(1,str.length-1);
+            var Arr = str.split(",")
+            for(var i in Arr){
+                Arr[i] = Arr[i].substring(1,Arr[i].length-1);
+                Arr[i] = 'http://ceshi.qfjava.cn/' + Arr[i]
+            }
+            detailPage.article.img = Arr
+            var headimg='http://ceshi.qfjava.cn/' +detailPage.article.user.headimg;
+            detailPage.article.user.headimg = headimg;
+            commit("intoDetalis",data.data)
         })
-        commit("intoDetalis",params)
+        
     },
     sendMessage({commit},params,messageText){
         axios({
@@ -103,6 +104,17 @@ export default {
 		}).then((data)=>{
 			console.log(data)
 		})
-	}
-
+	},
+    handleNow_getNowMovie({commit},params){
+        if(params<7){
+             axios({
+                 method:"get",
+                 url:"/travel/story/funjourney?page="+params+"&count=7",
+             }).then((data)=>{
+                 console.log(params,data)
+                    //  commit("handleNow_getNowMovie",data.data.data.films)
+             })
+        }
+         
+     }
 }
