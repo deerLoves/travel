@@ -25,7 +25,7 @@
       methods:{
         ...Vuex.mapActions({
           handleAddNewRoute:"route/handleAddNewRoute"
-        })
+        }),
       }
     }
 </script>

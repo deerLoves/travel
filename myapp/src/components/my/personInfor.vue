@@ -105,7 +105,9 @@ export default {
         })
     },
     methods:{
-       
+        ...Vuex.mapActions({
+            show_handleGetPersonInfo:"login/show_handleGetPersonInfo"
+        }),
         handleImg(){
             this.observer.$emit("handleImgMark",true)
         },
@@ -152,6 +154,7 @@ export default {
                 success:function(data){
                     console.log(data);
                     if(data.code==1){
+                        that.show_handleGetPersonInfo({username:'15536512326',password:'123456'});
                         let flag = MessageBox({
                             title: '温馨提示',
                             message: '修改成功！',

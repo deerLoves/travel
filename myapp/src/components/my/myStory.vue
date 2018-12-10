@@ -55,14 +55,11 @@
 			handeldel(){
 				this.observer.$emit("handeldelete",true)				
 			},
-			
 			...Vuex.mapActions({
-						handelgetP:"my/handelgetP",
-						handeldata:"my/handeldata"
-						
-					})
-				
-			}
+				handelgetP:"my/handelgetP",
+				handeldata:"my/handeldata"
+			})	
+		}
 		
 		
 	}

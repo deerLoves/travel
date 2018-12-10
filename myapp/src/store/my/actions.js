@@ -4,10 +4,7 @@ export default {
 		///travel/user/login?username=15536512326&password=123456
 		axios({
 			method:"get",
-			 url:"travel/story/mystory",
-			 // http://localhost:3000
-			
-			//http://localhost:3000/data
+			 url:"/travel/story/mystory",
 		}).then((data)=>{
 			 // console.log(data.data.data)
 			 var dataArray = data.data.data;
@@ -31,8 +28,8 @@ export default {
 	handeldata({commit},params){
 		 // console.log(params)
 		axios({
-			method:"post",
-			url:"travel/story/delete/?aid="+params
+			method:"get",
+			url:"/travel/story/delete/?aid="+params
 		}).then((data)=>{
 			 //console.log(data)
 			 commit('handeldata',params)

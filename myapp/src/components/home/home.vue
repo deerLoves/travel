@@ -32,7 +32,7 @@
                 </dl>
             </div>
 
-            <div class="more"><p>查看更多热门景点</p></div>
+            <!-- <div class="more"><p>查看更多热门景点</p></div> -->
         </div>
         <div id="hottrip">
             <h2>热门行程</h2>

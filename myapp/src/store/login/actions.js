@@ -113,6 +113,23 @@ export default {
         console.log(data.data.data);
         data.data.data.headimg = 'http://ceshi.qfjava.cn/' + data.data.data.headimg;
         commit("lg_handleLogin",data.data);
-    }
-    
+    },
+    show_handleGetPersonInfo({commit},params){
+		var username = params.username;
+        var password = params.password;
+        axios.get('/travel/user/login',{
+            params:{
+                username:username,
+                password:password
+            }
+        }).then((data)=>{
+            if(data.data.code == 1){
+                data.data.data.headimg = 'http://ceshi.qfjava.cn/' + data.data.data.headimg;
+                var str = data.data.data.birthday;
+                var strArray = str.split('T');
+                data.data.data.birthday = strArray[0];
+                commit("lg_handleLogin",data.data);
+            }
+        })
+	}
 }

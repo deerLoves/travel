@@ -36,7 +36,7 @@
                 {{messageText}}
             </div>
             <div class="ICommentBox" v-show="storyArray.data[index].message">
-                <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa">
+                <input type="text" placeholder="留下宝贵的评价" autofocus ref="aaa" v-model="data_comment">
                 <span @click="sendMessage(index,storyArray.data[index].id,messageText)">发送</span>
             </div>
         </div>
@@ -50,7 +50,7 @@ export default {
         return {
             status:true,
             messageText:"",
-
+            data_comment:''
         }
     },
     created(){
@@ -86,6 +86,7 @@ export default {
         sendMessage(i){
             var oDivs = document.getElementsByClassName("writeReview");
             oDivs[i].innerHTML = this.$refs.aaa[i].value;
+            this.data_comment = '';
             // console.log(this.messageText);
         }
     },

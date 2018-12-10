@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+//引导页
+import guide_page from '@/components/common/guide_page'
+import guide_loop from '@/components/common/guide_loop'
 
 //首页
 import home from '@/components/home/home'
@@ -47,7 +50,17 @@ const router =  new Router({
   routes: [
     {
       path: '/',
-      redirect:"/home"
+      redirect:"/guide_page"
+    },
+    {
+      path:'/guide_page',
+      name:'guide_page',
+      component:guide_page
+    },
+    {
+      path:'/guide_loop',
+      name:'guide_loop',
+      component:guide_loop
     },
     {
       path: '/home',

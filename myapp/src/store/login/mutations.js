@@ -8,5 +8,9 @@ export default {
     lg_handleLogin(state,params){
         state.personInfo = params.data;
         console.log(state.personInfo);
-    }
+    },
+    show_handleGetPersonInfo(state,params){
+		//state.myStory_list.splice(params,1)
+		console.log(params.data)
+	}
 }

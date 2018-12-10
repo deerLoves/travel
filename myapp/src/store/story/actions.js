@@ -94,7 +94,7 @@ export default {
     },
 	handelPublish({commit}){
 		axios({
-			method:"post",
+			method:"get",
 			url:"/travel/story/publish/",
 			data:{
 				title:"人间不值得",
