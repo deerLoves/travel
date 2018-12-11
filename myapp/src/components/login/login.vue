@@ -1,11 +1,11 @@
 <template>
     <div class="login page">
          <div class="top">
-            <i class="iconfont icon-guanbi btn" @click="handleClose()"></i>
+            <i class="" @click="handleClose()"></i>
         </div>
         <div class="title">登录</div>
         <div class="hphoto">
-            <img src="../../../static/img/d.jpg">
+            <img src="../../../static/img/logo.png">
         </div>
         <p class="phone">
             <input type="text" placeholder="请输入手机号" class="input_one" v-model="username">

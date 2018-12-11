@@ -40,15 +40,21 @@ function getFileUrl(obj) {
 export default {
     created(){
         console.log(this.$route.params);
+        this.details_id = this.$route.params.id;
     },
     data() {
         return {
             location_page: "",
             content_page:"",
-            imgNum: 3
+            imgNum: 3,
+            details_id:0
         }
     },
     methods:{
+        ...Vuex.mapActions({
+            judgeChildrenRoute:'route/judgeChildrenRoute_fuBen',
+            handleGoPersonRouteDetails:'route/handleGoPersonRouteDetails_fuBen',
+        }),
         handelBack() {
             this.$router.back();
         },
@@ -88,7 +94,6 @@ export default {
                 inputID = target.id.replace("img_", ""); //获得需要清除value的input
                 $("input#file_" + inputID).val("");
             }
-            
         },
         //提交信息到后台
         handelPublish(){
@@ -126,6 +131,7 @@ export default {
                             that.location_page = '';
                             that.content_page = '';
                             $('div#img-wrapper img').attr('src','');
+                            that.judgeChildrenRoute();
                             MessageBox({
                                 title: '温馨提示',
                                 message: '提交成功！',
@@ -162,6 +168,9 @@ export default {
             my_img.css({ "max-width": "50%", "max-height": "200px" }); //添加样式，由于vue的执行机制，页面加载的时候img标签还没有生成，直接写在style样式会不生效
             $("#img-wrapper").append(my_img);
         }
+    },
+    beforeDestroy(){
+       this.handleGoPersonRouteDetails({id:this.details_id});
     }
 }
 </script>

@@ -9,12 +9,12 @@ export default {
   handleVisitor({commit},params) {
     console.log(params)
     axios({
-      method:'post',
-      url: 'travel/trip/getalltrip?pageNum='+ params.pageNum + "&pageSize=" + params.pageSize,
+      method:'get',
+      url: '/travel/trip/getalltrip?pageNum='+ params.pageNum + "&pageSize=" + params.pageSize,
     }).then((data) => {
       //获取每个数据中的data
       var data = data.data.data.data;
-      console.log(data);
+      console.log(data); 
       data.filter((item) => {
         //用户头像
         //item.comments[0].user.headimg = 'http://ceshi.qfjava.cn/' + item.comments[0].user.headimg;
@@ -83,12 +83,34 @@ export default {
   handleAddNewRoute({ commit }, params) {
     console.log(params.start)
     axios({
-      method: 'post',
-      url: 'travel/trip/sendtrip?start= ' + params.start + "&end=" + params.end
+      method: 'get',
+      url: '/travel/trip/sendtrip?start= ' + params.start + "&end=" + params.end
     }).then((data) => {
       console.log(data);
       commit("handleAddNewRoute", params);
-      router.push({ name: 'planPath' });
+
+      axios({
+        method: 'get',
+        url: '/travel/trip/getalltripbyuserid'
+      }).then((data) => {
+        var allInfo = data.data.data.data;
+        console.log(allInfo);
+        var headerArray = [];
+        allInfo.filter((item) => {
+          var newObj = new Object();
+          newObj.id = item.id;
+          newObj.start = item.start;
+          newObj.end = item.end;
+          newObj.flag = item.flag;
+          var dateArray = item.createtime.split('T')[0].split('-');
+          var createTime = dateArray[0] + '-' + dateArray[1];
+          newObj.createTime = createTime;
+          headerArray.push(newObj);
+        })
+        commit("handleAddMyAllInfos", allInfo);
+        state.myRouteHeader = headerArray;
+        router.push({ name: 'planPath' });
+      })
     })
   },
   //获取当前用户的所有行程
@@ -97,8 +119,8 @@ export default {
       return;
     }
     axios({
-      method: 'post',
-      url: 'travel/trip/getalltripbyuserid'
+      method: 'get',
+      url: '/travel/trip/getalltripbyuserid'
     }).then((data) => {
       var allInfo = data.data.data.data;
       console.log(allInfo);
@@ -121,6 +143,31 @@ export default {
       } else {
         router.push({ name: 'routeAdd' });
       }
+    })
+  },
+  judgeChildrenRoute_fuBen({ commit }){
+    if (!state.loginFlag) {
+      return;
+    }
+    axios({
+      method: 'get',
+      url: '/travel/trip/getalltripbyuserid'
+    }).then((data) => {
+      var allInfo = data.data.data.data;
+      console.log(allInfo);
+      var headerArray = [];
+      allInfo.filter((item) => {
+        var newObj = new Object();
+        newObj.id = item.id;
+        newObj.start = item.start;
+        newObj.end = item.end;
+        newObj.flag = item.flag;
+        var dateArray = item.createtime.split('T')[0].split('-');
+        var createTime = dateArray[0] + '-' + dateArray[1];
+        newObj.createTime = createTime;
+        headerArray.push(newObj);
+      })
+      commit("handleAddMyAllInfos", allInfo);
     })
   },
   handleGetMyrouter({ commit }, params) {
@@ -155,15 +202,18 @@ export default {
         item.createYear = createYear;
         item.createHouer = createHouer;
         //图片处理
-        var photoArray = item.photo.split(',');
-        var photoNewArray = [];
-        photoArray.filter((item, index) => {
-          if (index > 2) {
+        console.log(item.photo);
+        if(item.photo){
+          var photoArray = item.photo.split(',');
+          var photoNewArray = [];
+          photoArray.filter((item, index) => {
+            if (index > 2) {
 
-          } else {
-            photoNewArray.push('http://ceshi.qfjava.cn/' + item);
-          }
-        })
+            } else {
+              photoNewArray.push('http://ceshi.qfjava.cn/' + item);
+            }
+          })
+        }
         item.photo = photoNewArray;
       })
       state.myRouteInfoDetails.details = detailsArray;
@@ -172,11 +222,50 @@ export default {
     console.log(state.myRouteInfoDetails);
     router.push({ name: 'myRouteDetails' });
   },
+  handleGoPersonRouteDetails_fuBen({ commit }, params){
+    state.myRouteAllInfo.map((item) => {
+      if (item.id == params.id) {
+        state.myRouteInfoDetails = item;
+      }
+    })
+    console.log(params, state.myRouteInfoDetails);
+    if (state.myRouteInfoDetails) {
+      var detailsArray = state.myRouteInfoDetails.details;
+
+      detailsArray.filter((item, index) => {
+        //时间截取
+        var oTime = item.createtime;
+        var oTimeArray = oTime.split('T');
+        var createYear = oTimeArray[0];
+        var oHouer = oTimeArray[1].split(':');
+        var createHouer = oHouer[0] + ':' + oHouer[1];
+        item.createYear = createYear;
+        item.createHouer = createHouer;
+        //图片处理
+        console.log(item.photo);
+        if(item.photo){
+          var photoArray = item.photo.split(',');
+          var photoNewArray = [];
+          photoArray.filter((item, index) => {
+            if (index > 2) {
+
+            } else {
+              photoNewArray.push('http://ceshi.qfjava.cn/' + item);
+            }
+          })
+        }
+        item.photo = photoNewArray;
+      })
+      state.myRouteInfoDetails.details = detailsArray;
+
+    }
+    console.log(state.myRouteInfoDetails);
+  },
   //结束行程
   hanleEndRoute(){
     axios({
-      method: 'post',
-      url: 'travel/trip/endtrip'
+      method: 'get',
+      url: '/travel/trip/endtrip'
     }).then((data) => {
         console.log(data);
     })
@@ -184,8 +273,8 @@ export default {
   //新增评论
   handleSendCommit({commit},params){
     axios({
-      method: 'post',
-      url: 'travel/trip/commenttrip?tripid= ' + params.index + "&comment=" + params.val
+      method: 'get',
+      url: '/travel/trip/commenttrip?tripid= ' + params.index + "&comment=" + params.val
     }).then((data) => {
       console.log();
       if(data.data.code == 1){

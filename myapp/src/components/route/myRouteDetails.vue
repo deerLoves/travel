@@ -1,10 +1,12 @@
 <template>
     <div class="mydetails">
       <h3 class="back">
-        <span @click="handleBack()">&lt;</span>
+        <router-link :to="{name:'planPath'}">
+            <span>&lt;</span>
+        </router-link>
         <em>
-          <span @click="hanleEndRoute()" v-show="myRouteInfoDetails.flag==1?false:true">结束行程</span>
-          <span @click="hanlePublish(myRouteInfoDetails.id)" v-show="myRouteInfoDetails.flag==1?false:true">发布</span>
+          <span @click="hanleEndRoute()" v-show="myRouteInfoDetails.flag==1 || show_EndRount?false:true">结束行程</span>
+          <span @click="hanlePublish(myRouteInfoDetails.id)" v-show="myRouteInfoDetails.flag==1 || show_EndRount?false:true">发布</span>
           
         </em>
       </h3>
@@ -44,9 +46,15 @@
 
 <script>
 import Vuex from "vuex";
+import { MessageBox } from "mint-ui";
 export default {
+  created(){
+    console.log(132);
+  },
   data() {
-    return {};
+    return {
+      show_EndRount:0
+    };
   },
   computed: {
     ...Vuex.mapState({
@@ -55,8 +63,19 @@ export default {
   },
   methods:{
       ...Vuex.mapActions({
-        hanleEndRoute:'route/hanleEndRoute'
+        hanleEndRoute_ac:'route/hanleEndRoute'
       }),
+      hanleEndRoute(){
+        var that = this;
+        this.hanleEndRoute_ac();
+          MessageBox({
+              title: '温馨提示',
+              message: '结束行程成功！',
+              showCancelButton: false
+          }).then((res)=>{
+             that.show_EndRount = 1;
+          });
+      },
       handleBack(){
           this.$router.back();
       },

@@ -203,7 +203,7 @@ export default {
   color: #4e94d0;
 }
 .cont {
-  width: 100%;
+  width: 7.0rem;
   padding-right: .32rem;
   margin-bottom: 0.6rem;
 }

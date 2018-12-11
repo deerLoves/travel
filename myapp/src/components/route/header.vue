@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <p>行程</p>
+        <p>旅游行程</p>
         <a href="#">
             <img src="../../../static/img-chen/route-head_03.png" alt="">
         </a>

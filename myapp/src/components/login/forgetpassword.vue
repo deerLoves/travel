@@ -14,7 +14,7 @@
         <p>
             <input type="password" placeholder="重置密码" class="input_three">
         </p>
-        <input type="button" class="sub" value="登录">
+        <input type="button" class="sub" value="提交">
         <div class="bottom">
             <p class="goregister" @click="goregister()">还没有账号？立即注册</p>
           
